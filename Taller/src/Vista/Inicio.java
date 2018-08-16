@@ -43,10 +43,10 @@ public class Inicio extends javax.swing.JFrame {
 
         escritorio = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        btnUsuarios = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnregistrar = new javax.swing.JButton();
+        btnactivos = new javax.swing.JButton();
+        btnusuarios = new javax.swing.JButton();
+        btnhistorial = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -68,52 +68,64 @@ public class Inicio extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 667, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon-01.png"))); // NOI18N
-        jButton1.setOpaque(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnregistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registrarn.png"))); // NOI18N
+        btnregistrar.setOpaque(false);
+        btnregistrar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registrarb.png"))); // NOI18N
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnregistrarActionPerformed(evt);
             }
         });
 
-        btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        btnUsuarios.setAlignmentY(0.0F);
-        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        btnactivos.setBackground(new java.awt.Color(255, 255, 255));
+        btnactivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/activosn.png"))); // NOI18N
+        btnactivos.setAlignmentY(0.0F);
+        btnactivos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/activosb.png"))); // NOI18N
+        btnactivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuariosActionPerformed(evt);
+                btnactivosActionPerformed(evt);
             }
         });
 
-        jButton2.setAlignmentY(0.0F);
+        btnusuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuariosn.png"))); // NOI18N
+        btnusuarios.setAlignmentY(0.0F);
+        btnusuarios.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuariosb.png"))); // NOI18N
+        btnusuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnusuariosActionPerformed(evt);
+            }
+        });
 
-        jButton3.setAlignmentY(0.0F);
+        btnhistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/historialn.png"))); // NOI18N
+        btnhistorial.setAlignmentY(0.0F);
+        btnhistorial.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/historialb.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnactivos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnactivos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,11 +141,8 @@ public class Inicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
 
         pack();
@@ -150,33 +159,41 @@ public class Inicio extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
-    Vista.Usuarios us;
-    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+ 
+    private void btnactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactivosActionPerformed
+        if (!this.btnactivos.isSelected()) {
+            this.btnactivos.setSelected(true);
+            this.btnregistrar.setSelected(false);
+            this.btnusuarios.setSelected(false);
 
-        if (estacerrado(us)) {
-            try {
+        }
+       /* if (estacerrado(us)) {
+           /* try {
                 us = new Usuarios();
 
                 // us.setCoordinador(miCoordinador);
-                
                 escritorio.add(us);//.setLocation(100, 0);
                 us.setMaximum(true);
                 us.show();
             } catch (PropertyVetoException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            // TODO add your handling code here:
+            // TODO add your handling code here:*/
+        
+    }//GEN-LAST:event_btnactivosActionPerformed
+    Vista.Registro re;
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+        if (!this.btnregistrar.isSelected()) {
+            this.btnactivos.setSelected(false);
+            this.btnregistrar.setSelected(true);
+            this.btnusuarios.setSelected(false);
+
         }
-    }//GEN-LAST:event_btnUsuariosActionPerformed
-Vista.Registro re;
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
         if (estacerrado(re)) {
             try {
                 re = new Registro();
 
                 // us.setCoordinador(miCoordinador);
-                
                 escritorio.add(re);//.setLocation(100, 0);
                 re.setMaximum(true);
                 re.show();
@@ -185,7 +202,29 @@ Vista.Registro re;
             }
             // TODO add your handling code here:
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnregistrarActionPerformed
+   Vista.Usuarios us;
+    private void btnusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnusuariosActionPerformed
+        if (!this.btnusuarios.isSelected()) {
+            this.btnactivos.setSelected(false);
+            this.btnregistrar.setSelected(false);
+            this.btnusuarios.setSelected(true);
+
+        }
+        if (estacerrado(us)) {
+            try {
+                us = new Usuarios();
+
+                // us.setCoordinador(miCoordinador);
+                escritorio.add(us);//.setLocation(100, 0);
+                us.setMaximum(true);
+                us.show();
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            // TODO add your handling code here:
+        }
+    }//GEN-LAST:event_btnusuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,11 +241,11 @@ Vista.Registro re;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnUsuarios;
+    public static javax.swing.JButton btnactivos;
+    private javax.swing.JButton btnhistorial;
+    private javax.swing.JButton btnregistrar;
+    private javax.swing.JButton btnusuarios;
     public static javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
