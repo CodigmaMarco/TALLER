@@ -37,7 +37,11 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="jPanel1" pref="689" max="32767" attributes="0"/>
+=======
+          <Component id="jPanel1" max="32767" attributes="0"/>
+>>>>>>> b1cf46cb3b52de2c14b782fbe0cdf7000b2ba2cb
           <Component id="escritorio" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -88,6 +92,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="btnregistrar" min="-2" pref="170" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="btnactivos" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -95,6 +100,14 @@
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="btnhistorial" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+=======
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnactivos" min="-2" pref="170" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnusuarios" min="-2" pref="170" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnhistorial" min="-2" pref="170" max="-2" attributes="0"/>
+>>>>>>> b1cf46cb3b52de2c14b782fbe0cdf7000b2ba2cb
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,6 +171,12 @@
               <Image iconType="3" name="/Imagenes/historialb.png"/>
             </Property>
           </Properties>
+<<<<<<< HEAD
+=======
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhistorialActionPerformed"/>
+          </Events>
+>>>>>>> b1cf46cb3b52de2c14b782fbe0cdf7000b2ba2cb
         </Component>
       </SubComponents>
     </Container>
