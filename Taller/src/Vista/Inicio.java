@@ -163,7 +163,7 @@ public class Inicio extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
- 
+ Vista.ActRegistro are;
     private void btnactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactivosActionPerformed
         if (!this.btnactivos.isSelected()) {
             this.btnactivos.setSelected(true);
@@ -171,19 +171,19 @@ public class Inicio extends javax.swing.JFrame {
             this.btnusuarios.setSelected(false);
 
         }
-       /* if (estacerrado(us)) {
-           /* try {
-                us = new Usuarios();
+        if (estacerrado(are)) {
+            try {
+                are = new ActRegistro();
 
                 // us.setCoordinador(miCoordinador);
-                escritorio.add(us);//.setLocation(100, 0);
-                us.setMaximum(true);
-                us.show();
+                escritorio.add(are);//.setLocation(100, 0);
+                are.setMaximum(true);
+                are.show();
             } catch (PropertyVetoException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            // TODO add your handling code here:*/
-        
+            // TODO add your handling code here:
+        }
     }//GEN-LAST:event_btnactivosActionPerformed
     Vista.Registro re;
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
