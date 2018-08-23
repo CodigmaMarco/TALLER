@@ -57,7 +57,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(44, 44, 45));
 
         btnagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useradd2-01.png"))); // NOI18N
         btnagregar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +123,8 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Tipo de Trabajo:");
 
+        jButton1.setBackground(new java.awt.Color(237, 31, 36));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("REGISTRAR");
 
         javax.swing.GroupLayout agregarLayout = new javax.swing.GroupLayout(agregar);

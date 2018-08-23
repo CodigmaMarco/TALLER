@@ -77,7 +77,7 @@ public class Registro extends javax.swing.JInternalFrame {
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(721, 535));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(44, 44, 45));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -103,6 +103,8 @@ public class Registro extends javax.swing.JInternalFrame {
 
         registrocliente.setName("registrocliente"); // NOI18N
 
+        btnsiguiente.setBackground(new java.awt.Color(237, 31, 36));
+        btnsiguiente.setForeground(new java.awt.Color(255, 255, 255));
         btnsiguiente.setText("SIGUIENTE");
         btnsiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +116,8 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
+        jButton2.setBackground(new java.awt.Color(237, 31, 36));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("BUSCAR");
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
@@ -123,7 +127,11 @@ public class Registro extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jList2);
 
+        rSMetroTextFullPlaceHolder1.setForeground(new java.awt.Color(0, 0, 0));
+        rSMetroTextFullPlaceHolder1.setBorderColor(new java.awt.Color(0, 0, 0));
+        rSMetroTextFullPlaceHolder1.setBotonColor(new java.awt.Color(0, 0, 0));
         rSMetroTextFullPlaceHolder1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rSMetroTextFullPlaceHolder1.setPhColor(new java.awt.Color(102, 102, 102));
         rSMetroTextFullPlaceHolder1.setPlaceholder("Nombre");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -353,7 +361,7 @@ public class Registro extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(rSComboMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -366,6 +374,8 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SERVICIOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(237, 31, 36));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("BUSCAR");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -385,7 +395,7 @@ public class Registro extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addGap(19, 19, 19))
         );
@@ -437,8 +447,12 @@ public class Registro extends javax.swing.JInternalFrame {
         jTextArea2.setRows(5);
         jScrollPane6.setViewportView(jTextArea2);
 
+        jButton3.setBackground(new java.awt.Color(237, 31, 36));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("ACTUALIZAR");
 
+        jButton4.setBackground(new java.awt.Color(237, 31, 36));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("ELIMINAR");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -475,6 +489,8 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnatras.setBackground(new java.awt.Color(237, 31, 36));
+        btnatras.setForeground(new java.awt.Color(255, 255, 255));
         btnatras.setText("ATRAS");
         btnatras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -482,6 +498,8 @@ public class Registro extends javax.swing.JInternalFrame {
             }
         });
 
+        btnfinalizar.setBackground(new java.awt.Color(237, 31, 36));
+        btnfinalizar.setForeground(new java.awt.Color(255, 255, 255));
         btnfinalizar.setText("FINALIZAR");
         btnfinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -503,7 +521,7 @@ public class Registro extends javax.swing.JInternalFrame {
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(11, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(registroservicioLayout.createSequentialGroup()
                         .addComponent(btnatras)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -545,8 +563,12 @@ public class Registro extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Enviar por Telefono");
 
+        jButton6.setBackground(new java.awt.Color(237, 31, 36));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Enviar");
 
+        jButton7.setBackground(new java.awt.Color(237, 31, 36));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Enviar");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -586,12 +608,10 @@ public class Registro extends javax.swing.JInternalFrame {
         registrofinalizadoLayout.setHorizontalGroup(
             registrofinalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registrofinalizadoLayout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registrofinalizadoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addGroup(registrofinalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         registrofinalizadoLayout.setVerticalGroup(
