@@ -13,11 +13,6 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         this.setResizable(false);
         initComponents();
-        /* aqui toy
-        yo tambien
-        escritorio.setBorder(new ImagenFondo());
-        
-         */
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
     }
@@ -29,8 +24,9 @@ public class Inicio extends javax.swing.JFrame {
         while (i < activos.length && cerrado) {
             if (activos[i] == obj) {
                 cerrado = false;
-                JOptionPane.showMessageDialog(this, "Otra ventana se encuentra \nya  abierta !!!", "Aviso", 0,
-                        new ImageIcon(getClass().getResource("/Imagenes/adver1.png")));
+                //obj.toFront();
+                /*JOptionPane.showMessageDialog(this, "Otra ventana se encuentra \nya  abierta !!!", "Aviso", 0,
+                        new ImageIcon(getClass().getResource("/Imagenes/adver1.png")));*/
             }
             i++;
         }
@@ -171,8 +167,10 @@ public class Inicio extends javax.swing.JFrame {
             this.btnusuarios.setSelected(false);
 
         }
+       
         if (estacerrado(are)) {
             try {
+                
                 are = new ActRegistro();
 
                 // us.setCoordinador(miCoordinador);
@@ -183,6 +181,8 @@ public class Inicio extends javax.swing.JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
             // TODO add your handling code here:
+        }else{
+        are.toFront();
         }
     }//GEN-LAST:event_btnactivosActionPerformed
     Vista.Registro re;
@@ -193,6 +193,7 @@ public class Inicio extends javax.swing.JFrame {
             this.btnusuarios.setSelected(false);
 
         }
+        
         if (estacerrado(re)) {
             try {
                 re = new Registro();
@@ -205,6 +206,8 @@ public class Inicio extends javax.swing.JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
             // TODO add your handling code here:
+        }else{
+        re.toFront();
         }
     }//GEN-LAST:event_btnregistrarActionPerformed
    Vista.Usuarios us;
@@ -227,6 +230,8 @@ public class Inicio extends javax.swing.JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
             // TODO add your handling code here:
+        }else{
+        us.toFront();
         }
     }//GEN-LAST:event_btnusuariosActionPerformed
 

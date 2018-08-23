@@ -5,6 +5,24 @@
  */
 package Vista;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.AbstractCellEditor;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author MAGM
@@ -16,6 +34,10 @@ public class ActRegistro extends javax.swing.JInternalFrame {
      */
     public ActRegistro() {
         initComponents();
+        TableColumn agregarColumn;
+        agregarColumn = rSTableMetro1.getColumnModel().getColumn(3);
+        agregarColumn.setCellEditor(new myeditor(rSTableMetro1));
+        agregarColumn.setCellRenderer(new myrenderer(true));
     }
 
     /**
@@ -37,8 +59,13 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rSTableMetro1 = new rojerusan.RSTableMetro();
+        jButton1 = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        setClosable(true);
+
+        jPanel1.setBackground(new java.awt.Color(44, 44, 45));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -61,6 +88,10 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        rSMetroTextFullPlaceHolder1.setForeground(new java.awt.Color(51, 51, 51));
+        rSMetroTextFullPlaceHolder1.setBorderColor(new java.awt.Color(51, 51, 51));
+        rSMetroTextFullPlaceHolder1.setBotonColor(new java.awt.Color(102, 102, 102));
+        rSMetroTextFullPlaceHolder1.setPhColor(new java.awt.Color(102, 102, 102));
         rSMetroTextFullPlaceHolder1.setPlaceholder("Ingrese su numero de rastreo");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -115,15 +146,68 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Area", "Proceso", "Estado", "Imagen"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Byte.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        rSTableMetro1.setColorBackgoundHead(new java.awt.Color(0, 0, 0));
+        rSTableMetro1.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        rSTableMetro1.setColorBordeHead(new java.awt.Color(153, 153, 153));
+        rSTableMetro1.setColorFilasBackgound2(new java.awt.Color(153, 153, 153));
+        rSTableMetro1.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
+        rSTableMetro1.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
+        rSTableMetro1.setColorSelBackgound(new java.awt.Color(237, 31, 36));
+        jScrollPane1.setViewportView(rSTableMetro1);
+        if (rSTableMetro1.getColumnModel().getColumnCount() > 0) {
+            rSTableMetro1.getColumnModel().getColumn(2).setMinWidth(70);
+            rSTableMetro1.getColumnModel().getColumn(2).setMaxWidth(70);
+        }
+
+        jButton1.setBackground(new java.awt.Color(204, 0, 51));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("ACTUALIZAR");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 322, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -161,15 +245,73 @@ public class ActRegistro extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    public static javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder1;
+    private rojerusan.RSTableMetro rSTableMetro1;
     // End of variables declaration//GEN-END:variables
+}
+
+class myrenderer extends JLabel implements TableCellRenderer {
+
+    boolean isBordered = true;
+
+    public myrenderer(boolean isBordered) {
+        this.isBordered = isBordered;
+        setOpaque(true);
+    }
+
+    public Component getTableCellRendererComponent(JTable table, Object color, boolean isSelected, boolean hasFocus, int row, int column) {
+         // if (row == table.getModel().getRowCount() - 1) {
+        return new JButton("SUBIR IMAGEN");
+        // } else {
+        //    setBackground(new Color(0xffffff));
+        //  return this;
+        //  }
+    }
+}
+
+class myeditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
+
+    Boolean currentValue;
+    JButton button;
+    protected static final String EDIT = "edit";
+    private JTable jTable1;
+
+    public myeditor(JTable jTable1) {
+        button = new JButton("SUBIR IMAGEN");
+        button.setActionCommand(EDIT);
+        button.addActionListener(this);
+        button.setBorderPainted(false);
+        this.jTable1 = jTable1;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        JFileChooser selectorArchivos = new JFileChooser();
+        selectorArchivos.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+        int resultado = selectorArchivos.showOpenDialog(ActRegistro.jPanel2);
+    }
+
+    public Object getCellEditorValue() {
+        return currentValue;
+    }
+
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+       // if (row == table.getModel().getRowCount() - 1) {
+            currentValue = (Boolean) value;
+            return button;
+     //   }
+      //  return new JLabel();
+    }
 }
