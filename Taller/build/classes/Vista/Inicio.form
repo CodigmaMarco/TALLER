@@ -37,11 +37,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-          <Component id="jPanel1" pref="689" max="32767" attributes="0"/>
-=======
           <Component id="jPanel1" max="32767" attributes="0"/>
->>>>>>> b1cf46cb3b52de2c14b782fbe0cdf7000b2ba2cb
           <Component id="escritorio" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -73,7 +69,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Color blue="2d" green="2c" red="2c" type="rgb"/>
         </Property>
         <Property name="alignmentX" type="float" value="0.0"/>
         <Property name="alignmentY" type="float" value="0.0"/>
@@ -92,22 +88,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="btnregistrar" min="-2" pref="170" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="btnactivos" min="-2" pref="170" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="btnusuarios" min="-2" pref="170" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="btnhistorial" min="-2" pref="170" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-=======
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnactivos" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnusuarios" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnhistorial" min="-2" pref="170" max="-2" attributes="0"/>
->>>>>>> b1cf46cb3b52de2c14b782fbe0cdf7000b2ba2cb
               </Group>
           </Group>
         </DimensionLayout>
@@ -115,8 +101,20 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnregistrar">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/registrarn.png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -136,6 +134,12 @@
               <Image iconType="3" name="/Imagenes/activosn.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/activosb.png"/>
             </Property>
@@ -153,6 +157,17 @@
               <Image iconType="3" name="/Imagenes/usuariosn.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder>
+                  <Color PropertyName="highlight" blue="2d" green="2c" red="2c" type="rgb"/>
+                  <Color PropertyName="shadow" blue="2d" green="2c" red="2c" type="rgb"/>
+                </EtchetBorder>
+              </Border>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/usuariosb.png"/>
             </Property>
@@ -167,16 +182,19 @@
               <Image iconType="3" name="/Imagenes/historialn.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/historialb.png"/>
             </Property>
           </Properties>
-<<<<<<< HEAD
-=======
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhistorialActionPerformed"/>
           </Events>
->>>>>>> b1cf46cb3b52de2c14b782fbe0cdf7000b2ba2cb
         </Component>
       </SubComponents>
     </Container>

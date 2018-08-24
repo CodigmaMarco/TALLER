@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.Coordinador;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,11 +11,18 @@ import javax.swing.ImageIcon;
 
 public class Inicio extends javax.swing.JFrame {
 
+    private Coordinador miCoordinador;
+
     public Inicio() {
         this.setResizable(false);
         initComponents();
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
+    }
+
+    public void setCoordinador(Coordinador miCoordinador) {
+        this.miCoordinador = miCoordinador;
+        //this.getUsuario(1);
     }
 
     public boolean estacerrado(Object obj) {
@@ -67,11 +75,15 @@ public class Inicio extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(44, 44, 45));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
 
+        btnregistrar.setBackground(new java.awt.Color(44, 44, 45));
         btnregistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registrarn.png"))); // NOI18N
+        btnregistrar.setBorder(null);
+        btnregistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnregistrar.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnregistrar.setOpaque(false);
         btnregistrar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registrarb.png"))); // NOI18N
         btnregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +95,8 @@ public class Inicio extends javax.swing.JFrame {
         btnactivos.setBackground(new java.awt.Color(255, 255, 255));
         btnactivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/activosn.png"))); // NOI18N
         btnactivos.setAlignmentY(0.0F);
+        btnactivos.setBorder(null);
+        btnactivos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnactivos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/activosb.png"))); // NOI18N
         btnactivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +106,8 @@ public class Inicio extends javax.swing.JFrame {
 
         btnusuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuariosn.png"))); // NOI18N
         btnusuarios.setAlignmentY(0.0F);
+        btnusuarios.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(44, 44, 45), new java.awt.Color(44, 44, 45)));
+        btnusuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnusuarios.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuariosb.png"))); // NOI18N
         btnusuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +117,8 @@ public class Inicio extends javax.swing.JFrame {
 
         btnhistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/historialn.png"))); // NOI18N
         btnhistorial.setAlignmentY(0.0F);
+        btnhistorial.setBorder(null);
+        btnhistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnhistorial.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/historialb.png"))); // NOI18N
         btnhistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +177,7 @@ public class Inicio extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
- Vista.ActRegistro are;
+    Vista.ActRegistro are;
     private void btnactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactivosActionPerformed
         if (!this.btnactivos.isSelected()) {
             this.btnactivos.setSelected(true);
@@ -167,10 +185,10 @@ public class Inicio extends javax.swing.JFrame {
             this.btnusuarios.setSelected(false);
 
         }
-       
+
         if (estacerrado(are)) {
             try {
-                
+
                 are = new ActRegistro();
 
                 // us.setCoordinador(miCoordinador);
@@ -181,8 +199,8 @@ public class Inicio extends javax.swing.JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
             // TODO add your handling code here:
-        }else{
-        are.toFront();
+        } else {
+            are.toFront();
         }
     }//GEN-LAST:event_btnactivosActionPerformed
     Vista.Registro re;
@@ -193,7 +211,7 @@ public class Inicio extends javax.swing.JFrame {
             this.btnusuarios.setSelected(false);
 
         }
-        
+
         if (estacerrado(re)) {
             try {
                 re = new Registro();
@@ -206,11 +224,11 @@ public class Inicio extends javax.swing.JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
             // TODO add your handling code here:
-        }else{
-        re.toFront();
+        } else {
+            re.toFront();
         }
     }//GEN-LAST:event_btnregistrarActionPerformed
-   Vista.Usuarios us;
+    Vista.Usuarios us;
     private void btnusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnusuariosActionPerformed
         if (!this.btnusuarios.isSelected()) {
             this.btnactivos.setSelected(false);
@@ -230,8 +248,8 @@ public class Inicio extends javax.swing.JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
             // TODO add your handling code here:
-        }else{
-        us.toFront();
+        } else {
+            us.toFront();
         }
     }//GEN-LAST:event_btnusuariosActionPerformed
 

@@ -1,43 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
+import Controlador.Coordinador;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import javax.swing.AbstractCellEditor;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-/**
- *
- * @author MAGM
- */
 public class ActRegistro extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form ActRegistro
-     */
+    private Coordinador miCoordinador;
+  private File src1File;
+  
     public ActRegistro() {
         initComponents();
         TableColumn agregarColumn;
         agregarColumn = rSTableMetro1.getColumnModel().getColumn(3);
         agregarColumn.setCellEditor(new myeditor(rSTableMetro1));
         agregarColumn.setCellRenderer(new myrenderer(true));
+    }
+    
+        public void setCoordinador(Coordinador miCoordinador) {
+        this.miCoordinador = miCoordinador;
+        //this.getUsuario(1);
     }
 
     /**
@@ -146,6 +137,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        rSTableMetro1.setForeground(new java.awt.Color(44, 44, 45));
         rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -172,7 +164,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        rSTableMetro1.setColorBackgoundHead(new java.awt.Color(0, 0, 0));
+        rSTableMetro1.setColorBackgoundHead(new java.awt.Color(44, 44, 45));
         rSTableMetro1.setColorBordeFilas(new java.awt.Color(255, 255, 255));
         rSTableMetro1.setColorBordeHead(new java.awt.Color(153, 153, 153));
         rSTableMetro1.setColorFilasBackgound2(new java.awt.Color(153, 153, 153));
@@ -281,6 +273,8 @@ class myrenderer extends JLabel implements TableCellRenderer {
 }
 
 class myeditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
+    private File src1File;
+    private String src1Name;
 
     Boolean currentValue;
     JButton button;
@@ -296,11 +290,27 @@ class myeditor extends AbstractCellEditor implements TableCellEditor, ActionList
     }
 
     public void actionPerformed(ActionEvent e) {
+        
+                JFileChooser dir = new JFileChooser();
+        int option = dir.showOpenDialog(ActRegistro.jPanel2);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            src1File = dir.getSelectedFile();
+            String fileName = dir.getName(dir.getSelectedFile());
 
+            src1Name = fileName;
+                    System.out.println(src1Name+"  "+src1File);
+           // checkSrc1.setSelected(true);
+           // cargarImagenes(1);
+        } else {
+           // checkSrc1.setSelected(false);
+        }
+        
+/*
         JFileChooser selectorArchivos = new JFileChooser();
         selectorArchivos.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
-        int resultado = selectorArchivos.showOpenDialog(ActRegistro.jPanel2);
+        int resultado = selectorArchivos.showOpenDialog(ActRegistro.jPanel2);*/
+
     }
 
     public Object getCellEditorValue() {

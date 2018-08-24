@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.Coordinador;
 import java.beans.PropertyVetoException;
 import javax.swing.JInternalFrame;
 import rojerusan.RSPanelsSlider;
@@ -10,10 +11,16 @@ import rojerusan.RSPanelsSlider;
  */
 public class Usuarios extends javax.swing.JInternalFrame {
 
-    public Usuarios() throws PropertyVetoException {
-        initComponents();
-//        this.setMaximum(true);
+    private Coordinador miCoordinador;
 
+    public Usuarios() {
+        initComponents();
+
+    }
+
+    public void setCoordinador(Coordinador miCoordinador) {
+        this.miCoordinador = miCoordinador;
+        //this.getUsuario(1);
     }
 
     @SuppressWarnings("unchecked")
@@ -355,7 +362,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarActionPerformed
-                if (!this.btnborrar.isSelected()) {
+        if (!this.btnborrar.isSelected()) {
             this.btnagregar.setSelected(false);
             this.btnborrar.setSelected(true);
             this.btneditar.setSelected(false);
@@ -364,7 +371,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnborrarActionPerformed
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
-               if (!this.btnagregar.isSelected()) {
+        if (!this.btnagregar.isSelected()) {
             this.btnagregar.setSelected(true);
             this.btnborrar.setSelected(false);
             this.btneditar.setSelected(false);
@@ -373,7 +380,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnagregarActionPerformed
 
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
-            if (!this.btneditar.isSelected()) {
+        if (!this.btneditar.isSelected()) {
             this.btnagregar.setSelected(false);
             this.btnborrar.setSelected(false);
             this.btneditar.setSelected(true);
