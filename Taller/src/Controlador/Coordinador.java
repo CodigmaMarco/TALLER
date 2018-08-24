@@ -62,9 +62,13 @@ public class Coordinador {
         this.actRegistro = actRegistro;
     }
 
-    public LoginVo buscarUser(String nombre,String password){
+    public LoginVo buscarTrabajador(String nombre,String password){
     LoginDao system = new LoginDao();
-    return system.getUser(nombre, password);   
+    return system.getTrabajador(nombre, password);   
     }
-
+    public LoginVo buscarAdministrador(String nombre,String password){
+    LoginDao system = new LoginDao();
+    return system.getTrabajador(nombre, password);   
+    }
+    
 }

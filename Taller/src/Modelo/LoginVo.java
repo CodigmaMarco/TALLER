@@ -12,7 +12,7 @@ public class LoginVo {
         return id_user;
     }
 
-  /*  public void setId_user(Integer id_user) {
+    public void setId_user(Integer id_user) {
         this.id_user = id_user;
     }
 
@@ -21,8 +21,8 @@ public class LoginVo {
     }
 
     public void setUser(String user) {
-        this.user = user
-    }*/
+        this.user = user;
+    }
 
     public String getPassword() {
         return password;

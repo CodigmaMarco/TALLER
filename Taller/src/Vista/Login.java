@@ -1,6 +1,5 @@
 package Vista;
 
-
 //import com.placeholder.PlaceHolder;
 import Controlador.Coordinador;
 import Modelo.LoginVo;
@@ -12,24 +11,26 @@ import rojerusan.RSPanelsSlider;
 
 public class Login extends javax.swing.JFrame {
 
+    private boolean esadministrador;
+    private boolean estrabajador;
+
     private Coordinador miCoordinador;
 
-  //  PlaceHolder hol;
-
+    //  PlaceHolder hol;
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        esadministrador = false;
+        estrabajador = false;
         //   hol = new PlaceHolder(txtUser,"Ingresa tu Usuario");
         //   hol = new PlaceHolder(txtPass,"Password");
 
     }
 
-        public void setCoordinador(Coordinador miCoordinador) {
+    public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
         //this.getUsuario(1);
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -289,26 +290,42 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
-        
+
         String password = new String(txtPass.getPassword());
         String nombre = txtUser.getText();
         System.out.println(nombre + " " + password);
-        Inicio ini ;
-        LoginVo miPersona = miCoordinador.buscarUser(nombre, password);
+        Inicio ini;
+        if (esadministrador) {
+            LoginVo miPersona = miCoordinador.buscarAdministrador(nombre, password);
 
-        if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
-            JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        } else {
-            //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
-            //miCoordinador.mostrarPrincipal();
-            ini = new Inicio();
-            ini.setCoordinador(miCoordinador);
-            //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
-           // ini.lbId.setText(miPersona.getId_user().toString());
-            ini.show();
-            dispose();
+            if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
+                JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            } else {
+                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
+                //miCoordinador.mostrarPrincipal();
+                ini = new Inicio();
+                ini.setCoordinador(miCoordinador);
+                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
+                // ini.lbId.setText(miPersona.getId_user().toString());
+                ini.show();
+                dispose();
+            }
+        } else if (estrabajador) {
+            LoginVo miPersona = miCoordinador.buscarTrabajador(nombre, password);
+
+            if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
+                JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            } else {
+                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
+                //miCoordinador.mostrarPrincipal();
+                ini = new Inicio();
+                ini.setCoordinador(miCoordinador);
+                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
+                // ini.lbId.setText(miPersona.getId_user().toString());
+                ini.show();
+                dispose();
+            }
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnGoActionPerformed
 
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
@@ -327,14 +344,18 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnMinimizeActionPerformed
 
     private void btnadministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadministradorActionPerformed
-                 if (!this.btnadministrador.isSelected()) {
+        if (!this.btnadministrador.isSelected()) {
             rSPanelsSlider1.slidPanel(panel, RSPanelsSlider.direct.Right);
+            esadministrador = true;
+            estrabajador = false;
         }
     }//GEN-LAST:event_btnadministradorActionPerformed
 
     private void btntrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntrabajadorActionPerformed
-                         if (!this.btntrabajador.isSelected()) {
+        if (!this.btntrabajador.isSelected()) {
             rSPanelsSlider1.slidPanel(panel, RSPanelsSlider.direct.Right);
+            esadministrador = false;
+            estrabajador = true;
         }
     }//GEN-LAST:event_btntrabajadorActionPerformed
     public static void main(String args[]) {
