@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import rojerusan.RSPanelsSlider;
-
+//Marco gay
 public class Login extends javax.swing.JFrame {
 
     private boolean esadministrador;
