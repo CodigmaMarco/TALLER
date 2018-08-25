@@ -94,7 +94,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="rSPanelsSlider2" alignment="1" pref="552" max="32767" attributes="0"/>
+              <Component id="rSPanelsSlider2" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -130,8 +130,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel11" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnsiguiente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -393,13 +393,11 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel4" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jPanel3" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -419,13 +417,15 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="nombre" alignment="0" pref="306" max="32767" attributes="0"/>
                                       <Component id="telefono" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="direccion" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="correo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="colonia" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="calle" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="correo" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="num_casa1" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -434,12 +434,16 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="nombre" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="telefono" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="direccion" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="colonia" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="calle" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="num_casa1" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="correo" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -468,7 +472,7 @@
                             <Property name="placeholder" type="java.lang.String" value="NOMBRE"/>
                           </Properties>
                         </Component>
-                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="direccion">
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="colonia">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
@@ -485,7 +489,7 @@
                             <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
                             </Property>
-                            <Property name="placeholder" type="java.lang.String" value="DIRECCION"/>
+                            <Property name="placeholder" type="java.lang.String" value="COLONIA"/>
                           </Properties>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="telefono">
@@ -508,6 +512,26 @@
                             <Property name="placeholder" type="java.lang.String" value="TELEFONO"/>
                           </Properties>
                         </Component>
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="calle">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="12" style="1"/>
+                            </Property>
+                            <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="placeholder" type="java.lang.String" value="CALLE"/>
+                          </Properties>
+                        </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="correo">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -526,6 +550,26 @@
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="CORREO"/>
+                          </Properties>
+                        </Component>
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="num_casa1">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="12" style="1"/>
+                            </Property>
+                            <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="placeholder" type="java.lang.String" value="NUMERO CASA"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -570,7 +614,7 @@
                                   <Component id="rSMetroTextFullPlaceHolder6" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="rSMetroTextFullPlaceHolder9" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -717,7 +761,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnatras" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnfinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1097,7 +1141,7 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="220" max="32767" attributes="0"/>
+                          <EmptySpace pref="264" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
