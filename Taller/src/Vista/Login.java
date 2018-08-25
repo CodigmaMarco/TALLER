@@ -307,10 +307,12 @@ public class Login extends javax.swing.JFrame {
                 ini.setCoordinador(miCoordinador);
                 //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
                 // ini.lbId.setText(miPersona.getId_user().toString());
+              
                 ini.show();
+                
                 dispose();
             }
-        } else if (estrabajador) {
+        } if (estrabajador) {
             LoginVo miPersona = miCoordinador.buscarTrabajador(nombre, password);
 
             if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
@@ -323,6 +325,7 @@ public class Login extends javax.swing.JFrame {
                 //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
                 // ini.lbId.setText(miPersona.getId_user().toString());
                 ini.show();
+                ini.boton();
                 dispose();
             }
         }

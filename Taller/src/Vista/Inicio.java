@@ -183,7 +183,6 @@ public class Inicio extends javax.swing.JFrame {
             this.btnactivos.setSelected(true);
             this.btnregistrar.setSelected(false);
             this.btnusuarios.setSelected(false);
-
         }
 
         if (estacerrado(are)) {
@@ -253,6 +252,12 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnusuariosActionPerformed
 
+    public static void boton(){
+    btnusuarios.setEnabled(false);
+    }
+    
+    
+    
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnhistorialActionPerformed
@@ -275,7 +280,7 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JButton btnactivos;
     private javax.swing.JButton btnhistorial;
     private javax.swing.JButton btnregistrar;
-    private javax.swing.JButton btnusuarios;
+    public static javax.swing.JButton btnusuarios;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

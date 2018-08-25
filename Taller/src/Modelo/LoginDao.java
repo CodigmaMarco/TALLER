@@ -44,15 +44,15 @@ public class LoginDao {
     }
     
     public LoginVo getAdministrador(String id, String pass){
-           System.out.println("hace consulta");
+           System.out.println("hace consulta 2");
         Conectarse conn = new Conectarse();
 
               LoginVo usuario = new LoginVo();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-                    "SELECT nombres_tra, password  "
-                    + "FROM bd_taller.trabajador "
-                    + "WHERE nombres_tra =? and password =? ");
+                    "SELECT nombre_admin, password  "
+                    + "FROM bd_taller.admin "
+                    + "WHERE nombre_admin =? and password =? ");
 
             preparedStatement.setString(1, id);
             preparedStatement.setString(2, pass);

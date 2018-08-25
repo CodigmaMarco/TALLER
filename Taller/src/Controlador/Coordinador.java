@@ -68,7 +68,7 @@ public class Coordinador {
     }
     public LoginVo buscarAdministrador(String nombre,String password){
     LoginDao system = new LoginDao();
-    return system.getTrabajador(nombre, password);   
+    return system.getAdministrador(nombre, password);   
     }
     
 }
