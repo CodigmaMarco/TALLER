@@ -62,7 +62,7 @@ public class Coordinador {
         this.actRegistro = actRegistro;
     }
 
-    public static LoginVo buscarTrabajador(String nombre,String password){
+    public LoginVo buscarTrabajador(String nombre,String password){
         System.out.println("aqui va");
     LoginDao system = new LoginDao();
     return system.getTrabajador(nombre, password);   
