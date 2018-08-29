@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class LoginDao {
     
-    public LoginVo getTrabajador(String id, String pass){
+    public LoginVo getTrabajador(String nombre, String password){
            System.out.println("hace consulta");
         Conectarse conn = new Conectarse();
 
@@ -17,8 +17,8 @@ public class LoginDao {
                     + "FROM bd_taller.trabajador "
                     + "WHERE nombres_tra =? and password =? ");
 
-            preparedStatement.setString(1, id);
-            preparedStatement.setString(2, pass);
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //Muestra resultados de la consulta SQL
@@ -43,7 +43,7 @@ public class LoginDao {
         return usuario;
     }
     
-    public LoginVo getAdministrador(String id, String pass){
+    public LoginVo getAdministrador(String nombre, String password){
            System.out.println("hace consulta 2");
         Conectarse conn = new Conectarse();
 
@@ -54,8 +54,8 @@ public class LoginDao {
                     + "FROM bd_taller.admin "
                     + "WHERE nombre_admin =? and password =? ");
 
-            preparedStatement.setString(1, id);
-            preparedStatement.setString(2, pass);
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //Muestra resultados de la consulta SQL

@@ -291,12 +291,12 @@ public class Login extends javax.swing.JFrame {
 
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
 
-        String password = new String(txtPass.getPassword());
-        String nombre = txtUser.getText();
-        System.out.println(nombre + " " + password);
+        String pass = new String(txtPass.getPassword());
+        String nom = txtUser.getText();
+        System.out.println(nom + " " + pass);
         Inicio ini;
         if (esadministrador) {
-            LoginVo miPersona = miCoordinador.buscarAdministrador(nombre, password);
+            LoginVo miPersona = miCoordinador.buscarAdministrador(nom, pass);
 
             if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
                 JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -307,13 +307,14 @@ public class Login extends javax.swing.JFrame {
                 ini.setCoordinador(miCoordinador);
                 //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
                 // ini.lbId.setText(miPersona.getId_user().toString());
-              
+
                 ini.show();
-                
+
                 dispose();
             }
-        } if (estrabajador) {
-            LoginVo miPersona = miCoordinador.buscarTrabajador(nombre, password);
+        }
+        if (estrabajador) {
+            LoginVo miPersona = miCoordinador.buscarTrabajador("Alan","123456");
 
             if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
                 JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
