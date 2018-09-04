@@ -6,6 +6,7 @@ import Modelo.adminVo;
 import Modelo.areaVo;
 import Modelo.autoVo;
 import Modelo.chatVo;
+import Modelo.clienteDao;
 import Modelo.clienteVo;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
@@ -13,6 +14,7 @@ import Modelo.servicioVo;
 import Modelo.tpVo;
 import Modelo.trabajadorVo;
 import Vista.*;
+import java.util.ArrayList;
 
 public class Coordinador {
 
@@ -62,14 +64,19 @@ public class Coordinador {
         this.actRegistro = actRegistro;
     }
 
-    public LoginVo buscarTrabajador(String nombre,String password){
+    public static LoginVo buscarTrabajador(String nombre, String password) {
         System.out.println("aqui va");
-    LoginDao system = new LoginDao();
-    return system.getTrabajador(nombre, password);   
+        LoginDao system = new LoginDao();
+        return system.getTrabajador(nombre, password);
     }
-    public LoginVo buscarAdministrador(String nombre,String password){
-    LoginDao system = new LoginDao();
-    return system.getAdministrador(nombre, password);   
+
+    public LoginVo buscarAdministrador(String nombre, String password) {
+        LoginDao system = new LoginDao();
+        return system.getAdministrador(nombre, password);
     }
-    
+
+     public static ArrayList<clienteVo> buscarUsuario() {
+        clienteDao cliente = new clienteDao();
+        return cliente.getCliente();
+    }
 }

@@ -3,8 +3,11 @@ package Vista;
 //import com.placeholder.PlaceHolder;
 import Controlador.Coordinador;
 import Modelo.LoginVo;
+import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import rojerusan.RSPanelsSlider;
@@ -22,6 +25,10 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         esadministrador = false;
         estrabajador = false;
+        ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logosistema.png"));
+        Icon fondo = new ImageIcon(logo.getImage().getScaledInstance(lbllogo.getWidth(), lbllogo.getHeight(), Image.SCALE_DEFAULT));
+        lbllogo.setIcon(fondo);
+        this.repaint();
         //   hol = new PlaceHolder(txtUser,"Ingresa tu Usuario");
         //   hol = new PlaceHolder(txtPass,"Password");
 
@@ -40,11 +47,13 @@ public class Login extends javax.swing.JFrame {
         BtnMinimize = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        lbllogo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         rSPanelsSlider1 = new rojerusan.RSPanelsSlider();
         select = new javax.swing.JPanel();
         btnadministrador = new rojerusan.RSButtonHover();
         btntrabajador = new rojerusan.RSButtonHover();
+        jLabel2 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
@@ -102,11 +111,16 @@ public class Login extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(139, Short.MAX_VALUE)
+                .addComponent(lbllogo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(lbllogo, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         select.setBackground(new java.awt.Color(255, 255, 255));
@@ -126,6 +140,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Luis es puto selecciona el puesto que merece por sus mamadas");
+
         javax.swing.GroupLayout selectLayout = new javax.swing.GroupLayout(select);
         select.setLayout(selectLayout);
         selectLayout.setHorizontalGroup(
@@ -135,12 +152,18 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(btnadministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btntrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(54, 54, 54))
         );
         selectLayout.setVerticalGroup(
             selectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(selectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnadministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btntrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -301,15 +324,9 @@ public class Login extends javax.swing.JFrame {
             if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
                 JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
             } else {
-                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
-                //miCoordinador.mostrarPrincipal();
                 ini = new Inicio();
                 ini.setCoordinador(miCoordinador);
-                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
-                // ini.lbId.setText(miPersona.getId_user().toString());
-
                 ini.show();
-
                 dispose();
             }
         }
@@ -319,12 +336,8 @@ public class Login extends javax.swing.JFrame {
             if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
                 JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
             } else {
-                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
-                //miCoordinador.mostrarPrincipal();
                 ini = new Inicio();
                 ini.setCoordinador(miCoordinador);
-                //ini.txtUsuario.setText(miPersona.getNombre() + " " + miPersona.getApellidos());
-                // ini.lbId.setText(miPersona.getId_user().toString());
                 ini.show();
                 ini.boton();
                 dispose();
@@ -411,12 +424,14 @@ public class Login extends javax.swing.JFrame {
     private rojerusan.RSButtonHover btnadministrador;
     private rojerusan.RSButtonHover btntrabajador;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpDelantero;
+    private javax.swing.JLabel lbllogo;
     private javax.swing.JPanel panel;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private javax.swing.JPanel select;
