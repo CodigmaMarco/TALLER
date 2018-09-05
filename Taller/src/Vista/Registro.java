@@ -1,7 +1,10 @@
 package Vista;
 
 import Controlador.Coordinador;
+import Modelo.Conectarse;
+import Modelo.autoVo;
 import Modelo.clienteVo;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -10,15 +13,15 @@ import rojerusan.RSPanelsSlider;
 public class Registro extends javax.swing.JInternalFrame {
 
     private Coordinador miCoordinador;
-        DefaultListModel modelo = new DefaultListModel();
+
     public Registro() {
-        initComponents();   
+        initComponents();
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
         //this.getUsuario(1);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +43,7 @@ public class Registro extends javax.swing.JInternalFrame {
         rSMetroTextFullPlaceHolder1 = new rojerusan.RSMetroTextFullPlaceHolder();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        listAuto = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -159,6 +162,11 @@ public class Registro extends javax.swing.JInternalFrame {
 
         listCliente.setBackground(new java.awt.Color(240, 240, 240));
         listCliente.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        listCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listClienteMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(listCliente);
 
         rSMetroTextFullPlaceHolder1.setForeground(new java.awt.Color(0, 0, 0));
@@ -196,13 +204,8 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AUTOMOVIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList3.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane4.setViewportView(jList3);
+        listAuto.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane4.setViewportView(listAuto);
 
         jLabel7.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -394,11 +397,11 @@ public class Registro extends javax.swing.JInternalFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,7 +433,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnsiguiente)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rSPanelsSlider2.add(registrocliente, "card2");
@@ -764,20 +767,65 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnfinalizarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-       
+
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         listarCliente();
+        listarCliente();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void listClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listClienteMouseClicked
+        DefaultListModel modelo = new DefaultListModel();
+
+        int con = 0;
+        char[] arreglo = listCliente.getSelectedValue().toCharArray();
+        for (char caracter : arreglo) {
+            if (Character.isDigit(caracter)) {
+                con++;
+            }
+        }
+        String id = listCliente.getSelectedValue().substring(0, con);
+
+        ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(id));
+        for (int i = 0; i < auto.size(); i++) {
+            // modelo.addElement(i);
+            modelo.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
+        }
+        listAuto.setModel(modelo);
+    }//GEN-LAST:event_listClienteMouseClicked
+
     public void listarCliente() {
+        DefaultListModel modelo = new DefaultListModel();
         ArrayList<clienteVo> cliente = miCoordinador.buscarUsuario();
         for (int i = 0; i < cliente.size(); i++) {
-           // modelo.addElement(i);
-           modelo.addElement(cliente.get(i).getIdcliente()+ "  "+cliente.get(i).getNombre());
+            // modelo.addElement(i);
+            modelo.addElement(cliente.get(i).getIdcliente() + "  " + cliente.get(i).getNombre());
         }
         listCliente.setModel(modelo);
+    }
+
+    public void registrarColor(clienteVo color) {
+        Conectarse conex = new Conectarse();
+
+        try {
+            String query = " insert into colors (color_art, color_name, color_hex_code)"
+                    + " values (?, ?, ?)";
+
+            PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
+            preparedStatement.setString(1, color.getColor_art());
+            preparedStatement.setString(2, color.getColor_name());
+            preparedStatement.setString(3, color.getColor_hex_code());
+
+            String consulta = "insert into colors (color_art, color_name, color_hex_code)" + " values ('" + color.getColor_art() + "', '" + color.getColor_name() + "', '" + color.getColor_hex_code() + "');";
+            escrib.escribir(consulta);
+            preparedStatement.execute();
+
+            //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Informacion",JOptionPane.INFORMATION_MESSAGE);
+            conex.getConn().close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se Registro");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -801,7 +849,6 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JList<String> jList4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -825,6 +872,7 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> listAuto;
     private javax.swing.JList<String> listCliente;
     private rojerusan.RSMetroTextFullPlaceHolder nombre;
     private rojerusan.RSMetroTextFullPlaceHolder num_casa;

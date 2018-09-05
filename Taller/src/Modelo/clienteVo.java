@@ -7,6 +7,15 @@ public class clienteVo {
     private String calle;
     private String num_casa;
     private int telefono;
+    private String correo;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
     private int id_trabajador;
 
     public int getIdcliente() {

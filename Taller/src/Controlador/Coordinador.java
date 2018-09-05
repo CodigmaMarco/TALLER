@@ -4,6 +4,7 @@ import Modelo.LoginDao;
 import Modelo.LoginVo;
 import Modelo.adminVo;
 import Modelo.areaVo;
+import Modelo.autoDao;
 import Modelo.autoVo;
 import Modelo.chatVo;
 import Modelo.clienteDao;
@@ -75,8 +76,13 @@ public class Coordinador {
         return system.getAdministrador(nombre, password);
     }
 
-     public static ArrayList<clienteVo> buscarUsuario() {
+    public static ArrayList<clienteVo> buscarUsuario() {
         clienteDao cliente = new clienteDao();
         return cliente.getCliente();
+    }
+
+    public static ArrayList<autoVo> buscarAuto( int id) {
+        autoDao auto = new autoDao();
+        return auto.getAuto(id);
     }
 }
