@@ -1,15 +1,32 @@
-
 package Modelo;
 
 public class LoginVo {
-       private Integer id_user;
+
+    private Integer id_user;
     private String user;
     private String password;
     private String nombre;
-    private String apellidos; 
+    private String apellidop;
+    private String apellidom;
 
     public Integer getId_user() {
         return id_user;
+    }
+
+    public String getApellidop() {
+        return apellidop;
+    }
+
+    public void setApellidop(String apellidop) {
+        this.apellidop = apellidop;
+    }
+
+    public String getApellidom() {
+        return apellidom;
+    }
+
+    public void setApellidom(String apellidom) {
+        this.apellidom = apellidom;
     }
 
     public void setId_user(Integer id_user) {
@@ -40,14 +57,4 @@ public class LoginVo {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-    
-    
-    
 }

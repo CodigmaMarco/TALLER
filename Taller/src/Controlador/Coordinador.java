@@ -84,7 +84,7 @@ public class Coordinador {
         autoDao auto = new autoDao();
         return auto.getAuto(id);
     }
-    public void agregarCliente(clienteVo cliente){
+    public static void agregarCliente(clienteVo cliente){
     clienteDao client = new clienteDao();
     client.registrarCliente(cliente);
     }

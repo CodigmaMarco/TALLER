@@ -303,7 +303,7 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JButton btnusuarios;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JPanel jPanel1;
-    private static javax.swing.JLabel lblid;
+    public static javax.swing.JLabel lblid;
     private static javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
 

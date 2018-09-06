@@ -28,8 +28,8 @@ public class clienteDao {
                 cliente.setColonia(resultSet.getString(3));
                 cliente.setCalle(resultSet.getString(4));
                 cliente.setNum_casa(resultSet.getString(5));
-                cliente.setTelefono(resultSet.getInt(6));
-                cliente.setId_trabajador(resultSet.getInt(7));
+                cliente.setTelefono(resultSet.getString(6));
+                cliente.setId_trabajador(resultSet.getInt(8));
 
                 clientes.add(cliente);
             }
@@ -57,7 +57,7 @@ public class clienteDao {
             preparedStatement.setString(2, cliente.getColonia());
             preparedStatement.setString(3, cliente.getCalle());
             preparedStatement.setString(4, cliente.getNum_casa());
-            preparedStatement.setInt(5, cliente.getTelefono());
+            preparedStatement.setString(5, cliente.getTelefono());
             preparedStatement.setString(6, cliente.getCorreo());
             preparedStatement.setInt(7, cliente.getId_trabajador());
 

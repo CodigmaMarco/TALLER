@@ -340,7 +340,7 @@ public class Login extends javax.swing.JFrame {
                 ini = new Inicio();
                 ini.setCoordinador(miCoordinador);
                 ini.show();
-                ini.boton(miPersona.getNombre(),miPersona.getId_user());
+                ini.boton(miPersona.getNombre()+" "+miPersona.getApellidop()+" "+miPersona.getApellidom(),miPersona.getId_user());
                 dispose();
             }
         }

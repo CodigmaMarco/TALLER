@@ -6,7 +6,7 @@ public class clienteVo {
     private String colonia;
     private String calle;
     private String num_casa;
-    private int telefono;
+    private String telefono;
     private String correo;
 
     public String getCorreo() {
@@ -48,10 +48,10 @@ public class clienteVo {
     public void setNum_casa(String num_casa) {
         this.num_casa = num_casa;
     }
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     public int getId_trabajador() {
