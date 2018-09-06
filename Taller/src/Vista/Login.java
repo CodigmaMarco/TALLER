@@ -336,10 +336,11 @@ public class Login extends javax.swing.JFrame {
             if (miPersona.getNombre() == null && miPersona.getPassword() == null) {
                 JOptionPane.showMessageDialog(null, "El usuario no Existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
             } else {
+                
                 ini = new Inicio();
                 ini.setCoordinador(miCoordinador);
                 ini.show();
-                ini.boton();
+                ini.boton(miPersona.getNombre(),miPersona.getId_user());
                 dispose();
             }
         }

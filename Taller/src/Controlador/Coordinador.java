@@ -66,7 +66,6 @@ public class Coordinador {
     }
 
     public static LoginVo buscarTrabajador(String nombre, String password) {
-        System.out.println("aqui va");
         LoginDao system = new LoginDao();
         return system.getTrabajador(nombre, password);
     }
@@ -84,5 +83,9 @@ public class Coordinador {
     public static ArrayList<autoVo> buscarAuto( int id) {
         autoDao auto = new autoDao();
         return auto.getAuto(id);
+    }
+    public void agregarCliente(clienteVo cliente){
+    clienteDao client = new clienteDao();
+    client.registrarCliente(cliente);
     }
 }

@@ -13,7 +13,7 @@ public class LoginDao {
               LoginVo usuario = new LoginVo();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-                    "SELECT nombres_tra, password  "
+                    "SELECT idtrabajador, nombres_tra, password  "
                     + "FROM bd_taller.trabajador "
                     + "WHERE nombres_tra =? and password =? ");
 
@@ -25,9 +25,9 @@ public class LoginDao {
             while (resultSet.next()) {
                 
                 //usuario.setId_user(resultSet.getInt(1));
-                //usuario.setUser(resultSet.getString(2));
-                usuario.setNombre(resultSet.getString(1));
-                usuario.setPassword(resultSet.getString(2));
+                usuario.setId_user(resultSet.getInt(1));
+                usuario.setNombre(resultSet.getString(2));
+                usuario.setPassword(resultSet.getString(3));
                 // usuario.setApellidos(resultSet.getString(5));
                 
             }

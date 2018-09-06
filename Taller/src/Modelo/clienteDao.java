@@ -44,7 +44,7 @@ public class clienteDao {
         return clientes;
     }
 
-    public void registrarColor(clienteVo cliente) {
+    public void registrarCliente(clienteVo cliente) {
         Conectarse conex = new Conectarse();
 
         try {

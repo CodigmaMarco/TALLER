@@ -46,6 +46,8 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
+        lblusuario = new javax.swing.JLabel();
+        lblid = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnregistrar = new javax.swing.JButton();
         btnactivos = new javax.swing.JButton();
@@ -64,15 +66,31 @@ public class Inicio extends javax.swing.JFrame {
 
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
 
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblusuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblusuario.setText("USUARIO");
+
+        lblid.setFont(new java.awt.Font("Tahoma", 0, 3)); // NOI18N
+
+        escritorio.setLayer(lblusuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(lblid, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addComponent(lblusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addComponent(lblid)
+                .addGap(87, 87, 87)
+                .addComponent(lblusuario)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(44, 44, 45));
@@ -252,8 +270,10 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnusuariosActionPerformed
 
-    public static void boton(){
+    public static void boton(String nombre,int id){
     btnusuarios.setEnabled(false);
+    lblusuario.setText(nombre);
+    lblid.setText(""+id);
     }
     
     
@@ -283,6 +303,8 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JButton btnusuarios;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JPanel jPanel1;
+    private static javax.swing.JLabel lblid;
+    private static javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
 
 }
