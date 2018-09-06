@@ -53,12 +53,14 @@ public class Registro extends javax.swing.JInternalFrame {
         correo = new rojerusan.RSMetroTextFullPlaceHolder();
         calle = new rojerusan.RSMetroTextFullPlaceHolder();
         num_casa = new rojerusan.RSMetroTextFullPlaceHolder();
+        jButton8 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         rSMetroTextFullPlaceHolder5 = new rojerusan.RSMetroTextFullPlaceHolder();
         rSMetroTextFullPlaceHolder6 = new rojerusan.RSMetroTextFullPlaceHolder();
         rSMetroTextFullPlaceHolder7 = new rojerusan.RSMetroTextFullPlaceHolder();
         rSMetroTextFullPlaceHolder8 = new rojerusan.RSMetroTextFullPlaceHolder();
         rSMetroTextFullPlaceHolder9 = new rojerusan.RSMetroTextFullPlaceHolder();
+        jButton5 = new javax.swing.JButton();
         registroservicio = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         rSComboMetro1 = new rojerusan.RSComboMetro();
@@ -298,6 +300,10 @@ public class Registro extends javax.swing.JInternalFrame {
         num_casa.setPhColor(new java.awt.Color(44, 44, 45));
         num_casa.setPlaceholder("NUMERO CASA");
 
+        jButton8.setBackground(new java.awt.Color(237, 31, 36));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Guardar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -305,13 +311,17 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                     .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(colonia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(calle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(num_casa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jButton8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,8 +336,11 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addComponent(calle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(num_casa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jButton8)
+                .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRAR AUTOMOVIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -362,19 +375,28 @@ public class Registro extends javax.swing.JInternalFrame {
         rSMetroTextFullPlaceHolder9.setPhColor(new java.awt.Color(44, 44, 45));
         rSMetroTextFullPlaceHolder9.setPlaceholder("COLOR");
 
+        jButton5.setBackground(new java.awt.Color(237, 31, 36));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Guardar");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rSMetroTextFullPlaceHolder8, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                    .addComponent(rSMetroTextFullPlaceHolder7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rSMetroTextFullPlaceHolder5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rSMetroTextFullPlaceHolder6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rSMetroTextFullPlaceHolder9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(rSMetroTextFullPlaceHolder9, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rSMetroTextFullPlaceHolder6, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rSMetroTextFullPlaceHolder5, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rSMetroTextFullPlaceHolder7, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(rSMetroTextFullPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jButton5)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,7 +411,9 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addComponent(rSMetroTextFullPlaceHolder6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rSMetroTextFullPlaceHolder9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jButton5)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -397,11 +421,11 @@ public class Registro extends javax.swing.JInternalFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,18 +446,18 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroclienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnsiguiente)
-                .addGap(29, 29, 29))
+                .addGap(28, 28, 28))
         );
         registroclienteLayout.setVerticalGroup(
             registroclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registroclienteLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnsiguiente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         rSPanelsSlider2.add(registrocliente, "card2");
@@ -633,7 +657,7 @@ public class Registro extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(registroservicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnatras)
                     .addComponent(btnfinalizar))
@@ -714,7 +738,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
 
         rSPanelsSlider2.add(registrofinalizado, "card4");
@@ -804,28 +828,8 @@ public class Registro extends javax.swing.JInternalFrame {
         listCliente.setModel(modelo);
     }
 
-    public void registrarColor(clienteVo color) {
-        Conectarse conex = new Conectarse();
-
-        try {
-            String query = " insert into colors (color_art, color_name, color_hex_code)"
-                    + " values (?, ?, ?)";
-
-            PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
-            preparedStatement.setString(1, color.getColor_art());
-            preparedStatement.setString(2, color.getColor_name());
-            preparedStatement.setString(3, color.getColor_hex_code());
-
-            String consulta = "insert into colors (color_art, color_name, color_hex_code)" + " values ('" + color.getColor_art() + "', '" + color.getColor_name() + "', '" + color.getColor_hex_code() + "');";
-            escrib.escribir(consulta);
-            preparedStatement.execute();
-
-            //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Informacion",JOptionPane.INFORMATION_MESSAGE);
-            conex.getConn().close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "No se Registro");
-        }
+    public void registrarColor(clienteVo cliente) {
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -839,8 +843,10 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

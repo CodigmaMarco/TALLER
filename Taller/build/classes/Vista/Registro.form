@@ -131,20 +131,20 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnsiguiente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnsiguiente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jPanel11" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          <Component id="btnsiguiente" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -400,11 +400,11 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                              <EmptySpace pref="136" max="32767" attributes="0"/>
                               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -439,7 +439,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nombre" alignment="0" pref="306" max="32767" attributes="0"/>
+                                      <Component id="nombre" alignment="0" pref="295" max="32767" attributes="0"/>
                                       <Component id="telefono" alignment="0" max="32767" attributes="0"/>
                                       <Component id="colonia" alignment="0" max="32767" attributes="0"/>
                                       <Component id="correo" alignment="0" max="32767" attributes="0"/>
@@ -447,6 +447,11 @@
                                       <Component id="num_casa" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -463,8 +468,11 @@
                                   <Component id="calle" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="num_casa" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="correo" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -590,6 +598,17 @@
                             <Property name="placeholder" type="java.lang.String" value="NUMERO CASA"/>
                           </Properties>
                         </Component>
+                        <Component class="javax.swing.JButton" name="jButton8">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="24" green="1f" red="ed" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Guardar"/>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel4">
@@ -606,16 +625,24 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="rSMetroTextFullPlaceHolder8" alignment="0" pref="294" max="32767" attributes="0"/>
-                                      <Component id="rSMetroTextFullPlaceHolder7" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="rSMetroTextFullPlaceHolder5" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="rSMetroTextFullPlaceHolder6" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="rSMetroTextFullPlaceHolder9" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="rSMetroTextFullPlaceHolder9" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="rSMetroTextFullPlaceHolder6" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="rSMetroTextFullPlaceHolder5" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="rSMetroTextFullPlaceHolder7" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="rSMetroTextFullPlaceHolder8" min="-2" pref="280" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace pref="18" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -632,7 +659,9 @@
                                   <Component id="rSMetroTextFullPlaceHolder6" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="rSMetroTextFullPlaceHolder9" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -723,6 +752,17 @@
                             <Property name="placeholder" type="java.lang.String" value="COLOR"/>
                           </Properties>
                         </Component>
+                        <Component class="javax.swing.JButton" name="jButton5">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="24" green="1f" red="ed" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Guardar"/>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -779,7 +819,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="147" max="32767" attributes="0"/>
+                          <EmptySpace pref="190" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnatras" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnfinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1159,7 +1199,7 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="307" max="32767" attributes="0"/>
+                          <EmptySpace pref="350" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
