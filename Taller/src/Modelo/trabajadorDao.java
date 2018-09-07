@@ -138,4 +138,26 @@ public class trabajadorDao {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void borrarTrabajador(trabajadorVo empleado){
+        Conectarse conn = new Conectarse();
+        
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+            "delete from trabajador " +
+            "where idtrabajador = ? " +
+            "limit 1");
+            
+            preparedStatement.setInt(1, empleado.getIdtrabajador());
+            
+            preparedStatement.executeUpdate();
+            
+            //Cierra todo
+            conn.getConn().close();
+            //resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

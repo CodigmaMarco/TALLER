@@ -51,19 +51,6 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
     }
     
     public void llenarTablaTrabajadores(){
-    modelo2.setColumnIdentifiers(columnas);
-        ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
-        //Ciclo para llenar tabla de productos
-        for (int i = 0; i < p.size(); i++) {
-
-            modelo2.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(),p.get(i).getAmaterno(),
-                p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
-        }
-        //Asignamos los datos del Modelo a la tabla
-        tbTraba.setModel(modelo2);
-    }
-    
-    public void llenarTablaTrabajo(){
     modelo.setColumnIdentifiers(columnas);
         ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
         //Ciclo para llenar tabla de productos
@@ -73,7 +60,20 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
                 p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
         }
         //Asignamos los datos del Modelo a la tabla
-        tbTrabajo.setModel(modelo);
+        tbTraba.setModel(modelo);
+    }
+    
+    public void llenarTablaTrabajo(){
+    modelo2.setColumnIdentifiers(columnas);
+        ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
+        //Ciclo para llenar tabla de productos
+        for (int i = 0; i < p.size(); i++) {
+
+            modelo2.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(),p.get(i).getAmaterno(),
+                p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
+        }
+        //Asignamos los datos del Modelo a la tabla
+        tbTrabajo.setModel(modelo2);
     }
     
     public void llenarCamposTrabajador(int id){
@@ -92,6 +92,12 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
     private void limpiarTabla() {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
+        }
+    }
+    
+    private void limpiarTabla2() {
+        while (modelo2.getRowCount() > 0) {
+            modelo2.removeRow(0);
         }
     }
     @SuppressWarnings("unchecked")
@@ -130,6 +136,8 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbTrabajo = new rojerusan.RSTableMetro();
+        btnBorrar = new javax.swing.JButton();
+        btnActua = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setClosable(true);
@@ -532,7 +540,7 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -585,6 +593,24 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
             tbTrabajo.getColumnModel().getColumn(5).setResizable(false);
         }
 
+        btnBorrar.setBackground(new java.awt.Color(237, 31, 36));
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("ELIMINAR");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
+        btnActua.setBackground(new java.awt.Color(237, 31, 36));
+        btnActua.setForeground(new java.awt.Color(255, 255, 255));
+        btnActua.setText("ACTUALIZAR");
+        btnActua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActuaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout borrarLayout = new javax.swing.GroupLayout(borrar);
         borrar.setLayout(borrarLayout);
         borrarLayout.setHorizontalGroup(
@@ -598,6 +624,12 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
                         .addGap(0, 435, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(borrarLayout.createSequentialGroup()
+                .addGap(361, 361, 361)
+                .addComponent(btnActua, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         borrarLayout.setVerticalGroup(
             borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,7 +638,11 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addGroup(borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         rSPanelsSlider1.add(borrar, "card4");
@@ -651,6 +687,8 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
             this.btnborrar.setSelected(true);
             this.btneditar.setSelected(false);
             rSPanelsSlider1.slidPanel(borrar, RSPanelsSlider.direct.Right);
+            limpiarTabla2();
+            llenarTablaTrabajo();
         }
     }//GEN-LAST:event_btnborrarActionPerformed
 
@@ -669,6 +707,8 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
             this.btnborrar.setSelected(false);
             this.btneditar.setSelected(true);
             rSPanelsSlider1.slidPanel(editar, RSPanelsSlider.direct.Right);
+            limpiarTabla(); 
+            llenarTablaTrabajadores();
         }
     }//GEN-LAST:event_btneditarActionPerformed
 
@@ -817,11 +857,37 @@ llenarCamposTrabajador(ide);
         // TODO add your handling code here:
     }//GEN-LAST:event_tbTrabajoMouseClicked
 
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        trabajadorVo v = new trabajadorVo();
+        int fila = tbTrabajo.getSelectedRow();
+        int id_trabajador = (int)tbTrabajo.getValueAt(fila, 0);
+        String nombre = (String)tbTrabajo.getValueAt(fila, 1);
+        String paterno = (String)tbTrabajo.getValueAt(fila, 2);
+        String materno = (String)tbTrabajo.getValueAt(fila, 3);
+        String completo = nombre + " " +paterno + " "+ materno;
+        
+        int resp = JOptionPane.showConfirmDialog(null, "¿Está seguro de Eliminar el registro de: "+completo+"?");
+        
+        if(resp == 0 ){
+        v.setIdtrabajador(id_trabajador);
+        Coordinador.BorrarTrabajador(v);
+        JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        limpiarTabla2();
+        llenarTablaTrabajo();
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnActuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActuaActionPerformed
+llenarTablaTrabajo();
+    }//GEN-LAST:event_btnActuaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel agregar;
     private javax.swing.JPanel borrar;
+    private javax.swing.JButton btnActua;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnagregar;
     private javax.swing.JButton btnborrar;
     private javax.swing.JButton btneditar;

@@ -109,4 +109,9 @@ public class Coordinador {
     trabajadorDao trabajador = new trabajadorDao();
     trabajador.updateTrabajador(t);
     }
+    
+    public static void BorrarTrabajador(trabajadorVo t){
+    trabajadorDao trabajador = new trabajadorDao();
+    trabajador.borrarTrabajador(t);
+    }
 }
