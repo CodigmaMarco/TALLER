@@ -5,10 +5,37 @@ package Modelo;
 public class trabajadorVo {
    
     private int idtrabajador;
-    private String nombre;
+    private String nombre;   
     private int edad;
     private String tipo_trabajo; 
     private int id_admin;
+    private String apaterno;
+    private String amaterno;
+    private String password;
+
+    public String getApaterno() {
+        return apaterno;
+    }
+
+    public void setApaterno(String apaterno) {
+        this.apaterno = apaterno;
+    }
+
+    public String getAmaterno() {
+        return amaterno;
+    }
+
+    public void setAmaterno(String amaterno) {
+        this.amaterno = amaterno;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getIdtrabajador() {
         return idtrabajador;
