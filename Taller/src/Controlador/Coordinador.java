@@ -13,6 +13,7 @@ import Modelo.ordenVo;
 import Modelo.procesoVo;
 import Modelo.servicioVo;
 import Modelo.tpVo;
+import Modelo.trabajadorDao;
 import Modelo.trabajadorVo;
 import Vista.*;
 import java.util.ArrayList;
@@ -87,5 +88,15 @@ public class Coordinador {
     public static void agregarCliente(clienteVo cliente){
     clienteDao client = new clienteDao();
     client.registrarCliente(cliente);
+    }
+    
+    public static void addTrabajador(trabajadorVo tv){
+    trabajadorDao tra = new trabajadorDao();
+    tra.addTrabajador(tv);
+    }
+    
+    public static ArrayList<trabajadorVo> getTrabajadores(){
+    trabajadorDao traba = new trabajadorDao();
+    return traba.getTrabajadores();
     }
 }
