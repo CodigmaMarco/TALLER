@@ -1,7 +1,9 @@
 package Modelo;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class trabajadorDao {
    
@@ -30,5 +32,42 @@ public class trabajadorDao {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public ArrayList<trabajadorVo> getTrabajadores(){
+        Conectarse conn = new Conectarse();
+        ArrayList<trabajadorVo> trabajadores = new ArrayList<>();
+        
+            try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+            "select idtrabajador, nombres_tra, apellidop_tra, apellidom_tra, edadt, tipo_trabajo "
+            + "FROM trabajador");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //Muestra resultados de la consulta SQL
+            while (resultSet.next()) {
+                trabajadorVo tra = new trabajadorVo();
+
+                tra.setIdtrabajador(resultSet.getInt(1));
+                tra.setNombre(resultSet.getString(2));
+                tra.setApaterno(resultSet.getString(3));
+                tra.setAmaterno(resultSet.getString(4));
+                tra.setEdad(resultSet.getInt(5));
+                tra.setTipo_trabajo(resultSet.getString(6));
+                
+                trabajadores.add(tra);
+
+            }
+            //Cierra todo
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        //Retorna el usuario
+        return trabajadores;
     }
 }

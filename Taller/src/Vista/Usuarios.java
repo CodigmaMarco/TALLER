@@ -3,25 +3,36 @@ package Vista;
 import Controlador.Coordinador;
 import Modelo.trabajadorVo;
 import java.beans.PropertyVetoException;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import rojerusan.RSPanelsSlider;
 
 /**
  *
  * @author MAGM
  */
-public class Usuarios extends javax.swing.JInternalFrame {
+public  class Usuarios extends javax.swing.JInternalFrame {
 
     private Coordinador miCoordinador;
-
+DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return false;
+        }
+    };
+    
+    String[] columnas = {"ID", "Nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Tipo de trabajo"};
     public Usuarios() {
         initComponents();
+        this.llenarTablaTrabajadores();
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
+        
         //this.getUsuario(1);
     }
 
@@ -32,6 +43,19 @@ public class Usuarios extends javax.swing.JInternalFrame {
     txtEdad.setText("");
     txtTrabajo.setText("");
     txtPass.setText("");
+    }
+    
+    public void llenarTablaTrabajadores(){
+    modelo.setColumnIdentifiers(columnas);
+        ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
+        //Ciclo para llenar tabla de productos
+        for (int i = 0; i < p.size(); i++) {
+
+            modelo.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(),p.get(i).getAmaterno(),
+                p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
+        }
+        //Asignamos los datos del Modelo a la tabla
+        tbTraba.setModel(modelo);
     }
     
     @SuppressWarnings("unchecked")
@@ -56,17 +80,9 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         editar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbUsuarios = new rojerusan.RSTableMetro();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbTraba = new rojerusan.RSTableMetro();
         borrar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -289,7 +305,10 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Editar Usuario:");
 
-        tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        jButton2.setText("GUARDAR");
+
+        tbTraba.setForeground(new java.awt.Color(44, 44, 45));
+        tbTraba.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -303,7 +322,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Trabajador", "Nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Tipo de Trabajador"
+                "ID Trabajador", "Nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Tipo de Trabajo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -314,65 +333,37 @@ public class Usuarios extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbUsuarios.setFuenteHead(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jScrollPane1.setViewportView(tbUsuarios);
-        if (tbUsuarios.getColumnModel().getColumnCount() > 0) {
-            tbUsuarios.getColumnModel().getColumn(0).setResizable(false);
-            tbUsuarios.getColumnModel().getColumn(1).setResizable(false);
-            tbUsuarios.getColumnModel().getColumn(2).setResizable(false);
-            tbUsuarios.getColumnModel().getColumn(3).setResizable(false);
-            tbUsuarios.getColumnModel().getColumn(4).setResizable(false);
-            tbUsuarios.getColumnModel().getColumn(5).setResizable(false);
+        tbTraba.setColorBackgoundHead(new java.awt.Color(44, 44, 45));
+        tbTraba.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tbTraba.setColorBordeHead(new java.awt.Color(153, 153, 153));
+        tbTraba.setColorFilasBackgound2(new java.awt.Color(153, 153, 153));
+        tbTraba.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
+        tbTraba.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
+        tbTraba.setColorSelBackgound(new java.awt.Color(237, 31, 36));
+        jScrollPane1.setViewportView(tbTraba);
+        if (tbTraba.getColumnModel().getColumnCount() > 0) {
+            tbTraba.getColumnModel().getColumn(0).setResizable(false);
+            tbTraba.getColumnModel().getColumn(1).setResizable(false);
+            tbTraba.getColumnModel().getColumn(2).setResizable(false);
+            tbTraba.getColumnModel().getColumn(3).setResizable(false);
+            tbTraba.getColumnModel().getColumn(5).setResizable(false);
         }
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setText("Edad:");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("Nombre:");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("Apellidos:");
-
-        jButton2.setText("GUARDAR");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setText("Tipo de Trabajo:");
 
         javax.swing.GroupLayout editarLayout = new javax.swing.GroupLayout(editar);
         editar.setLayout(editarLayout);
         editarLayout.setHorizontalGroup(
             editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(editarLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editarLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(editarLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField5))
-                            .addGroup(editarLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(editarLayout.createSequentialGroup()
-                                .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField7)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editarLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(editarLayout.createSequentialGroup()
+                        .addGap(0, 931, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         editarLayout.setVerticalGroup(
@@ -381,26 +372,10 @@ public class Usuarios extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(jButton2)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         rSPanelsSlider1.add(editar, "card3");
@@ -457,7 +432,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -585,22 +560,14 @@ limpiarCampos();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
-    private rojerusan.RSTableMetro tbUsuarios;
+    private rojerusan.RSTableMetro tbTraba;
     private rojerusan.RSMetroTextFullPlaceHolder txtEdad;
     private rojerusan.RSMetroTextFullPlaceHolder txtMaterno;
     private rojerusan.RSMetroTextFullPlaceHolder txtNombre3;

@@ -94,4 +94,9 @@ public class Coordinador {
     trabajadorDao tra = new trabajadorDao();
     tra.addTrabajador(tv);
     }
+    
+    public static ArrayList<trabajadorVo> getTrabajadores(){
+    trabajadorDao traba = new trabajadorDao();
+    return traba.getTrabajadores();
+    }
 }
