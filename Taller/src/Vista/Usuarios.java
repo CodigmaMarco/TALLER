@@ -16,18 +16,23 @@ import rojerusan.RSPanelsSlider;
  * @author MAGM
  */
 public  class Usuarios extends javax.swing.JInternalFrame {
-
+    
+    int id_empleado;
     private Coordinador miCoordinador;
 DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int rowIndex, int columnIndex) {
             return false;
         }
     };
+DefaultTableModel modelo2 = new DefaultTableModel() {
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return false;       }   };
     
     String[] columnas = {"ID", "Nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Tipo de trabajo"};
     public Usuarios() {
         initComponents();
         this.llenarTablaTrabajadores();
+        this.llenarTablaTrabajo();
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
@@ -46,6 +51,19 @@ DefaultTableModel modelo = new DefaultTableModel() {
     }
     
     public void llenarTablaTrabajadores(){
+    modelo2.setColumnIdentifiers(columnas);
+        ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
+        //Ciclo para llenar tabla de productos
+        for (int i = 0; i < p.size(); i++) {
+
+            modelo2.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(),p.get(i).getAmaterno(),
+                p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
+        }
+        //Asignamos los datos del Modelo a la tabla
+        tbTraba.setModel(modelo2);
+    }
+    
+    public void llenarTablaTrabajo(){
     modelo.setColumnIdentifiers(columnas);
         ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
         //Ciclo para llenar tabla de productos
@@ -55,9 +73,27 @@ DefaultTableModel modelo = new DefaultTableModel() {
                 p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
         }
         //Asignamos los datos del Modelo a la tabla
-        tbTraba.setModel(modelo);
+        tbTrabajo.setModel(modelo);
     }
     
+    public void llenarCamposTrabajador(int id){
+    
+        trabajadorVo t = Coordinador.getTrabajadorID(id);
+        
+        txtNombre2.setText(t.getNombre());
+        txtPaterno2.setText(t.getApaterno());
+        txtMaterno2.setText(t.getAmaterno());
+        txtEdad2.setText(Integer.toString(t.getEdad()));
+        txtTrabajo2.setText(t.getTipo_trabajo());
+        txtPass2.setText(t.getPassword());
+        
+    }
+    
+    private void limpiarTabla() {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,11 +116,20 @@ DefaultTableModel modelo = new DefaultTableModel() {
         jButton1 = new javax.swing.JButton();
         editar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbTraba = new rojerusan.RSTableMetro();
+        jPanel10 = new javax.swing.JPanel();
+        txtTrabajo2 = new rojerusan.RSMetroTextFullPlaceHolder();
+        txtPaterno2 = new rojerusan.RSMetroTextFullPlaceHolder();
+        txtMaterno2 = new rojerusan.RSMetroTextFullPlaceHolder();
+        txtNombre2 = new rojerusan.RSMetroTextFullPlaceHolder();
+        txtEdad2 = new rojerusan.RSMetroTextFullPlaceHolder();
+        btnActualizar = new javax.swing.JButton();
+        txtPass2 = new rojerusan.RSPasswordTextPlaceHolder();
         borrar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbTrabajo = new rojerusan.RSTableMetro();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setClosable(true);
@@ -301,20 +346,14 @@ DefaultTableModel modelo = new DefaultTableModel() {
         rSPanelsSlider1.add(agregar, "card2");
 
         editar.setName("editar"); // NOI18N
+        editar.setPreferredSize(new java.awt.Dimension(1044, 600));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Editar Usuario:");
 
-        jButton2.setText("GUARDAR");
-
         tbTraba.setForeground(new java.awt.Color(44, 44, 45));
         tbTraba.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -340,6 +379,11 @@ DefaultTableModel modelo = new DefaultTableModel() {
         tbTraba.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
         tbTraba.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
         tbTraba.setColorSelBackgound(new java.awt.Color(237, 31, 36));
+        tbTraba.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTrabaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbTraba);
         if (tbTraba.getColumnModel().getColumnCount() > 0) {
             tbTraba.getColumnModel().getColumn(0).setResizable(false);
@@ -349,6 +393,122 @@ DefaultTableModel modelo = new DefaultTableModel() {
             tbTraba.getColumnModel().getColumn(5).setResizable(false);
         }
 
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TRABAJADOR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        txtTrabajo2.setForeground(new java.awt.Color(0, 0, 0));
+        txtTrabajo2.setBorderColor(new java.awt.Color(0, 0, 0));
+        txtTrabajo2.setBotonColor(new java.awt.Color(0, 0, 0));
+        txtTrabajo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTrabajo2.setPhColor(new java.awt.Color(102, 102, 102));
+        txtTrabajo2.setPlaceholder("TIPO TRABAJO");
+        txtTrabajo2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTrabajo2KeyTyped(evt);
+            }
+        });
+
+        txtPaterno2.setForeground(new java.awt.Color(0, 0, 0));
+        txtPaterno2.setBorderColor(new java.awt.Color(0, 0, 0));
+        txtPaterno2.setBotonColor(new java.awt.Color(0, 0, 0));
+        txtPaterno2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtPaterno2.setPhColor(new java.awt.Color(102, 102, 102));
+        txtPaterno2.setPlaceholder("APELLIDO PATERNO");
+        txtPaterno2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPaterno2KeyTyped(evt);
+            }
+        });
+
+        txtMaterno2.setForeground(new java.awt.Color(0, 0, 0));
+        txtMaterno2.setBorderColor(new java.awt.Color(0, 0, 0));
+        txtMaterno2.setBotonColor(new java.awt.Color(0, 0, 0));
+        txtMaterno2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMaterno2.setPhColor(new java.awt.Color(102, 102, 102));
+        txtMaterno2.setPlaceholder("APELLIDO MATERNO");
+        txtMaterno2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaterno2KeyTyped(evt);
+            }
+        });
+
+        txtNombre2.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombre2.setBorderColor(new java.awt.Color(0, 0, 0));
+        txtNombre2.setBotonColor(new java.awt.Color(0, 0, 0));
+        txtNombre2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtNombre2.setPhColor(new java.awt.Color(102, 102, 102));
+        txtNombre2.setPlaceholder("NOMBRE(S)");
+        txtNombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombre2KeyTyped(evt);
+            }
+        });
+
+        txtEdad2.setForeground(new java.awt.Color(0, 0, 0));
+        txtEdad2.setBorderColor(new java.awt.Color(0, 0, 0));
+        txtEdad2.setBotonColor(new java.awt.Color(0, 0, 0));
+        txtEdad2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtEdad2.setPhColor(new java.awt.Color(102, 102, 102));
+        txtEdad2.setPlaceholder("EDAD");
+        txtEdad2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdad2KeyTyped(evt);
+            }
+        });
+
+        btnActualizar.setBackground(new java.awt.Color(237, 31, 36));
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        txtPass2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+        txtPass2.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdad2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTrabajo2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPaterno2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMaterno2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(txtPass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPaterno2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaterno2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTrabajo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEdad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout editarLayout = new javax.swing.GroupLayout(editar);
         editar.setLayout(editarLayout);
         editarLayout.setHorizontalGroup(
@@ -356,14 +516,12 @@ DefaultTableModel modelo = new DefaultTableModel() {
             .addGroup(editarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(editarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(editarLayout.createSequentialGroup()
-                        .addGap(0, 931, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
                 .addContainerGap())
         );
         editarLayout.setVerticalGroup(
@@ -372,10 +530,10 @@ DefaultTableModel modelo = new DefaultTableModel() {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jButton2)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         rSPanelsSlider1.add(editar, "card3");
@@ -385,21 +543,70 @@ DefaultTableModel modelo = new DefaultTableModel() {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Eliminar Usuario:");
 
+        tbTrabajo.setForeground(new java.awt.Color(44, 44, 45));
+        tbTrabajo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Trabajador", "Nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Tipo de Trabajo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbTrabajo.setColorBackgoundHead(new java.awt.Color(44, 44, 45));
+        tbTrabajo.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tbTrabajo.setColorBordeHead(new java.awt.Color(153, 153, 153));
+        tbTrabajo.setColorFilasBackgound2(new java.awt.Color(153, 153, 153));
+        tbTrabajo.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
+        tbTrabajo.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
+        tbTrabajo.setColorSelBackgound(new java.awt.Color(237, 31, 36));
+        tbTrabajo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTrabajoMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbTrabajo);
+        if (tbTrabajo.getColumnModel().getColumnCount() > 0) {
+            tbTrabajo.getColumnModel().getColumn(0).setResizable(false);
+            tbTrabajo.getColumnModel().getColumn(1).setResizable(false);
+            tbTrabajo.getColumnModel().getColumn(2).setResizable(false);
+            tbTrabajo.getColumnModel().getColumn(3).setResizable(false);
+            tbTrabajo.getColumnModel().getColumn(5).setResizable(false);
+        }
+
         javax.swing.GroupLayout borrarLayout = new javax.swing.GroupLayout(borrar);
         borrar.setLayout(borrarLayout);
         borrarLayout.setHorizontalGroup(
             borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(borrarLayout.createSequentialGroup()
-                .addContainerGap(484, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(borrarLayout.createSequentialGroup()
+                        .addGap(0, 474, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(0, 435, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
+                .addContainerGap())
         );
         borrarLayout.setVerticalGroup(
             borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(borrarLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         rSPanelsSlider1.add(borrar, "card4");
@@ -432,7 +639,7 @@ DefaultTableModel modelo = new DefaultTableModel() {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         pack();
@@ -549,30 +756,100 @@ limpiarCampos();
 }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtTrabajo2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTrabajo2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTrabajo2KeyTyped
+
+    private void txtPaterno2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaterno2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPaterno2KeyTyped
+
+    private void txtMaterno2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaterno2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaterno2KeyTyped
+
+    private void txtNombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombre2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombre2KeyTyped
+
+    private void txtEdad2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdad2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdad2KeyTyped
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+trabajadorVo actualizado = new trabajadorVo();
+        if(txtNombre2.getText().isEmpty() && txtPaterno2.getText().isEmpty() && txtMaterno.getText().isEmpty() && txtEdad2.getText().isEmpty()
+        && txtTrabajo2.getText().isEmpty() && txtPass2.getText().isEmpty()){
+   JOptionPane.showMessageDialog(null, "Llenar todos los campos disponibles", "Información incompleta", JOptionPane.WARNING_MESSAGE);
+}
+else{
+        String myPass = new String(txtPass2.getPassword());
+actualizado.setIdtrabajador(id_empleado);
+actualizado.setNombre(txtNombre2.getText());
+actualizado.setApaterno(txtPaterno2.getText());
+actualizado.setAmaterno(txtMaterno2.getText());
+actualizado.setEdad(Integer.parseInt(txtEdad2.getText()));
+actualizado.setTipo_trabajo(txtTrabajo2.getText());
+actualizado.setPassword(myPass);
+
+int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de actualizar el registro?", "Actualización!", JOptionPane.YES_NO_OPTION);
+if(resp == 0){
+Coordinador.updateTrabajador(actualizado);
+JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+limpiarTabla();
+llenarTablaTrabajadores();
+
+}
+
+}
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void tbTrabaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTrabaMouseClicked
+int seleccion = tbTraba.getSelectedRow();
+
+int ide = (int) tbTraba.getValueAt(seleccion, 0);
+id_empleado = ide;
+
+llenarCamposTrabajador(ide);
+    }//GEN-LAST:event_tbTrabaMouseClicked
+
+    private void tbTrabajoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTrabajoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbTrabajoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel agregar;
     private javax.swing.JPanel borrar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnagregar;
     private javax.swing.JButton btnborrar;
     private javax.swing.JButton btneditar;
     private javax.swing.JPanel editar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private rojerusan.RSTableMetro tbTraba;
+    private rojerusan.RSTableMetro tbTrabajo;
     private rojerusan.RSMetroTextFullPlaceHolder txtEdad;
+    private rojerusan.RSMetroTextFullPlaceHolder txtEdad2;
     private rojerusan.RSMetroTextFullPlaceHolder txtMaterno;
+    private rojerusan.RSMetroTextFullPlaceHolder txtMaterno2;
+    private rojerusan.RSMetroTextFullPlaceHolder txtNombre2;
     private rojerusan.RSMetroTextFullPlaceHolder txtNombre3;
     private rojerusan.RSMetroTextFullPlaceHolder txtPass;
+    private rojerusan.RSPasswordTextPlaceHolder txtPass2;
     private rojerusan.RSMetroTextFullPlaceHolder txtPaterno;
+    private rojerusan.RSMetroTextFullPlaceHolder txtPaterno2;
     private rojerusan.RSMetroTextFullPlaceHolder txtTrabajo;
+    private rojerusan.RSMetroTextFullPlaceHolder txtTrabajo2;
     // End of variables declaration//GEN-END:variables
 }

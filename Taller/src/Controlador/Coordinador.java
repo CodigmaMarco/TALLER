@@ -99,4 +99,14 @@ public class Coordinador {
     trabajadorDao traba = new trabajadorDao();
     return traba.getTrabajadores();
     }
+    
+    public static trabajadorVo getTrabajadorID(int id){
+    trabajadorDao trab = new trabajadorDao();
+    return trab.getTrabajadorID(id);
+    }
+    
+    public static void updateTrabajador(trabajadorVo t){
+    trabajadorDao trabajador = new trabajadorDao();
+    trabajador.updateTrabajador(t);
+    }
 }
