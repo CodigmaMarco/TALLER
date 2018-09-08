@@ -19,7 +19,7 @@ public class Registro extends javax.swing.JInternalFrame {
     public Registro() {
         initComponents();
     enableComponents(panelCliente,false);
-    enableComponents(panelAuto,false);
+   // enableComponents(panelAuto,false);
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
@@ -45,11 +45,11 @@ public class Registro extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         listCliente = new javax.swing.JList<>();
         rSMetroTextFullPlaceHolder1 = new rojerusan.RSMetroTextFullPlaceHolder();
-        jButton9 = new javax.swing.JButton();
+        btnActivadorRegistro = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         listAuto = new javax.swing.JList<>();
-        btnAutoNuevo = new javax.swing.JButton();
+        btnActivadorAuto = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         panelCliente = new javax.swing.JPanel();
         nombre = new rojerusan.RSMetroTextFullPlaceHolder();
@@ -58,14 +58,15 @@ public class Registro extends javax.swing.JInternalFrame {
         correo = new rojerusan.RSMetroTextFullPlaceHolder();
         calle = new rojerusan.RSMetroTextFullPlaceHolder();
         num_casa = new rojerusan.RSMetroTextFullPlaceHolder();
-        jButton8 = new javax.swing.JButton();
+        btnGuardarCliente = new javax.swing.JButton();
         panelAuto = new javax.swing.JPanel();
-        rSMetroTextFullPlaceHolder5 = new rojerusan.RSMetroTextFullPlaceHolder();
-        rSMetroTextFullPlaceHolder6 = new rojerusan.RSMetroTextFullPlaceHolder();
-        rSMetroTextFullPlaceHolder7 = new rojerusan.RSMetroTextFullPlaceHolder();
-        rSMetroTextFullPlaceHolder8 = new rojerusan.RSMetroTextFullPlaceHolder();
-        rSMetroTextFullPlaceHolder9 = new rojerusan.RSMetroTextFullPlaceHolder();
-        jButton5 = new javax.swing.JButton();
+        modelo = new rojerusan.RSMetroTextFullPlaceHolder();
+        marca = new rojerusan.RSMetroTextFullPlaceHolder();
+        placa = new rojerusan.RSMetroTextFullPlaceHolder();
+        color = new rojerusan.RSMetroTextFullPlaceHolder();
+        btnGuardarAuto = new javax.swing.JButton();
+        lblIdCliente = new javax.swing.JLabel();
+        year = new rojerusan.RSYearDate();
         registroservicio = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         rSComboMetro1 = new rojerusan.RSComboMetro();
@@ -184,12 +185,12 @@ public class Registro extends javax.swing.JInternalFrame {
         rSMetroTextFullPlaceHolder1.setPhColor(new java.awt.Color(102, 102, 102));
         rSMetroTextFullPlaceHolder1.setPlaceholder("Nombre");
 
-        jButton9.setBackground(new java.awt.Color(237, 31, 36));
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Registrar cliente nuevo");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnActivadorRegistro.setBackground(new java.awt.Color(237, 31, 36));
+        btnActivadorRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        btnActivadorRegistro.setText("Registrar cliente nuevo");
+        btnActivadorRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnActivadorRegistroActionPerformed(evt);
             }
         });
 
@@ -208,7 +209,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton9)
+                .addComponent(btnActivadorRegistro)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -221,7 +222,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jButton9))
+                .addComponent(btnActivadorRegistro))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AUTOMOVIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -238,13 +239,13 @@ public class Registro extends javax.swing.JInternalFrame {
         });
         jScrollPane7.setViewportView(listAuto);
 
-        btnAutoNuevo.setBackground(new java.awt.Color(237, 31, 36));
-        btnAutoNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        btnAutoNuevo.setText("Registrar automovil nuevo");
-        btnAutoNuevo.setEnabled(false);
-        btnAutoNuevo.addActionListener(new java.awt.event.ActionListener() {
+        btnActivadorAuto.setBackground(new java.awt.Color(237, 31, 36));
+        btnActivadorAuto.setForeground(new java.awt.Color(255, 255, 255));
+        btnActivadorAuto.setText("Registrar automovil nuevo");
+        btnActivadorAuto.setEnabled(false);
+        btnActivadorAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAutoNuevoActionPerformed(evt);
+                btnActivadorAutoActionPerformed(evt);
             }
         });
 
@@ -258,7 +259,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAutoNuevo)
+                .addComponent(btnActivadorAuto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -267,7 +268,8 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAutoNuevo))
+                .addComponent(btnActivadorAuto)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -337,12 +339,12 @@ public class Registro extends javax.swing.JInternalFrame {
         num_casa.setPhColor(new java.awt.Color(44, 44, 45));
         num_casa.setPlaceholder("NUMERO CASA");
 
-        jButton8.setBackground(new java.awt.Color(237, 31, 36));
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Guardar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCliente.setBackground(new java.awt.Color(237, 31, 36));
+        btnGuardarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarCliente.setText("Guardar");
+        btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnGuardarClienteActionPerformed(evt);
             }
         });
 
@@ -357,7 +359,7 @@ public class Registro extends javax.swing.JInternalFrame {
                     .addComponent(correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelClienteLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton8)
+                        .addComponent(btnGuardarCliente)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelClienteLayout.createSequentialGroup()
                         .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,68 +389,75 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addComponent(btnGuardarCliente)
                 .addGap(59, 59, 59))
         );
 
         panelAuto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRAR AUTOMOVIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        rSMetroTextFullPlaceHolder5.setBorderColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder5.setBotonColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rSMetroTextFullPlaceHolder5.setPhColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder5.setPlaceholder("MODELO");
+        modelo.setBorderColor(new java.awt.Color(44, 44, 45));
+        modelo.setBotonColor(new java.awt.Color(44, 44, 45));
+        modelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        modelo.setPhColor(new java.awt.Color(44, 44, 45));
+        modelo.setPlaceholder("MODELO");
 
-        rSMetroTextFullPlaceHolder6.setBorderColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder6.setBotonColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rSMetroTextFullPlaceHolder6.setPhColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder6.setPlaceholder("AÑO");
+        marca.setBorderColor(new java.awt.Color(44, 44, 45));
+        marca.setBotonColor(new java.awt.Color(44, 44, 45));
+        marca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        marca.setPhColor(new java.awt.Color(44, 44, 45));
+        marca.setPlaceholder("MARCA");
 
-        rSMetroTextFullPlaceHolder7.setBorderColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder7.setBotonColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rSMetroTextFullPlaceHolder7.setPhColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder7.setPlaceholder("MARCA");
+        placa.setBorderColor(new java.awt.Color(44, 44, 45));
+        placa.setBotonColor(new java.awt.Color(44, 44, 45));
+        placa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        placa.setPhColor(new java.awt.Color(44, 44, 45));
+        placa.setPlaceholder("PLACA");
 
-        rSMetroTextFullPlaceHolder8.setBorderColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder8.setBotonColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rSMetroTextFullPlaceHolder8.setPhColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder8.setPlaceholder("PLACA");
+        color.setBorderColor(new java.awt.Color(44, 44, 45));
+        color.setBotonColor(new java.awt.Color(44, 44, 45));
+        color.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        color.setPhColor(new java.awt.Color(44, 44, 45));
+        color.setPlaceholder("COLOR");
 
-        rSMetroTextFullPlaceHolder9.setBorderColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder9.setBotonColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rSMetroTextFullPlaceHolder9.setPhColor(new java.awt.Color(44, 44, 45));
-        rSMetroTextFullPlaceHolder9.setPlaceholder("COLOR");
+        btnGuardarAuto.setBackground(new java.awt.Color(237, 31, 36));
+        btnGuardarAuto.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarAuto.setText("Guardar");
+        btnGuardarAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarAutoActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(237, 31, 36));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Guardar");
+        lblIdCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblIdCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        year.setColorBackground(new java.awt.Color(44, 44, 45));
+        year.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
 
         javax.swing.GroupLayout panelAutoLayout = new javax.swing.GroupLayout(panelAuto);
         panelAuto.setLayout(panelAutoLayout);
         panelAutoLayout.setHorizontalGroup(
             panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAutoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAutoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(rSMetroTextFullPlaceHolder5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(rSMetroTextFullPlaceHolder8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(color, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rSMetroTextFullPlaceHolder7, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rSMetroTextFullPlaceHolder6, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblIdCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelAutoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(rSMetroTextFullPlaceHolder9, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(modelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(placa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(marca, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(year, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAutoLayout.createSequentialGroup()
                 .addGap(0, 201, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(btnGuardarAuto)
                 .addGap(167, 167, 167))
         );
         panelAutoLayout.setVerticalGroup(
@@ -456,18 +465,20 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(panelAutoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rSMetroTextFullPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelAutoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(rSMetroTextFullPlaceHolder7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rSMetroTextFullPlaceHolder5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSMetroTextFullPlaceHolder6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(modelo, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(year, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(color, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIdCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(rSMetroTextFullPlaceHolder9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(btnGuardarAuto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -476,9 +487,9 @@ public class Registro extends javax.swing.JInternalFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -489,7 +500,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout registroclienteLayout = new javax.swing.GroupLayout(registrocliente);
@@ -506,9 +517,9 @@ public class Registro extends javax.swing.JInternalFrame {
         registroclienteLayout.setVerticalGroup(
             registroclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registroclienteLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 22, Short.MAX_VALUE)
                 .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnsiguiente)
@@ -866,14 +877,16 @@ public class Registro extends javax.swing.JInternalFrame {
         String id = listCliente.getSelectedValue().substring(0, con);
 
         ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(id));
+        lblIdCliente.setText(id);
         for (int i = 0; i < auto.size(); i++) {
             // modelo.addElement(i);
             modelo.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
         }
         listAuto.setModel(modelo);
+        btnActivadorAuto.setEnabled(true);
     }//GEN-LAST:event_listClienteMouseClicked
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
         clienteVo cliente = new clienteVo();
         cliente.setNombre(nombre.getText());
         cliente.setColonia(colonia.getText());
@@ -892,19 +905,42 @@ public class Registro extends javax.swing.JInternalFrame {
             //limpiarCampos();
             listarCliente();
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btnActivadorRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorRegistroActionPerformed
         enableComponents(panelCliente,true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btnActivadorRegistroActionPerformed
 
     private void listAutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listAutoMouseClicked
-        btnAutoNuevo.setEnabled(true);
+       // btnAutoNuevo.setEnabled(true);
     }//GEN-LAST:event_listAutoMouseClicked
 
-    private void btnAutoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoNuevoActionPerformed
+    private void btnActivadorAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorAutoActionPerformed
+       System.out.println(listAuto.getLeadSelectionIndex());
+
         enableComponents(panelAuto,true);
-    }//GEN-LAST:event_btnAutoNuevoActionPerformed
+
+    }//GEN-LAST:event_btnActivadorAutoActionPerformed
+
+    private void btnGuardarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAutoActionPerformed
+               autoVo auto = new autoVo();
+        auto.setPlaca(placa.getText());
+        auto.setModelo(modelo.getText());
+        auto.setMarca(marca.getText());
+        auto.setAño(String.valueOf(year.getYear()));
+        auto.setColor(color.getText());
+        auto.setIdcliente(Integer.parseInt(lblIdCliente.getText()));
+
+        if (placa.getText().equals("") || modelo.getText().equals("") || marca.getText().equals("")
+                || color.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        } else {
+            miCoordinador.agregarAuto(auto);
+            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            //limpiarCampos();
+            listarCliente();
+        }
+    }//GEN-LAST:event_btnGuardarAutoActionPerformed
 
     public void listarCliente() {
         DefaultListModel modelo = new DefaultListModel();
@@ -927,22 +963,23 @@ public class Registro extends javax.swing.JInternalFrame {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAutoNuevo;
+    private javax.swing.JButton btnActivadorAuto;
+    private javax.swing.JButton btnActivadorRegistro;
+    private javax.swing.JButton btnGuardarAuto;
+    private javax.swing.JButton btnGuardarCliente;
     private javax.swing.JButton btnatras;
     private javax.swing.JButton btnfinalizar;
     private javax.swing.JButton btnsiguiente;
     private rojerusan.RSMetroTextFullPlaceHolder calle;
     private rojerusan.RSMetroTextFullPlaceHolder colonia;
+    private rojerusan.RSMetroTextFullPlaceHolder color;
     private rojerusan.RSMetroTextFullPlaceHolder correo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -971,23 +1008,23 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblIdCliente;
     private javax.swing.JList<String> listAuto;
     private javax.swing.JList<String> listCliente;
+    private rojerusan.RSMetroTextFullPlaceHolder marca;
+    private rojerusan.RSMetroTextFullPlaceHolder modelo;
     private rojerusan.RSMetroTextFullPlaceHolder nombre;
     private rojerusan.RSMetroTextFullPlaceHolder num_casa;
     private javax.swing.JPanel panelAuto;
     private javax.swing.JPanel panelCliente;
+    private rojerusan.RSMetroTextFullPlaceHolder placa;
     private rojerusan.RSComboMetro rSComboMetro1;
     private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder1;
-    private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder5;
-    private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder6;
-    private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder7;
-    private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder8;
-    private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder9;
     private rojerusan.RSPanelsSlider rSPanelsSlider2;
     private javax.swing.JPanel registrocliente;
     private javax.swing.JPanel registrofinalizado;
     private javax.swing.JPanel registroservicio;
     private rojerusan.RSMetroTextFullPlaceHolder telefono;
+    private rojerusan.RSYearDate year;
     // End of variables declaration//GEN-END:variables
 }

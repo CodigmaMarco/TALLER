@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class autoDao {
 
@@ -17,7 +18,7 @@ public class autoDao {
                     "SELECT A.idauto, A.placa, A.modelo, A.marca, A.año, A.id_cliente\n"
                     + "FROM bd_taller.auto A\n"
                     + "WHERE A.id_cliente = ? ");
-            
+
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -42,5 +43,31 @@ public class autoDao {
         }
         //Retorna el usuario
         return autos;
+    }
+
+    public void registrarAuto(autoVo auto) {
+        Conectarse conex = new Conectarse();
+
+        try {
+            String query = " insert into auto (placa, modelo, marca, "
+                    + "año, id_cliente, color)"
+                    + " values (?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
+            preparedStatement.setString(1, auto.getPlaca());
+            preparedStatement.setString(2, auto.getModelo());
+            preparedStatement.setString(3, auto.getMarca());
+            preparedStatement.setString(4, auto.getAño());
+            preparedStatement.setInt(5, auto.getIdcliente());
+            preparedStatement.setString(6, auto.getColor());
+
+
+            preparedStatement.execute();
+
+            conex.getConn().close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se Registro");
+        }
     }
 }

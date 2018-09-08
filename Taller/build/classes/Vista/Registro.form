@@ -138,9 +138,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
                           <Component id="jPanel11" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnsiguiente" min="-2" max="-2" attributes="0"/>
@@ -228,7 +228,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnActivadorRegistro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -244,7 +244,7 @@
                                   <EmptySpace type="unrelated" pref="27" max="32767" attributes="0"/>
                                   <Component id="jScrollPane3" min="-2" pref="86" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnActivadorRegistro" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -320,7 +320,7 @@
                             <Property name="placeholder" type="java.lang.String" value="Nombre"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton9">
+                        <Component class="javax.swing.JButton" name="btnActivadorRegistro">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="24" green="1f" red="ed" type="rgb"/>
@@ -331,7 +331,7 @@
                             <Property name="text" type="java.lang.String" value="Registrar cliente nuevo"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActivadorRegistroActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -350,14 +350,14 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace pref="18" max="32767" attributes="0"/>
                                   <Component id="jScrollPane7" min="-2" pref="262" max="-2" attributes="0"/>
                                   <EmptySpace pref="19" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnAutoNuevo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnActivadorAuto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -368,7 +368,8 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane7" min="-2" pref="86" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnAutoNuevo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnActivadorAuto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -410,7 +411,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JButton" name="btnAutoNuevo">
+                        <Component class="javax.swing.JButton" name="btnActivadorAuto">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="24" green="1f" red="ed" type="rgb"/>
@@ -422,7 +423,7 @@
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAutoNuevoActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActivadorAutoActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -444,9 +445,9 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="panelCliente" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="32" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="panelAuto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -460,7 +461,7 @@
                                   <Component id="panelAuto" max="32767" attributes="0"/>
                                   <Component id="panelCliente" min="-2" pref="280" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -487,7 +488,7 @@
                                       <Component id="correo" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnGuardarCliente" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -526,7 +527,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="correo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnGuardarCliente" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -656,7 +657,7 @@
                             <Property name="placeholder" type="java.lang.String" value="NUMERO CASA"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton8">
+                        <Component class="javax.swing.JButton" name="btnGuardarCliente">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="24" green="1f" red="ed" type="rgb"/>
@@ -667,7 +668,7 @@
                             <Property name="text" type="java.lang.String" value="Guardar"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarClienteActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -687,29 +688,31 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="rSMetroTextFullPlaceHolder5" alignment="0" pref="194" max="32767" attributes="0"/>
-                                              <Component id="rSMetroTextFullPlaceHolder8" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="color" min="-2" pref="194" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="rSMetroTextFullPlaceHolder7" min="-2" pref="194" max="-2" attributes="0"/>
-                                              <Component id="rSMetroTextFullPlaceHolder6" min="-2" pref="194" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="lblIdCliente" max="32767" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rSMetroTextFullPlaceHolder9" min="-2" pref="194" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="modelo" alignment="0" pref="194" max="32767" attributes="0"/>
+                                              <Component id="placa" alignment="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="marca" pref="194" max="32767" attributes="0"/>
+                                              <Component id="year" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnGuardarAuto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -719,28 +722,31 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="rSMetroTextFullPlaceHolder8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="placa" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                          <Component id="rSMetroTextFullPlaceHolder7" pref="0" max="32767" attributes="0"/>
+                                          <Component id="marca" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="rSMetroTextFullPlaceHolder5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rSMetroTextFullPlaceHolder6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="modelo" pref="49" max="32767" attributes="0"/>
+                                      <Component id="year" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="color" max="32767" attributes="0"/>
+                                      <Component id="lblIdCliente" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="rSMetroTextFullPlaceHolder9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnGuardarAuto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="rSMetroTextFullPlaceHolder5">
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="modelo">
                           <Properties>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
@@ -757,24 +763,7 @@
                             <Property name="placeholder" type="java.lang.String" value="MODELO"/>
                           </Properties>
                         </Component>
-                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="rSMetroTextFullPlaceHolder6">
-                          <Properties>
-                            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
-                            </Property>
-                            <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Tahoma" size="12" style="1"/>
-                            </Property>
-                            <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
-                            </Property>
-                            <Property name="placeholder" type="java.lang.String" value="A&#xd1;O"/>
-                          </Properties>
-                        </Component>
-                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="rSMetroTextFullPlaceHolder7">
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="marca">
                           <Properties>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
@@ -791,7 +780,7 @@
                             <Property name="placeholder" type="java.lang.String" value="MARCA"/>
                           </Properties>
                         </Component>
-                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="rSMetroTextFullPlaceHolder8">
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="placa">
                           <Properties>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
@@ -808,7 +797,7 @@
                             <Property name="placeholder" type="java.lang.String" value="PLACA"/>
                           </Properties>
                         </Component>
-                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="rSMetroTextFullPlaceHolder9">
+                        <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="color">
                           <Properties>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
@@ -825,7 +814,7 @@
                             <Property name="placeholder" type="java.lang.String" value="COLOR"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton5">
+                        <Component class="javax.swing.JButton" name="btnGuardarAuto">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="24" green="1f" red="ed" type="rgb"/>
@@ -834,6 +823,27 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Guardar"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarAutoActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblIdCliente">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="14" style="1"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                          </Properties>
+                        </Component>
+                        <Component class="rojerusan.RSYearDate" name="year">
+                          <Properties>
+                            <Property name="colorBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2d" green="2c" red="2c" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="36" style="1"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>

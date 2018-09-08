@@ -81,37 +81,43 @@ public class Coordinador {
         return cliente.getCliente();
     }
 
-    public static ArrayList<autoVo> buscarAuto( int id) {
+    public static ArrayList<autoVo> buscarAuto(int id) {
         autoDao auto = new autoDao();
         return auto.getAuto(id);
     }
-    public static void agregarCliente(clienteVo cliente){
-    clienteDao client = new clienteDao();
-    client.registrarCliente(cliente);
+
+    public static void agregarCliente(clienteVo cliente) {
+        clienteDao client = new clienteDao();
+        client.registrarCliente(cliente);
+    }
+
+       public static void agregarAuto(autoVo auto) {
+        autoDao aut = new autoDao();
+        aut.registrarAuto(auto);
     }
     
-    public static void addTrabajador(trabajadorVo tv){
-    trabajadorDao tra = new trabajadorDao();
-    tra.addTrabajador(tv);
+    public static void addTrabajador(trabajadorVo tv) {
+        trabajadorDao tra = new trabajadorDao();
+        tra.addTrabajador(tv);
     }
-    
-    public static ArrayList<trabajadorVo> getTrabajadores(){
-    trabajadorDao traba = new trabajadorDao();
-    return traba.getTrabajadores();
+
+    public static ArrayList<trabajadorVo> getTrabajadores() {
+        trabajadorDao traba = new trabajadorDao();
+        return traba.getTrabajadores();
     }
-    
-    public static trabajadorVo getTrabajadorID(int id){
-    trabajadorDao trab = new trabajadorDao();
-    return trab.getTrabajadorID(id);
+
+    public static trabajadorVo getTrabajadorID(int id) {
+        trabajadorDao trab = new trabajadorDao();
+        return trab.getTrabajadorID(id);
     }
-    
-    public static void updateTrabajador(trabajadorVo t){
-    trabajadorDao trabajador = new trabajadorDao();
-    trabajador.updateTrabajador(t);
+
+    public static void updateTrabajador(trabajadorVo t) {
+        trabajadorDao trabajador = new trabajadorDao();
+        trabajador.updateTrabajador(t);
     }
-    
-    public static void BorrarTrabajador(trabajadorVo t){
-    trabajadorDao trabajador = new trabajadorDao();
-    trabajador.borrarTrabajador(t);
+
+    public static void BorrarTrabajador(trabajadorVo t) {
+        trabajadorDao trabajador = new trabajadorDao();
+        trabajador.borrarTrabajador(t);
     }
 }
