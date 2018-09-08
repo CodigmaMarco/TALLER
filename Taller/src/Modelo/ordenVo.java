@@ -6,6 +6,33 @@ public class ordenVo {
         private int idorden;
         private int idauto;
         private int numorden;
+        private String nomcliente;
+        private String modelo;
+        private String placa;
+
+    public String getNomcliente() {
+        return nomcliente;
+    }
+
+    public void setNomcliente(String nomcliente) {
+        this.nomcliente = nomcliente;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
 
     public int getIdcliente() {
         return idcliente;
