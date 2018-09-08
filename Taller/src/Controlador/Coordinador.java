@@ -9,6 +9,7 @@ import Modelo.autoVo;
 import Modelo.chatVo;
 import Modelo.clienteDao;
 import Modelo.clienteVo;
+import Modelo.ordenDao;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
 import Modelo.servicioVo;
@@ -113,5 +114,10 @@ public class Coordinador {
     public static void BorrarTrabajador(trabajadorVo t){
     trabajadorDao trabajador = new trabajadorDao();
     trabajador.borrarTrabajador(t);
+    }
+    
+    public static ordenVo getOrden(int orden){
+    ordenDao ord = new ordenDao();
+    return ord.getOrden(orden);
     }
 }
