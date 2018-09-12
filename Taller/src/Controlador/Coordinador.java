@@ -11,6 +11,7 @@ import Modelo.clienteDao;
 import Modelo.clienteVo;
 import Modelo.ordenDao;
 import Modelo.ordenVo;
+import Modelo.procesoDao;
 import Modelo.procesoVo;
 import Modelo.servicioVo;
 import Modelo.tpVo;
@@ -125,5 +126,10 @@ public class Coordinador {
     public static ordenVo getOrden(int orden){
     ordenDao ord = new ordenDao();
     return ord.getOrden(orden);
+    }
+    
+    public static ArrayList<procesoVo> getProcesos (int orden){
+    procesoDao pr = new procesoDao();
+    return pr.getProcesos(orden);
     }
 }
