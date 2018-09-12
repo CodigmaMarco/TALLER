@@ -50,4 +50,40 @@ public class procesoDao {
         //Retorna el usuario
         return procesos;
     }
+    
+    public String getComentarios(int proceso){
+        Conectarse conn = new Conectarse();
+        
+        procesoVo pro = new procesoVo();
+        
+            try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+        "SELECT observaciones"
+        + " FROM proceso"
+        + " WHERE idproceso = ?");
+            
+            preparedStatement.setInt(1, proceso);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //Muestra resultados de la consulta SQL
+            while (resultSet.next()) {
+                
+
+                pro.setObservaciones(resultSet.getString(1));
+                
+                
+                
+
+            }
+            //Cierra todo
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        //Retorna el usuario
+        return pro.getObservaciones();
+    }
 }
