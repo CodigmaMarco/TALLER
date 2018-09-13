@@ -3,10 +3,12 @@ package Vista;
 import Controlador.Coordinador;
 import Modelo.TablaProcesos;
 import Modelo.ordenVo;
+import Modelo.procesoVo;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -23,7 +25,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
   
   TablaProcesos t = new TablaProcesos();
     int rown = -1;
-    
+    int fila;
     public ActRegistro() {
         initComponents();
         TableColumn agregarColumn;
@@ -62,6 +64,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         comentarios = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
+        btnActualizar1 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -154,7 +157,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                        .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lbCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -240,20 +243,40 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         btnActualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         comentarios.setColumns(20);
         comentarios.setLineWrap(true);
         comentarios.setRows(5);
+        comentarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                comentariosKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(comentarios);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Observaciones:");
 
+        btnActualizar1.setBackground(new java.awt.Color(153, 255, 153));
+        btnActualizar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnActualizar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar1.setText("COMENTARIOS");
+        btnActualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jLabel6)
@@ -261,6 +284,8 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addComponent(btnActualizar)
+                .addGap(18, 18, 18)
+                .addComponent(btnActualizar1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -274,11 +299,13 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(btnActualizar))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnActualizar)
+                            .addComponent(btnActualizar1)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -332,13 +359,12 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tbProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseClicked
-        int fila = tbProcesos.getSelectedRow();
+         fila = tbProcesos.getSelectedRow();
         
         if(fila>=0){
-        int valor = (int)tbProcesos.getValueAt(fila, 0);
-        String comen = Coordinador.getComentarios(valor);        
+        String obser = (String)tbProcesos.getValueAt(fila, 3);             
                         this.comentarios.setText("");
-                        this.comentarios.append(comen);
+                        this.comentarios.append(obser);
         }
         
         rown = tbProcesos.rowAtPoint(evt.getPoint());
@@ -367,9 +393,42 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 }}}
     }//GEN-LAST:event_tbProcesosMouseClicked
 
+    private void comentariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyTyped
+        tbProcesos.setValueAt(comentarios.getText(), fila, 3);
+    }//GEN-LAST:event_comentariosKeyTyped
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+ ArrayList<procesoVo> procesos = new ArrayList<>();
+ 
+ for(int i=0; i<tbProcesos.getRowCount();i++){
+ procesoVo pro = new procesoVo();
+ String status ;
+ pro.setIdproceso((int)tbProcesos.getValueAt(i, 0));
+
+ if((boolean)tbProcesos.getValueAt(i, 4) == true){
+ status = "terminado";}
+ else{ status= "procesando";}
+ pro.setStatus(status);
+ pro.setObservaciones((String)tbProcesos.getValueAt(i, 3));
+ 
+ procesos.add(pro);
+ }
+ 
+ for(int p =0; p<procesos.size();p++){
+ Coordinador.updateProceso(procesos.get(p));
+ }
+ 
+ t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JTextArea comentarios;
     private javax.swing.JLabel jLabel1;

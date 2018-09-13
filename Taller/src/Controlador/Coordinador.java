@@ -137,4 +137,10 @@ public class Coordinador {
     procesoDao pr = new procesoDao();
     return pr.getComentarios(proceso);
     }
+    
+    public static void updateProceso (procesoVo pro){
+    procesoDao p = new procesoDao();
+    p.updateProceso(pro);
+    }
+    
 }

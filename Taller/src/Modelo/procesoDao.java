@@ -86,4 +86,27 @@ public class procesoDao {
         //Retorna el usuario
         return pro.getObservaciones();
     }
+    
+    public void updateProceso(procesoVo pro){
+        Conectarse conn = new Conectarse();
+        
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+            "UPDATE proceso set status=? , observaciones=? "            
+            + "WHERE idproceso = ?");
+            
+            preparedStatement.setString(1, pro.getStatus());
+            preparedStatement.setString(2, pro.getObservaciones());
+            preparedStatement.setInt(3, pro.getIdproceso());
+            
+            preparedStatement.executeUpdate();
+            
+            //Cierra todo
+            conn.getConn().close();
+            //resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
