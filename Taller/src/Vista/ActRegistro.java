@@ -224,7 +224,6 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         tbProcesos.setColorBackgoundHead(new java.awt.Color(44, 44, 45));
         tbProcesos.setColorBordeFilas(new java.awt.Color(255, 255, 255));
         tbProcesos.setColorBordeHead(new java.awt.Color(153, 153, 153));
-        tbProcesos.setColorFilasBackgound2(new java.awt.Color(153, 153, 153));
         tbProcesos.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
         tbProcesos.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
         tbProcesos.setColorSelBackgound(new java.awt.Color(237, 31, 36));
@@ -291,21 +290,21 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(11, 11, 11)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnActualizar)
                             .addComponent(btnActualizar1)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel6)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 /**
@@ -100,13 +102,14 @@ public class Chat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSButtonHover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover1ActionPerformed
-        JLabel label = new JLabel("Hola");
-         LineBorder line = new LineBorder(Color.blue, 1, true); // color, thickness, rounded
+        JTextArea label = new JTextArea();
+        label.setEditable(false);
+         LineBorder line = new LineBorder(Color.blue, 3, true); // color, thickness, rounded
     label.setBorder(line);
     add(label, BorderLayout.CENTER);
     
         panel2.add(label);
-        labels.add(label);
+        
         panel2.updateUI();
     }//GEN-LAST:event_rSButtonHover1ActionPerformed
 
