@@ -23,6 +23,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     private Coordinador miCoordinador;
   private File src1File;
   
+  
   TablaProcesos t = new TablaProcesos();
     int rown = -1;
     int fila;
@@ -64,7 +65,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         comentarios = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        btnActualizar1 = new javax.swing.JButton();
+        btnChat = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -261,13 +262,14 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Observaciones:");
 
-        btnActualizar1.setBackground(new java.awt.Color(153, 255, 153));
-        btnActualizar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnActualizar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizar1.setText("COMENTARIOS");
-        btnActualizar1.addActionListener(new java.awt.event.ActionListener() {
+        btnChat.setBackground(new java.awt.Color(153, 255, 153));
+        btnChat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnChat.setForeground(new java.awt.Color(255, 255, 255));
+        btnChat.setText("COMENTARIOS");
+        btnChat.setEnabled(false);
+        btnChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizar1ActionPerformed(evt);
+                btnChatActionPerformed(evt);
             }
         });
 
@@ -284,7 +286,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addGap(63, 63, 63)
                 .addComponent(btnActualizar)
                 .addGap(18, 18, 18)
-                .addComponent(btnActualizar1)
+                .addComponent(btnChat)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -300,7 +302,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnActualizar)
-                            .addComponent(btnActualizar1)))
+                            .addComponent(btnChat)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel6)))
@@ -349,6 +351,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         lbPlaca.setText(ord.getPlaca());
         
         t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+        btnChat.setEnabled(true);
 }
         else{
         JOptionPane.showMessageDialog(null, "Codigo no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
@@ -420,15 +423,18 @@ public class ActRegistro extends javax.swing.JInternalFrame {
  t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void btnActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizar1ActionPerformed
+    private void btnChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatActionPerformed
+Chat ch = new Chat();
+    ch.orden = Integer.parseInt(lbOrden.getText());
+    ch.setCoordinador(miCoordinador);    
+    ch.setVisible(true);
+    }//GEN-LAST:event_btnChatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnChat;
     private javax.swing.JTextArea comentarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -3,11 +3,39 @@ package Modelo;
 public class chatVo {
 
     private int idchat;
+    private String comentario;
     private String fechacomentario;
+    private int categoria;
     private int id_cliente;
     private int id_trabajador;
+    private int id_orden;
     private int id_proceso;
 
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getId_orden() {
+        return id_orden;
+    }
+
+    public void setId_orden(int id_orden) {
+        this.id_orden = id_orden;
+    }
+    
+    
     public int getIdchat() {
         return idchat;
     }

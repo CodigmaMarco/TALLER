@@ -309,7 +309,7 @@
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnActualizar1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnChat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -328,7 +328,7 @@
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnActualizar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnChat" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -458,7 +458,7 @@
                 <Property name="text" type="java.lang.String" value="Observaciones:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnActualizar1">
+            <Component class="javax.swing.JButton" name="btnChat">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -470,9 +470,10 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="COMENTARIOS"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizar1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChatActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

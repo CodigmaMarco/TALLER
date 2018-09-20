@@ -70,4 +70,33 @@ public class clienteDao {
         }
     }
 
+    public clienteVo getNomCliente(int id) {
+
+        Conectarse conn = new Conectarse();
+
+        clienteVo cliente = new clienteVo();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "SELECT nombre_cliente "
+                    + "FROM bd_taller.cliente "
+                    + "WHERE idcliente = ? ");
+            
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                
+                
+                cliente.setNombre(resultSet.getString(1));
+                 }
+            //Cierra todo
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        //Retorna el usuario
+        return cliente;
+    }
 }
