@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.LoginDao;
 import Modelo.LoginVo;
 import Modelo.adminVo;
+import Modelo.areaDao;
 import Modelo.areaVo;
 import Modelo.autoDao;
 import Modelo.autoVo;
@@ -12,6 +13,7 @@ import Modelo.clienteVo;
 import Modelo.ordenDao;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
+import Modelo.servicioDao;
 import Modelo.servicioVo;
 import Modelo.tpVo;
 import Modelo.trabajadorDao;
@@ -92,11 +94,11 @@ public class Coordinador {
         client.registrarCliente(cliente);
     }
 
-       public static void agregarAuto(autoVo auto) {
+    public static void agregarAuto(autoVo auto) {
         autoDao aut = new autoDao();
         aut.registrarAuto(auto);
     }
-    
+
     public static void addTrabajador(trabajadorVo tv) {
         trabajadorDao tra = new trabajadorDao();
         tra.addTrabajador(tv);
@@ -121,9 +123,19 @@ public class Coordinador {
         trabajadorDao trabajador = new trabajadorDao();
         trabajador.borrarTrabajador(t);
     }
-    
-    public static ordenVo getOrden(int orden){
-    ordenDao ord = new ordenDao();
-    return ord.getOrden(orden);
+
+    public static ordenVo getOrden(int orden) {
+        ordenDao ord = new ordenDao();
+        return ord.getOrden(orden);
+    }
+
+    public static ArrayList<areaVo> listarArea() {
+        areaDao area = new areaDao();
+        return area.getArea();
+    }
+
+    public static ArrayList<servicioVo> buscarServicio(int id) {
+        servicioDao servicio = new servicioDao();
+        return servicio.getServicios(id);
     }
 }
