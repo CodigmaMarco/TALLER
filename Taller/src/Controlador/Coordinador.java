@@ -39,7 +39,6 @@ public class Coordinador {
     public void setChat(Chat chat) {
         this.chat = chat;
     }
-    
 
     public Login getLogin() {
         return login;
@@ -150,30 +149,34 @@ public class Coordinador {
         servicioDao servicio = new servicioDao();
         return servicio.getServicios(id);
     }
-    
-    public static ArrayList<procesoVo> getProcesos (int orden){
-    procesoDao pr = new procesoDao();
-    return pr.getProcesos(orden);
+
+    public static ArrayList<procesoVo> getProcesos(int orden) {
+        procesoDao pr = new procesoDao();
+        return pr.getProcesos(orden);
     }
-    
-    public static String getComentarios(int proceso){
-    procesoDao pr = new procesoDao();
-    return pr.getComentarios(proceso);
+
+    public static String getComentarios(int proceso) {
+        procesoDao pr = new procesoDao();
+        return pr.getComentarios(proceso);
     }
-    
-    public static void updateProceso (procesoVo pro){
-    procesoDao p = new procesoDao();
-    p.updateProceso(pro);
+
+    public static void updateProceso(procesoVo pro) {
+        procesoDao p = new procesoDao();
+        p.updateProceso(pro);
     }
-    
-    public static ArrayList<chatVo> getConversacion(int orden){
-    chatDao ch = new chatDao();
-    return ch.getMensajes(orden);
+
+    public static ArrayList<chatVo> getConversacion(int orden) {
+        chatDao ch = new chatDao();
+        return ch.getMensajes(orden);
     }
-    
-    public static clienteVo getNomCliente (int id){
-    clienteDao client = new clienteDao();
-    return client.getNomCliente(id);
+
+    public static clienteVo getNomCliente(int id) {
+        clienteDao client = new clienteDao();
+        return client.getNomCliente(id);
     }
-    
+
+    public static void agregarProceso(procesoVo proceso) {
+        procesoDao proce = new procesoDao();
+        proce.registrarProceso(proceso);
+    }
 }

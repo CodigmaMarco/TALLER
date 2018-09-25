@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -18,7 +19,11 @@ import rojerusan.RSPanelsSlider;
 public class Registro extends javax.swing.JInternalFrame {
 
     private Coordinador miCoordinador;
-DefaultListModel modelos = new DefaultListModel();
+    DefaultListModel modelos = new DefaultListModel();
+
+    Vector descrip = new Vector(20);
+    int contadordescripcion = 1;
+
     public Registro() {
         initComponents();
         enableComponents(panelCliente, false);
@@ -28,7 +33,6 @@ DefaultListModel modelos = new DefaultListModel();
     public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
         //this.getUsuario(1);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -80,7 +84,7 @@ DefaultListModel modelos = new DefaultListModel();
         listServicios = new javax.swing.JList<>();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtdescripcion = new javax.swing.JTextArea();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         listServiciosaRealizar = new javax.swing.JList<>();
@@ -572,7 +576,7 @@ DefaultListModel modelos = new DefaultListModel();
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("BUSCAR");
 
-        listServicios.setSelectionBackground(new java.awt.Color(44, 44, 45));
+        listServicios.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane2.setViewportView(listServicios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -603,9 +607,9 @@ DefaultListModel modelos = new DefaultListModel();
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESCRIPCION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtdescripcion.setColumns(20);
+        txtdescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtdescripcion);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -980,19 +984,37 @@ DefaultListModel modelos = new DefaultListModel();
     }//GEN-LAST:event_boxAreaActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (boxArea.getSelectedIndex()!= -1) {
-            if (listServicios.getSelectedIndex()!= -1) {
-                
+        if (boxArea.getSelectedIndex() != -1) {
+            if (listServicios.getSelectedIndex() != -1) {
 
-                modelos.addElement(boxArea.getSelectedItem()+" "+listServicios.getSelectedValue());
-
+                modelos.addElement(boxArea.getSelectedItem() + " " + listServicios.getSelectedValue());
                 listServiciosaRealizar.setModel(modelos);
-            }else{
-            System.out.println("No ha seleccionado un servicio");
+
+                clienteVo cliente = new clienteVo();
+                cliente.setNombre(nombre.getText());
+                cliente.setColonia(colonia.getText());
+                cliente.setCalle(calle.getText());
+                cliente.setNum_casa(num_casa.getText());
+                cliente.setTelefono(telefono.getText());
+                cliente.setCorreo(correo.getText());
+                cliente.setId_trabajador(Integer.parseInt(Inicio.lblid.getText()));
+
+                if (nombre.getText().equals("") || colonia.getText().equals("") || calle.getText().equals("")
+                        || num_casa.getText().equals("") || telefono.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Llene todos los campos");
+                } else {
+                    miCoordinador.agregarCliente(cliente);
+                    JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                    //limpiarCampos();
+                    listarCliente();
+                }
+
+            } else {
+                System.out.println("No ha seleccionado un servicio");
             }
-        }else{
+        } else {
             System.out.println("No ha seleccionado una area");
-            }
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public void listarCliente() {
@@ -1080,7 +1102,6 @@ DefaultListModel modelos = new DefaultListModel();
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblIdCliente;
@@ -1101,6 +1122,7 @@ DefaultListModel modelos = new DefaultListModel();
     private javax.swing.JPanel registrofinalizado;
     private javax.swing.JPanel registroservicio;
     private rojerusan.RSMetroTextFullPlaceHolder telefono;
+    private javax.swing.JTextArea txtdescripcion;
     private rojerusan.RSYearDate year;
     // End of variables declaration//GEN-END:variables
 }
