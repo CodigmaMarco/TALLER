@@ -5,13 +5,31 @@ import java.util.Date;
 public class procesoVo {
 
     private int idproceso;
-    private int status;
-    private int observaciones;
-    private Date fecha_inicio;
-    private int imagen_proceso;
+    private String status;
+    private String observaciones;
+    private String fecha_inicio;
+    private String imagen_proceso;
     private int id_servicio;
     private int id_orden;
     private int idauto;
+    private String nom_servicio;
+
+    public String getNom_servicio() {
+        return nom_servicio;
+    }
+
+    public void setNom_servicio(String nom_servicio) {
+        this.nom_servicio = nom_servicio;
+    }
+
+    public String getNom_area() {
+        return nom_area;
+    }
+
+    public void setNom_area(String nom_area) {
+        this.nom_area = nom_area;
+    }
+    private String nom_area;
 
     public int getIdproceso() {
         return idproceso;
@@ -21,35 +39,35 @@ public class procesoVo {
         this.idproceso = idproceso;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getObservaciones() {
+    public String getObservaciones() {
         return observaciones;
     }
 
-    public void setObservaciones(int observaciones) {
+    public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
 
-    public Date getFecha_inicio() {
+    public String getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
+    public void setFecha_inicio(String fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public int getImagen_proceso() {
+    public String getImagen_proceso() {
         return imagen_proceso;
     }
 
-    public void setImagen_proceso(int imagen_proceso) {
+    public void setImagen_proceso(String imagen_proceso) {
         this.imagen_proceso = imagen_proceso;
     }
 

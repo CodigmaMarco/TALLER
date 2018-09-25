@@ -7,11 +7,13 @@ import Modelo.areaDao;
 import Modelo.areaVo;
 import Modelo.autoDao;
 import Modelo.autoVo;
+import Modelo.chatDao;
 import Modelo.chatVo;
 import Modelo.clienteDao;
 import Modelo.clienteVo;
 import Modelo.ordenDao;
 import Modelo.ordenVo;
+import Modelo.procesoDao;
 import Modelo.procesoVo;
 import Modelo.servicioDao;
 import Modelo.servicioVo;
@@ -28,6 +30,16 @@ public class Coordinador {
     private Inicio inicio;
     private Usuarios usuario;
     private ActRegistro actRegistro;
+    private Chat chat;
+
+    public Chat getChat() {
+        return chat;
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
+    }
+    
 
     public Login getLogin() {
         return login;
@@ -138,4 +150,30 @@ public class Coordinador {
         servicioDao servicio = new servicioDao();
         return servicio.getServicios(id);
     }
+    
+    public static ArrayList<procesoVo> getProcesos (int orden){
+    procesoDao pr = new procesoDao();
+    return pr.getProcesos(orden);
+    }
+    
+    public static String getComentarios(int proceso){
+    procesoDao pr = new procesoDao();
+    return pr.getComentarios(proceso);
+    }
+    
+    public static void updateProceso (procesoVo pro){
+    procesoDao p = new procesoDao();
+    p.updateProceso(pro);
+    }
+    
+    public static ArrayList<chatVo> getConversacion(int orden){
+    chatDao ch = new chatDao();
+    return ch.getMensajes(orden);
+    }
+    
+    public static clienteVo getNomCliente (int id){
+    clienteDao client = new clienteDao();
+    return client.getNomCliente(id);
+    }
+    
 }
