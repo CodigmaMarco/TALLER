@@ -277,6 +277,12 @@ public class Inicio extends javax.swing.JFrame {
     lblid.setText(""+id);
     }
     
+    public static void botonadmin(String nombre,int id){
+    btnusuarios.setEnabled(true);
+    lblusuario.setText(nombre);
+    lblid.setText(""+id);
+    }
+    
     
     
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
