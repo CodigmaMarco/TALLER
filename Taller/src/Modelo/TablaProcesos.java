@@ -3,6 +3,7 @@ package Modelo;
 import Controlador.Coordinador;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +31,8 @@ public class TablaProcesos {
                 return editable[column];
             }
         };
-
+        JCheckBox validar = new JCheckBox();
+        validar.setName("seleccion");
         JButton btn_visualizar = new JButton("Subir Imagen");
         btn_visualizar.setName("v");
 
@@ -44,6 +46,7 @@ public class TablaProcesos {
                 fila[1] = proceso.get(i).getNom_area();
                 fila[2] = proceso.get(i).getNom_servicio();
                 fila[3] = proceso.get(i).getObservaciones();
+                fila[4] = validar;
                 if (proceso.get(i).getStatus().equals("procesando")) {
                     fila[4] = false;
                 } else if (proceso.get(i).getStatus().equals("terminado")) {
