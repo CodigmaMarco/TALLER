@@ -24,6 +24,7 @@ public class Chat extends javax.swing.JFrame {
 private Coordinador miCoordinador;
     private List <JLabel> labels;
     public int orden;
+    public int id;
      public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
         cargarConversacion(orden);    
@@ -127,7 +128,23 @@ private Coordinador miCoordinador;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-/*
+String mensaje = comentario.getText().trim();
+chatVo chat = new chatVo();
+chat.setId_trabajador(id);
+chat.setId_orden(Coordinador.getOrden(orden).getIdorden());
+if(mensaje.equals("")){
+System.out.println("Ingresa un mensaje");
+}
+else{
+    chat.setComentario(mensaje);
+    Coordinador.insertMensaje(chat);
+    panel2.removeAll();
+cargarConversacion(orden);
+panel2.updateUI();
+comentario.setText("");
+
+}
+        /*
         String hola = "prueba";
         JTextArea label = new JTextArea(hola);
         
@@ -140,8 +157,7 @@ private Coordinador miCoordinador;
         panel2.add(label);
                   panel2.updateUI();
         */
-panel2.removeAll();
-panel2.updateUI();
+
     }//GEN-LAST:event_btnEnviarActionPerformed
     
     public void cargarConversacion(int orden){

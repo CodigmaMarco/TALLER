@@ -53,12 +53,12 @@ public class LoginDao {
         LoginVo usuario = new LoginVo();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-                    "SELECT nombre_admin, password  "
+                    "SELECT nombre_admin, password, idadmin  "
                     + "FROM bd_taller.admin "
                     + "WHERE nombre_admin =? and password =? ");
 
             preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, password);            
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //Muestra resultados de la consulta SQL
@@ -68,6 +68,7 @@ public class LoginDao {
                 //usuario.setUser(resultSet.getString(2));
                 usuario.setNombre(resultSet.getString(1));
                 usuario.setPassword(resultSet.getString(2));
+                usuario.setId_user(resultSet.getInt(3));
                 // usuario.setApellidos(resultSet.getString(5));
 
             }

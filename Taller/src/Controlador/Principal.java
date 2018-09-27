@@ -15,10 +15,11 @@ public class Principal {
         Registro registro = new Registro();
         Usuarios usuario = new Usuarios();
         ActRegistro actRegistro = new ActRegistro();
+        Chat chat = new Chat();
 
         Inicio inicio = new Inicio();
         Login login = new Login();
-
+        
         /**
          * Se establecen las relaciones entre clases
          */
@@ -27,6 +28,7 @@ public class Principal {
         usuario.setCoordinador(miCoordinador);
         usuario.setCoordinador(miCoordinador);
         actRegistro.setCoordinador(miCoordinador);
+        chat.setCoordinador(miCoordinador);
         
         /*Se establecen relaciones con la clase coordinador*/
 
@@ -35,6 +37,7 @@ public class Principal {
         miCoordinador.setInicio(inicio);
         miCoordinador.setUsuario(usuario);
         miCoordinador.setActRegistro(actRegistro);
+        miCoordinador.setChat(chat);
 
         login.setVisible(true);
 

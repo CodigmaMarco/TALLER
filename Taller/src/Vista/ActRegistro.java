@@ -22,6 +22,7 @@ import javax.swing.table.TableColumn;
 public class ActRegistro extends javax.swing.JInternalFrame {
     private Coordinador miCoordinador;
   private File src1File;
+  public int idusuario;
   
   
   TablaProcesos t = new TablaProcesos();
@@ -196,11 +197,6 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         tbProcesos.setForeground(new java.awt.Color(44, 44, 45));
         tbProcesos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -424,8 +420,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatActionPerformed
-Chat ch = new Chat();
+ Chat ch = new Chat();
     ch.orden = Integer.parseInt(lbOrden.getText());
+    ch.id = idusuario;
     ch.setCoordinador(miCoordinador);    
     ch.setVisible(true);
     }//GEN-LAST:event_btnChatActionPerformed

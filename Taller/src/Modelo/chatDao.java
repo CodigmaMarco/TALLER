@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class chatDao {
 
@@ -48,4 +49,25 @@ public ArrayList<chatVo> getMensajes(int orden){
         return conversacion;
     }
     
+    public void insertMensaje(chatVo mensaje) {
+        Conectarse conex = new Conectarse();
+
+        try {
+            String query = " insert into chat (cometario, id_trabajador, id_orden)"
+                    + " values (?, ?, ?)";
+
+            PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
+            preparedStatement.setString(1, mensaje.getComentario());
+            preparedStatement.setInt(2, mensaje.getId_trabajador());
+            preparedStatement.setInt(3, mensaje.getId_orden());
+            
+            preparedStatement.execute();
+
+            conex.getConn().close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se Registro");
+        }
+    }
+
 }
