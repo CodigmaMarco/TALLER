@@ -1,13 +1,19 @@
 package Vista;
 
 import Controlador.Coordinador;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -48,6 +54,8 @@ public class Inicio extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         lblusuario = new javax.swing.JLabel();
         lblid = new javax.swing.JLabel();
+        hora = new javax.swing.JLabel();
+        fecha = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnregistrar = new javax.swing.JButton();
         btnactivos = new javax.swing.JButton();
@@ -66,14 +74,25 @@ public class Inicio extends javax.swing.JFrame {
 
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblusuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblusuario.setText("USUARIO");
 
         lblid.setFont(new java.awt.Font("Tahoma", 0, 3)); // NOI18N
 
+        hora.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hora.setText("HORA");
+        hora.setToolTipText("");
+
+        fecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fecha.setText("FECHA");
+
         escritorio.setLayer(lblusuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblid, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(hora, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(fecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -83,6 +102,8 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(hora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,6 +111,10 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(lblid)
                 .addGap(87, 87, 87)
                 .addComponent(lblusuario)
+                .addGap(138, 138, 138)
+                .addComponent(hora)
+                .addGap(18, 18, 18)
+                .addComponent(fecha)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -194,6 +219,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        //Fehca del sistema01
+        Date sistemaFech = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yy");
+        fecha.setText(formato.format(sistemaFech));
+        Timer tiempo = new Timer(100, new Inicio.horas());
+        tiempo.start();
     }//GEN-LAST:event_formWindowOpened
     Vista.ActRegistro are;
     private void btnactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactivosActionPerformed
@@ -270,17 +301,26 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnusuariosActionPerformed
 
-    public static void boton(String nombre,int id){
-    btnusuarios.setEnabled(false);
-    lblusuario.setText(nombre);
-    lblid.setText(""+id);
+    public static void boton(String nombre, int id) {
+        btnusuarios.setEnabled(false);
+        lblusuario.setText(nombre);
+        lblid.setText("" + id);
     }
-    
-    
-    
+
+
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnhistorialActionPerformed
+    class horas implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            Date sistemaHora = new Date();
+            String pmAm = "HH:mm:ss";
+            SimpleDateFormat formato = new SimpleDateFormat(pmAm);
+            Calendar now = Calendar.getInstance();
+            hora.setText(String.format(formato.format(sistemaHora), now));
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -302,6 +342,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnregistrar;
     public static javax.swing.JButton btnusuarios;
     public static javax.swing.JDesktopPane escritorio;
+    private javax.swing.JLabel fecha;
+    private javax.swing.JLabel hora;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel lblid;
     private static javax.swing.JLabel lblusuario;
