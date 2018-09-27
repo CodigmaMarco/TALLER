@@ -12,7 +12,8 @@ public ordenVo getOrden(int orden){
         ordenVo or = new ordenVo();
             try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-            "SELECT o.numorden, o.id_cliente, o.id_auto, cl.nombre_cliente, au.placa, au.modelo FROM orden as o  " +
+            "SELECT o.numorden, o.id_cliente, o.id_auto, cl.nombre_cliente, au.placa, au.modelo, o.id_cliente "
+            + " FROM orden as o  " +
             "JOIN cliente as cl  on cl.idcliente = o.id_cliente " +
             "JOIN auto as au on au.idauto = o.id_auto " +
             "WHERE numorden = ? " );
@@ -29,6 +30,8 @@ public ordenVo getOrden(int orden){
                 or.setNomcliente(resultSet.getString(4));
                 or.setPlaca(resultSet.getString(5));
                 or.setModelo(resultSet.getString(6));
+                or.setIdorden(resultSet.getInt(7));
+                
             }
             //Cierra todo
             conn.getConn().close();

@@ -210,6 +210,7 @@ public class Inicio extends javax.swing.JFrame {
 
                 // us.setCoordinador(miCoordinador);
                 escritorio.add(are);//.setLocation(100, 0);
+                are.idusuario = Integer.parseInt(lblid.getText());
                 are.setMaximum(true);
                 are.show();
             } catch (PropertyVetoException ex) {
@@ -282,19 +283,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnhistorialActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Inicio().setVisible(true);
-
-            }
-        });
-
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnactivos;
