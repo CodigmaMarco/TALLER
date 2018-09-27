@@ -4,14 +4,22 @@ import Controlador.Coordinador;
 import Modelo.TablaProcesos;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
+import static Vista.Inicio.escritorio;
+import static Vista.Inicio.lblid;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.CheckBox;
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -23,7 +31,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     private Coordinador miCoordinador;
   private File src1File;
   public int idusuario;
-  
+  ActRegistro act;
   
   TablaProcesos t = new TablaProcesos();
     int rown = -1;
@@ -388,11 +396,30 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                         System.out.println(ex.getMessage());
                      }
                     
-                }}}
+                }}
+            
+        if(value instanceof JCheckBox){
+                            JCheckBox checkbox = (JCheckBox) value;
+    
+                
+                int valor = (int)tbProcesos.getValueAt(rown, 0);
+                
+                
+                
+                if(checkbox.isSelected()){
+                     try{
+                System.out.println("prueba");
+                        
+                     }catch(Exception ex){
+                        System.out.println(ex.getMessage());
+                     }
+                    
+                }}
+        }
     }//GEN-LAST:event_tbProcesosMouseClicked
 
     private void comentariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyTyped
-        tbProcesos.setValueAt(comentarios.getText(), fila, 3);
+        tbProcesos.setValueAt(comentarios.getText()+"", fila, 3);
     }//GEN-LAST:event_comentariosKeyTyped
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -418,16 +445,42 @@ public class ActRegistro extends javax.swing.JInternalFrame {
  
  t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
     }//GEN-LAST:event_btnActualizarActionPerformed
-
+Chat ch;
     private void btnChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatActionPerformed
- Chat ch = new Chat();
+if (estacerrado(ch)) {
+    ch = new Chat(); // TODO add your handling code here:
+    
+    escritorio.add(ch);//.setLocation(100, 0);
     ch.orden = Integer.parseInt(lbOrden.getText());
     ch.id = idusuario;
-    ch.setCoordinador(miCoordinador);    
-    ch.setVisible(true);
+    ch.setCoordinador(miCoordinador);
+    
+    ch.show();
+    
+        } else {
+            ch.toFront();
+        }
+        
+     
+    
+    
     }//GEN-LAST:event_btnChatActionPerformed
 
-
+public boolean estacerrado(Object obj) {
+        JInternalFrame[] activos = escritorio.getAllFrames();
+        boolean cerrado = true;
+        int i = 0;
+        while (i < activos.length && cerrado) {
+            if (activos[i] == obj) {
+                cerrado = false;
+                //obj.toFront();
+                /*JOptionPane.showMessageDialog(this, "Otra ventana se encuentra \nya  abierta !!!", "Aviso", 0,
+                        new ImageIcon(getClass().getResource("/Imagenes/adver1.png")));*/
+            }
+            i++;
+        }
+        return cerrado;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
