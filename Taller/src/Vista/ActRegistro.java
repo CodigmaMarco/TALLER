@@ -236,6 +236,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbProcesosMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbProcesosMouseReleased(evt);
+            }
         });
         jScrollPane1.setViewportView(tbProcesos);
         if (tbProcesos.getColumnModel().getColumnCount() > 0) {
@@ -399,6 +402,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 }}
             
         if(value instanceof JCheckBox){
+            ((JCheckBox)value).doClick();
                             JCheckBox checkbox = (JCheckBox) value;
     
                 
@@ -406,7 +410,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 
                 
                 
-                if(checkbox.isSelected()){
+                if( checkbox.getName().equals("seleccion")){
                      try{
                 System.out.println("prueba");
                         
@@ -416,6 +420,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                     
                 }}
         }
+ 
+
+      
     }//GEN-LAST:event_tbProcesosMouseClicked
 
     private void comentariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyTyped
@@ -465,6 +472,15 @@ if (estacerrado(ch)) {
     
     
     }//GEN-LAST:event_btnChatActionPerformed
+
+    private void tbProcesosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseReleased
+         int columna = tbProcesos.columnAtPoint(evt.getPoint());
+
+        if(columna == 4){
+        
+        }
+
+    }//GEN-LAST:event_tbProcesosMouseReleased
 
 public boolean estacerrado(Object obj) {
         JInternalFrame[] activos = escritorio.getAllFrames();

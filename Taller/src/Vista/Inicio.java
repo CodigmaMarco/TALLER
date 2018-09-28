@@ -307,10 +307,6 @@ public class Inicio extends javax.swing.JFrame {
         lblusuario.setText(nombre);
         lblid.setText("" + id);
     }
-<<<<<<< HEAD
-
-
-=======
     
     public static void botonadmin(String nombre,int id){
     btnusuarios.setEnabled(true);
@@ -320,7 +316,7 @@ public class Inicio extends javax.swing.JFrame {
     
     
     
->>>>>>> 5d60d4a1d8b30a362871f0327277c10f5bd14825
+
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnhistorialActionPerformed

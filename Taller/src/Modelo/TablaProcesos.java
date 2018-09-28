@@ -16,7 +16,7 @@ public class TablaProcesos {
 
         tabla.setDefaultRenderer(Object.class, new Render());
 
-        DefaultTableModel dt = new DefaultTableModel(new String[]{"ID Proceso", "Area", "Proceso","Observaciones", "Status", "Imagen", "Cargar"}, 0) {
+        DefaultTableModel dt = new DefaultTableModel(new String[]{"ID Proceso", "Area", "Proceso","Observaciones",  "Status", "Imagen", "Cargar"}, 0) {
 
             Class[] types = new Class[]{
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Object.class
@@ -37,7 +37,7 @@ public class TablaProcesos {
         btn_visualizar.setName("v");
 
         ArrayList<procesoVo> proceso = Coordinador.getProcesos(orden);
-
+        Object datos[] = new Object[proceso.size()];
         if (proceso.size() > 0) {
             for (int i = 0; i < proceso.size(); i++) {
                 Object fila[] = new Object[7];
@@ -46,13 +46,15 @@ public class TablaProcesos {
                 fila[1] = proceso.get(i).getNom_area();
                 fila[2] = proceso.get(i).getNom_servicio();
                 fila[3] = proceso.get(i).getObservaciones();
-                fila[4] = validar;
+                
                 if (proceso.get(i).getStatus().equals("procesando")) {
-                    fila[4] = false;
+                    validar.setSelected(false);
+                    
                 } else if (proceso.get(i).getStatus().equals("terminado")) {
-                    fila[4] = true;
+                    validar.setSelected(true);
                 }
-
+                
+                fila[4] =  validar.isSelected();
                 if (proceso.get(i).getImagen_proceso().isEmpty()) {
                     fila[5] = false;
                 } else {
