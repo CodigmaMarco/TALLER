@@ -307,7 +307,12 @@ public class Inicio extends javax.swing.JFrame {
         lblusuario.setText(nombre);
         lblid.setText("" + id);
     }
+<<<<<<< HEAD
     
+=======
+
+   
+>>>>>>> 8888551db2fe5d0ccc2b9aa570d767a757f59188
     public static void botonadmin(String nombre,int id){
     btnusuarios.setEnabled(true);
     lblusuario.setText(nombre);

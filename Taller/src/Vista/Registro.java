@@ -872,9 +872,18 @@ public class Registro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsiguienteActionPerformed
-        if (!this.btnsiguiente.isSelected()) {
-            rSPanelsSlider2.slidPanel(registroservicio, RSPanelsSlider.direct.Right);
-            listarArea();
+
+        if (listCliente.getSelectedIndex() != -1) {
+            if (listAuto.getSelectedIndex() != -1) {
+                if (!this.btnsiguiente.isSelected()) {
+                    rSPanelsSlider2.slidPanel(registroservicio, RSPanelsSlider.direct.Right);
+                    listarArea();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un Automovil");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un Cliente");
         }
     }//GEN-LAST:event_btnsiguienteActionPerformed
 
