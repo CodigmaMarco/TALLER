@@ -14,9 +14,9 @@ public class Conectarse {
     private final String user = "root";
     private final String pass = "";
     */
-       private final String host = "192.185.131.114";
+       private final String host = "codigma.com.mx";
     private final String db = "codigmac_tm";
-    private final String user = "codigmac_luis";
+    private final String user = "codigmac_codigma";
     private final String pass = "departamento03";
     
      

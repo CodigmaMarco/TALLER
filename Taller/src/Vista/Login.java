@@ -31,7 +31,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         esadministrador = false;
         estrabajador = false;
-        ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logosistema.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/imagotiposistema.png"));
         Icon fondo = new ImageIcon(logo.getImage().getScaledInstance(lbllogo.getWidth(), lbllogo.getHeight(), Image.SCALE_SMOOTH));
         lbllogo.setIcon(fondo);
         this.repaint();
