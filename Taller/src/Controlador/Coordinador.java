@@ -179,9 +179,14 @@ public class Coordinador {
         procesoDao proce = new procesoDao();
         proce.registrarProceso(proceso);
     }
-    
-    public static void insertMensaje(chatVo chat){
-    chatDao ch = new chatDao();
-    ch.insertMensaje(chat);
+
+    public static void insertMensaje(chatVo chat) {
+        chatDao ch = new chatDao();
+        ch.insertMensaje(chat);
+    }
+
+    public static void agregarOrden(ordenVo orden) {
+        ordenDao orde = new ordenDao();
+        orde.registrarOrden(orden);
     }
 }

@@ -999,25 +999,6 @@ public class Registro extends javax.swing.JInternalFrame {
                 modelos.addElement(boxArea.getSelectedItem() + " " + listServicios.getSelectedValue());
                 listServiciosaRealizar.setModel(modelos);
 
-                clienteVo cliente = new clienteVo();
-                cliente.setNombre(nombre.getText());
-                cliente.setColonia(colonia.getText());
-                cliente.setCalle(calle.getText());
-                cliente.setNum_casa(num_casa.getText());
-                cliente.setTelefono(telefono.getText());
-                cliente.setCorreo(correo.getText());
-                cliente.setId_trabajador(Integer.parseInt(Inicio.lblid.getText()));
-
-                if (nombre.getText().equals("") || colonia.getText().equals("") || calle.getText().equals("")
-                        || num_casa.getText().equals("") || telefono.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Llene todos los campos");
-                } else {
-                    miCoordinador.agregarCliente(cliente);
-                    JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-                    //limpiarCampos();
-                    listarCliente();
-                }
-
             } else {
                 System.out.println("No ha seleccionado un servicio");
             }
