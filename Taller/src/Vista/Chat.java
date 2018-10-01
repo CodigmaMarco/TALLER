@@ -16,6 +16,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -27,14 +28,10 @@ private Coordinador miCoordinador;
     private List <JLabel> labels;
     public int orden;
     public int id;
-
- 
-
-    
-     public void setCoordinador(Coordinador miCoordinador) {
+    JScrollPane scroll;
+       public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
-        cargarConversacion(orden);    
-        
+        cargarConversacion(orden);            
         //this.getUsuario(1);
     }
      
@@ -58,16 +55,13 @@ private Coordinador miCoordinador;
         comentario = new javax.swing.JTextArea();
         btnEnviar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
-
         panel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 3, true));
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 689, Short.MAX_VALUE)
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +115,7 @@ private Coordinador miCoordinador;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fondo)
+                    .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -178,7 +172,8 @@ comentario.setText("");
     }
     
     public void cargarMensaje(String usuario, String texto, String fecha){
-    
+        
+
         JTextArea label = new JTextArea(fecha+" "+usuario+":"+" "+texto);
         
         label.setLineWrap(true);        
@@ -186,9 +181,15 @@ comentario.setText("");
         
          LineBorder line = new LineBorder(Color.WHITE, 4, true); // color, thickness, rounded
     label.setBorder(line);
-    add(label, BorderLayout.CENTER);
+    //add(label, BorderLayout.CENTER);
+        
+    scroll = new JScrollPane();        
     
+    scroll.getVerticalScrollBar().setValue(scroll.getVerticalScrollBar().getMaximum());
+        
         panel2.add(label);
+        fondo.add(scroll);
+        //panel2.add(label);
         
         panel2.updateUI();
     }
