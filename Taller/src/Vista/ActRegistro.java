@@ -70,7 +70,6 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProcesos = new rojerusan.RSTableMetro();
-        btnActualizar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         comentarios = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
@@ -236,6 +235,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbProcesosMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbProcesosMouseReleased(evt);
+            }
         });
         jScrollPane1.setViewportView(tbProcesos);
         if (tbProcesos.getColumnModel().getColumnCount() > 0) {
@@ -243,20 +245,13 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             tbProcesos.getColumnModel().getColumn(2).setMaxWidth(70);
         }
 
-        btnActualizar.setBackground(new java.awt.Color(204, 0, 51));
-        btnActualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizar.setText("ACTUALIZAR");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-
         comentarios.setColumns(20);
         comentarios.setLineWrap(true);
         comentarios.setRows(5);
         comentarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                comentariosKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 comentariosKeyTyped(evt);
             }
@@ -281,14 +276,12 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(btnActualizar)
                 .addGap(18, 18, 18)
                 .addComponent(btnChat)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -303,14 +296,12 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnActualizar)
-                            .addComponent(btnChat)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(jLabel6)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btnChat)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -399,6 +390,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 }}
             
         if(value instanceof JCheckBox){
+            ((JCheckBox)value).doClick();
                             JCheckBox checkbox = (JCheckBox) value;
     
                 
@@ -406,7 +398,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 
                 
                 
-                if(checkbox.isSelected()){
+                if( checkbox.getName().equals("seleccion")){
                      try{
                 System.out.println("prueba");
                         
@@ -416,35 +408,14 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                     
                 }}
         }
+ 
+
+      
     }//GEN-LAST:event_tbProcesosMouseClicked
 
     private void comentariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyTyped
-        tbProcesos.setValueAt(comentarios.getText()+"", fila, 3);
+        
     }//GEN-LAST:event_comentariosKeyTyped
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
- ArrayList<procesoVo> procesos = new ArrayList<>();
- 
- for(int i=0; i<tbProcesos.getRowCount();i++){
- procesoVo pro = new procesoVo();
- String status ;
- pro.setIdproceso((int)tbProcesos.getValueAt(i, 0));
-
- if((boolean)tbProcesos.getValueAt(i, 4) == true){
- status = "terminado";}
- else{ status= "procesando";}
- pro.setStatus(status);
- pro.setObservaciones((String)tbProcesos.getValueAt(i, 3));
- 
- procesos.add(pro);
- }
- 
- for(int p =0; p<procesos.size();p++){
- Coordinador.updateProceso(procesos.get(p));
- }
- 
- t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
-    }//GEN-LAST:event_btnActualizarActionPerformed
 Chat ch;
     private void btnChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatActionPerformed
 if (estacerrado(ch)) {
@@ -466,6 +437,35 @@ if (estacerrado(ch)) {
     
     }//GEN-LAST:event_btnChatActionPerformed
 
+    private void tbProcesosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseReleased
+         int columna = tbProcesos.columnAtPoint(evt.getPoint());
+         int fila = tbProcesos.getSelectedRow();
+         
+        if(columna == 4){
+ 
+ procesoVo pro = new procesoVo();
+ String status ;
+ pro.setIdproceso((int)tbProcesos.getValueAt(fila, 0));
+
+ if((boolean)tbProcesos.getValueAt(fila, 4) == true){
+ status = "terminado";}
+ else{ status= "procesando";}
+ pro.setStatus(status);
+ pro.setObservaciones((String)tbProcesos.getValueAt(fila, 3));
+ 
+ 
+ Coordinador.updateProceso(pro);
+ 
+ 
+ t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+        }
+
+    }//GEN-LAST:event_tbProcesosMouseReleased
+
+    private void comentariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyReleased
+        tbProcesos.setValueAt(""+comentarios.getText(), fila, 3);
+    }//GEN-LAST:event_comentariosKeyReleased
+
 public boolean estacerrado(Object obj) {
         JInternalFrame[] activos = escritorio.getAllFrames();
         boolean cerrado = true;
@@ -482,7 +482,6 @@ public boolean estacerrado(Object obj) {
         return cerrado;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnChat;
     private javax.swing.JTextArea comentarios;
