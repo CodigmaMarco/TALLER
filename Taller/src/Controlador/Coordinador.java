@@ -1,4 +1,4 @@
-package Controlador;
+ package Controlador;
 
 import Modelo.LoginDao;
 import Modelo.LoginVo;
@@ -188,5 +188,10 @@ public class Coordinador {
     public static void agregarOrden(ordenVo orden) {
         ordenDao orde = new ordenDao();
         orde.registrarOrden(orden);
+    }
+    
+    public static void updateImagenProceso(procesoVo pro){
+    procesoDao pr = new procesoDao();
+    pr.updateImagenProceso(pro);
     }
 }

@@ -376,7 +376,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             if(value instanceof JButton){
                 ((JButton)value).doClick();
                 JButton boton = (JButton) value;
-
+                procesoVo pro = new procesoVo();
                 int valor = (int)tbProcesos.getValueAt(rown, 0);
                 String proceso = (String) tbProcesos.getValueAt(rown, 3);
                 String orden = lbOrden.getText();
@@ -391,8 +391,16 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             String fileName = dir.getName(dir.getSelectedFile());
             src1Name = fileName;
             
+            boton.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+            
+            FTPUploader ftpUploader = new FTPUploader("www.verifycar.com.mx", "tm@verifycar.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/procesos/");
+            pro.setIdproceso(valor);
+            pro.setImagen_proceso(proceso+orden+".jpg");
+            Coordinador.updateImagenProceso(pro);
+            
+            boton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         }
-        FTPUploader ftpUploader = new FTPUploader("www.verifycar.codigma.com.mx", "tm@verifycar.codigma.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/");
+        
                      }catch(Exception ex){
                         System.out.println(ex.getMessage());
                      }
