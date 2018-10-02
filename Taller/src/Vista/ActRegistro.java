@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Coordinador;
+import Modelo.FTPUploader;
 import Modelo.TablaProcesos;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
@@ -29,7 +30,8 @@ import javax.swing.table.TableColumn;
 
 public class ActRegistro extends javax.swing.JInternalFrame {
     private Coordinador miCoordinador;
-  private File src1File;
+  private File src1File;    
+  private String src1Name;
   public int idusuario;
   ActRegistro act;
   
@@ -376,13 +378,21 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 JButton boton = (JButton) value;
 
                 int valor = (int)tbProcesos.getValueAt(rown, 0);
-                
+                String proceso = (String) tbProcesos.getValueAt(rown, 3);
+                String orden = lbOrden.getText();
                 
                 
                 if(boton.getName().equals("v")){
                      try{
-                
-                        
+                JFileChooser dir = new JFileChooser();
+        int option = dir.showOpenDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+        src1File = dir.getSelectedFile();
+            String fileName = dir.getName(dir.getSelectedFile());
+            src1Name = fileName;
+            
+        }
+        FTPUploader ftpUploader = new FTPUploader("www.verifycar.codigma.com.mx", "tm@verifycar.codigma.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/");
                      }catch(Exception ex){
                         System.out.println(ex.getMessage());
                      }

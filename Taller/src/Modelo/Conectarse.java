@@ -9,16 +9,16 @@ public class Conectarse {
 
     private Connection conn = null;
     /*
+    
+       private final String host = "codigma.com.mx";
+    private final String db = "codigmac_tm";
+    private final String user = "codigmac_luis";
+    private final String pass = "departamento03";
+    */
     private final String host = "localhost";
     private final String db = "bd_taller";
     private final String user = "root";
     private final String pass = "";
-    */
-       private final String host = "codigma.com.mx";
-    private final String db = "codigmac_tallermecanico";
-    private final String user = "codigmac_luis";
-    private final String pass = "departamento03";
-    
      
     public Conectarse() {
         MySQLAccess();
@@ -34,7 +34,7 @@ public class Conectarse {
             conn = DriverManager.getConnection("jdbc:mysql://"+host+"/"+db,user,pass);
             // Check the state of connection
             if (conn!=null){
-            System.out.println("Conexión remota exitosa");
+            System.out.println("Conexión exitosa");
             }
           
         } catch (ClassNotFoundException | SQLException e) {
