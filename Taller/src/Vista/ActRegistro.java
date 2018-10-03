@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Coordinador;
+import Modelo.FTPUploader;
 import Modelo.TablaProcesos;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
@@ -30,11 +31,20 @@ import javax.swing.table.TableColumn;
 public class ActRegistro extends javax.swing.JInternalFrame {
 
     private Coordinador miCoordinador;
+<<<<<<< HEAD
     private File src1File;
     public int idusuario;
     ActRegistro act;
 
     TablaProcesos t = new TablaProcesos();
+=======
+  private File src1File;    
+  private String src1Name;
+  public int idusuario;
+  ActRegistro act;
+  
+  TablaProcesos t = new TablaProcesos();
+>>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
     int rown = -1;
     int fila;
 
@@ -375,6 +385,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             if (value instanceof JButton) {
                 ((JButton) value).doClick();
                 JButton boton = (JButton) value;
+<<<<<<< HEAD
 
                 int valor = (int) tbProcesos.getValueAt(rown, 0);
 
@@ -382,6 +393,34 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                     try {
 
                     } catch (Exception ex) {
+=======
+                procesoVo pro = new procesoVo();
+                int valor = (int)tbProcesos.getValueAt(rown, 0);
+                String proceso = (String) tbProcesos.getValueAt(rown, 3);
+                String orden = lbOrden.getText();
+                
+                
+                if(boton.getName().equals("v")){
+                     try{
+                JFileChooser dir = new JFileChooser();
+        int option = dir.showOpenDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+        src1File = dir.getSelectedFile();
+            String fileName = dir.getName(dir.getSelectedFile());
+            src1Name = fileName;
+            
+            boton.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+            
+            FTPUploader ftpUploader = new FTPUploader("www.verifycar.com.mx", "tm@verifycar.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/procesos/");
+            pro.setIdproceso(valor);
+            pro.setImagen_proceso(proceso+orden+".jpg");
+            Coordinador.updateImagenProceso(pro);
+            
+            boton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        }
+        
+                     }catch(Exception ex){
+>>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
                         System.out.println(ex.getMessage());
                     }
 

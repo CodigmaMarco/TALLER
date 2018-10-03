@@ -17,7 +17,7 @@ public class clienteDao {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT idcliente, nombre_cliente, colonia_cliente, calle_cliente, "
                     + "numcasa_cliente, telefono_cliente, correo_cliente, id_trabajador "
-                    + "FROM bd_taller.cliente ");
+                    + "FROM cliente ");
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -78,7 +78,7 @@ public class clienteDao {
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT nombre_cliente "
-                    + "FROM bd_taller.cliente "
+                    + "FROM cliente "
                     + "WHERE idcliente = ? ");
             
             preparedStatement.setInt(1, id);

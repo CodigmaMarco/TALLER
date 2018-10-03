@@ -129,4 +129,26 @@ public class procesoDao {
             JOptionPane.showMessageDialog(null, "No se Registro");
         }
     }
+    
+    public void updateImagenProceso(procesoVo pro) {
+        Conectarse conn = new Conectarse();
+
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "UPDATE proceso set imagen_proceso=? "
+                    + "WHERE idproceso = ?");
+
+            preparedStatement.setString(1, pro.getImagen_proceso());            
+            preparedStatement.setInt(2, pro.getIdproceso());
+
+            preparedStatement.executeUpdate();
+
+            //Cierra todo
+            conn.getConn().close();
+            //resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

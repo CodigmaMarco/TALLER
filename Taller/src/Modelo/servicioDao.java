@@ -15,7 +15,7 @@ public class servicioDao {
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT idservicio, nombre \n"
-                    + "FROM bd_taller.servicio\n"
+                    + "FROM servicio\n"
                     + "WHERE id_area=? ");
 
             preparedStatement.setInt(1, id);

@@ -15,7 +15,7 @@ public class LoginDao {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT idtrabajador, nombres_tra, apellidop_tra,"
                     + "apellidom_tra, password  "
-                    + "FROM bd_taller.trabajador "
+                    + "FROM trabajador "
                     + "WHERE nombres_tra =? and password =? ");
 
             preparedStatement.setString(1, nombre);
@@ -54,7 +54,7 @@ public class LoginDao {
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT nombre_admin, password, idadmin  "
-                    + "FROM bd_taller.admin "
+                    + "FROM admin "
                     + "WHERE nombre_admin =? and password =? ");
 
             preparedStatement.setString(1, nombre);

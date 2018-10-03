@@ -4,6 +4,7 @@ import Controlador.Coordinador;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 

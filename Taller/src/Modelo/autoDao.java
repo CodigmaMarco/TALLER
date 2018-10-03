@@ -16,7 +16,7 @@ public class autoDao {
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT A.idauto, A.placa, A.modelo, A.marca, A.año, A.id_cliente\n"
-                    + "FROM bd_taller.auto A\n"
+                    + "FROM auto A\n"
                     + "WHERE A.id_cliente = ? ");
 
             preparedStatement.setInt(1, id);

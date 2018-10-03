@@ -1,8 +1,10 @@
 package Modelo;
 
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -17,8 +19,8 @@ public class Render extends DefaultTableCellRenderer{
         if(value instanceof JButton){
             JButton btn = (JButton)value;
             if(isSelected){
-                btn.setForeground(table.getSelectionForeground());
-                btn.setBackground(table.getSelectionBackground());
+                btn.setForeground(Color.WHITE);
+                btn.setBackground(Color.RED);
             }else{
                 btn.setForeground(table.getForeground());
                 btn.setBackground(UIManager.getColor("Button.background"));

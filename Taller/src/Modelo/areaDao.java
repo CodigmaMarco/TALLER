@@ -15,7 +15,7 @@ public class areaDao {
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT nombrearea "
-                    + "FROM bd_taller.area");
+                    + "FROM area");
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
