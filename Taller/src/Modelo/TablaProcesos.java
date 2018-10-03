@@ -13,7 +13,7 @@ public class TablaProcesos {
     private Coordinador miCoordinador;
     private boolean[] editable = {false, false, false, false, true, false, false};
 
-    public void visualizar(JTable tabla, int orden) {
+    public void visualizar(JTable tabla, String orden) {
 
         tabla.setDefaultRenderer(Object.class, new Render());
 

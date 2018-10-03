@@ -26,7 +26,7 @@ public class Chat extends javax.swing.JInternalFrame {
     
 private Coordinador miCoordinador;
     private List <JLabel> labels;
-    public int orden;
+    public String orden;
     public int id;
     JScrollPane scroll;
        public void setCoordinador(Coordinador miCoordinador) {
@@ -151,7 +151,7 @@ comentario.setText("");
 }
     }//GEN-LAST:event_btnEnviarActionPerformed
     
-    public void cargarConversacion(int orden){
+    public void cargarConversacion(String orden){
      ArrayList <chatVo> mensajes = Coordinador.getConversacion(orden);
      contarFilas(mensajes.size());
      

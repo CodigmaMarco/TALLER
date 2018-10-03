@@ -89,7 +89,7 @@ public class autoDao {
             while (resultSet.next()) {
                 autoVo auto = new autoVo();
 
-                auto.setIdauto(resultSet.getInt(1));
+                auto.setMarca(resultSet.getString(1));
                 auto.setModelo(resultSet.getString(2));
                 auto.setPlaca(resultSet.getString(3));               
                 

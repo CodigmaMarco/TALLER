@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class chatDao {
 
-public ArrayList<chatVo> getMensajes(int orden){
+public ArrayList<chatVo> getMensajes(String orden){
         Conectarse conn = new Conectarse();
         ArrayList<chatVo> conversacion = new ArrayList<>();
         
@@ -20,7 +20,7 @@ public ArrayList<chatVo> getMensajes(int orden){
                     + " WHERE ord.numorden = ? "
                     + " ORDER BY c.fechacomentario ");
             
-            preparedStatement.setInt(1, orden);
+            preparedStatement.setString(1, orden);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //Muestra resultados de la consulta SQL

@@ -33,22 +33,17 @@ import javax.swing.table.TableColumn;
 public class ActRegistro extends javax.swing.JInternalFrame {
 
     private Coordinador miCoordinador;
-<<<<<<< HEAD
+
     private File src1File;
     public int idusuario;
     ActRegistro act;
-
     TablaProcesos t = new TablaProcesos();
-=======
-  private File src1File;    
-  private String src1Name;
-  public int idusuario;
-  ActRegistro act;
+    private String src1Name;
+  
+  
   DefaultListModel listModel = new DefaultListModel();
   ArrayList<autoVo> autos;
-  
-  TablaProcesos t = new TablaProcesos();
->>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
+    
     int rown = -1;
     int fila;
 
@@ -374,21 +369,21 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         
     for(int i=0; i<autos.size(); i++) {
     //Añadir cada elemento del ArrayList en el modelo de la lista
-    listModel.addElement(autos.get(i).getIdauto()+" "+ autos.get(i).getPlaca()+" "+autos.get(i).getModelo());
+    listModel.addElement(autos.get(i).getMarca()+" "+ autos.get(i).getPlaca()+" "+autos.get(i).getModelo());
 }
 //Asociar el modelo de lista al JList
 list.setModel(listModel);
     }
         
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        ordenVo ord = Coordinador.getOrden(Integer.parseInt(txtOrden.getText().trim()));
+        ordenVo ord = Coordinador.getOrden((txtOrden.getText().trim()));
         if (ord.getNumorden() != null) {
            // lbOrden.setText(Integer.toString(ord.getNumorden()));
             lbCliente.setText(ord.getNomcliente());
             lbAuto.setText(ord.getModelo());
             lbPlaca.setText(ord.getPlaca());
 
-            t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+            t.visualizar(tbProcesos,(txtOrden.getText().trim()));
             btnChat.setEnabled(true);
         } else {
             JOptionPane.showMessageDialog(null, "Codigo no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
@@ -416,17 +411,12 @@ list.setModel(listModel);
             if (value instanceof JButton) {
                 ((JButton) value).doClick();
                 JButton boton = (JButton) value;
-<<<<<<< HEAD
+
 
                 int valor = (int) tbProcesos.getValueAt(rown, 0);
-
-                if (boton.getName().equals("v")) {
-                    try {
-
-                    } catch (Exception ex) {
-=======
+              
                 procesoVo pro = new procesoVo();
-                int valor = (int)tbProcesos.getValueAt(rown, 0);
+                
                 String proceso = (String) tbProcesos.getValueAt(rown, 2);
                 System.out.println(proceso);
                 String orden = lbOrden.getText();
@@ -451,11 +441,10 @@ list.setModel(listModel);
             
             this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             
-            t.visualizar(tbProcesos, Integer.parseInt(lbOrden.getText().trim()));
+            t.visualizar(tbProcesos,(lbOrden.getText().trim()));
         }
         
                      }catch(Exception ex){
->>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
                         System.out.println(ex.getMessage());
                     }
 
@@ -484,7 +473,7 @@ list.setModel(listModel);
     }//GEN-LAST:event_tbProcesosMouseClicked
 
     private void comentariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyTyped
-
+//
     }//GEN-LAST:event_comentariosKeyTyped
     Chat ch;
     private void btnChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatActionPerformed
@@ -492,7 +481,7 @@ list.setModel(listModel);
             ch = new Chat(); // TODO add your handling code here:
 
             escritorio.add(ch);//.setLocation(100, 0);
-            ch.orden = Integer.parseInt(lbOrden.getText());
+            ch.orden = (lbOrden.getText());
             ch.id = idusuario;
             ch.setCoordinador(miCoordinador);
 
@@ -506,7 +495,7 @@ list.setModel(listModel);
     }//GEN-LAST:event_btnChatActionPerformed
 
     private void tbProcesosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseReleased
-<<<<<<< HEAD
+
          int columna = tbProcesos.columnAtPoint(evt.getPoint());
          int fila = tbProcesos.getSelectedRow();
          
@@ -526,29 +515,10 @@ list.setModel(listModel);
  Coordinador.updateProceso(pro);
  
  
- t.visualizar(tbProcesos, Integer.parseInt(lbOrden.getText().trim()));
-=======
-        int columna = tbProcesos.columnAtPoint(evt.getPoint());
-        int fila = tbProcesos.getSelectedRow();
+ t.visualizar(tbProcesos, (lbOrden.getText().trim()));
 
-        if (columna == 4) {
+      
 
-            procesoVo pro = new procesoVo();
-            String status;
-            pro.setIdproceso((int) tbProcesos.getValueAt(fila, 0));
-
-            if ((boolean) tbProcesos.getValueAt(fila, 4) == true) {
-                status = "terminado";
-            } else {
-                status = "procesando";
-            }
-            pro.setStatus(status);
-            pro.setObservaciones((String) tbProcesos.getValueAt(fila, 3));
-
-            Coordinador.updateProceso(pro);
-
-            t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
->>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
         }
 
     }//GEN-LAST:event_tbProcesosMouseReleased
@@ -557,17 +527,17 @@ list.setModel(listModel);
         tbProcesos.setValueAt("" + comentarios.getText(), fila, 3);
     }//GEN-LAST:event_comentariosKeyReleased
 
-<<<<<<< HEAD
+
     private void listMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseReleased
-        int ord = autos.get(list.getSelectedIndex()).getIdauto();
-        txtOrden.setText(Integer.toString(ord));
+        String ord = autos.get(list.getSelectedIndex()).getMarca();
+        txtOrden.setText((ord));
 
     }//GEN-LAST:event_listMouseReleased
 
 public boolean estacerrado(Object obj) {
-=======
-    public boolean estacerrado(Object obj) {
->>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
+
+
+
         JInternalFrame[] activos = escritorio.getAllFrames();
         boolean cerrado = true;
         int i = 0;

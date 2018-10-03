@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class ordenDao {
 
-    public ordenVo getOrden(int orden) {
+    public ordenVo getOrden(String orden) {
         Conectarse conn = new Conectarse();
         ordenVo or = new ordenVo();
         try {
@@ -18,7 +18,7 @@ public class ordenDao {
                     + "JOIN auto as au on au.idauto = o.id_auto "
                     + "WHERE numorden = ? ");
 
-            preparedStatement.setInt(1, orden);
+            preparedStatement.setString(1, orden);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 or.setNumorden(resultSet.getString(1));

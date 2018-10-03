@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class procesoDao {
 
-    public ArrayList<procesoVo> getProcesos(int orden) {
+    public ArrayList<procesoVo> getProcesos(String orden) {
         Conectarse conn = new Conectarse();
         ArrayList<procesoVo> procesos = new ArrayList<>();
 
@@ -21,7 +21,7 @@ public class procesoDao {
                     + " JOIN area as ar on ar.idarea = ser.id_area"
                     + " WHERE o.numorden = ?");
 
-            preparedStatement.setInt(1, orden);
+            preparedStatement.setString(1, orden);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //Muestra resultados de la consulta SQL
