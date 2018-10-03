@@ -194,4 +194,9 @@ public class Coordinador {
     procesoDao pr = new procesoDao();
     pr.updateImagenProceso(pro);
     }
+    
+    public static ArrayList<autoVo> getPendientes(){
+    autoDao au = new autoDao();
+    return au.getPendientes();
+    }
 }

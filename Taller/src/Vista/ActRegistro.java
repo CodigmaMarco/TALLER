@@ -3,6 +3,7 @@ package Vista;
 import Controlador.Coordinador;
 import Modelo.FTPUploader;
 import Modelo.TablaProcesos;
+import Modelo.autoVo;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
 import static Vista.Inicio.escritorio;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.CheckBox;
 import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -34,6 +36,8 @@ public class ActRegistro extends javax.swing.JInternalFrame {
   private String src1Name;
   public int idusuario;
   ActRegistro act;
+  DefaultListModel listModel = new DefaultListModel();
+  ArrayList<autoVo> autos;
   
   TablaProcesos t = new TablaProcesos();
     int rown = -1;
@@ -44,10 +48,12 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         agregarColumn = tbProcesos.getColumnModel().getColumn(3);
         agregarColumn.setCellEditor(new myeditor(tbProcesos));
         agregarColumn.setCellRenderer(new myrenderer(true));
+        this.llenarLista();
     }
     
         public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
+        
         //this.getUsuario(1);
     }
 
@@ -69,6 +75,8 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         lbCliente = new javax.swing.JLabel();
         lbAuto = new javax.swing.JLabel();
         lbPlaca = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        list = new javax.swing.JList<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProcesos = new rojerusan.RSTableMetro();
@@ -150,6 +158,16 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         lbPlaca.setForeground(new java.awt.Color(102, 102, 102));
         lbPlaca.setText("XLR8");
 
+        list.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Activos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        list.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        list.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                listMouseReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(list);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -166,14 +184,13 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(lbCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbPlaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(lbPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -200,23 +217,26 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lbPlaca))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         tbProcesos.setForeground(new java.awt.Color(44, 44, 45));
         tbProcesos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Area", "Proceso", "Estado", "Imagen"
+                "Area", "Proceso", "Estado", "Imagen", "Subir"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Byte.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Byte.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -278,7 +298,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jLabel6)
@@ -303,7 +323,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(btnChat)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -339,6 +359,17 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void llenarLista(){
+    autos = Coordinador.getPendientes();
+        
+    for(int i=0; i<autos.size(); i++) {
+    //Añadir cada elemento del ArrayList en el modelo de la lista
+    listModel.addElement(autos.get(i).getIdauto()+" "+ autos.get(i).getPlaca()+" "+autos.get(i).getModelo());
+}
+//Asociar el modelo de lista al JList
+list.setModel(listModel);
+    }
+        
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ordenVo ord = Coordinador.getOrden(Integer.parseInt(txtOrden.getText().trim()));
         if(ord.getNumorden() != 0){
@@ -378,12 +409,14 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 JButton boton = (JButton) value;
                 procesoVo pro = new procesoVo();
                 int valor = (int)tbProcesos.getValueAt(rown, 0);
-                String proceso = (String) tbProcesos.getValueAt(rown, 3);
+                String proceso = (String) tbProcesos.getValueAt(rown, 2);
+                System.out.println(proceso);
                 String orden = lbOrden.getText();
                 
                 
                 if(boton.getName().equals("v")){
-                     try{
+                  JButton bot = boton;
+                    try{
                 JFileChooser dir = new JFileChooser();
         int option = dir.showOpenDialog(this);
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -391,14 +424,16 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             String fileName = dir.getName(dir.getSelectedFile());
             src1Name = fileName;
             
-            boton.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             
-            FTPUploader ftpUploader = new FTPUploader("www.verifycar.com.mx", "tm@verifycar.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/procesos/");
+            FTPUploader ftpUploader = new FTPUploader("www.verifycar.com.mx", "talleres@verifycar.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/procesos/");
             pro.setIdproceso(valor);
             pro.setImagen_proceso(proceso+orden+".jpg");
             Coordinador.updateImagenProceso(pro);
             
-            boton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            
+            t.visualizar(tbProcesos, Integer.parseInt(lbOrden.getText().trim()));
         }
         
                      }catch(Exception ex){
@@ -475,7 +510,7 @@ if (estacerrado(ch)) {
  Coordinador.updateProceso(pro);
  
  
- t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+ t.visualizar(tbProcesos, Integer.parseInt(lbOrden.getText().trim()));
         }
 
     }//GEN-LAST:event_tbProcesosMouseReleased
@@ -483,6 +518,12 @@ if (estacerrado(ch)) {
     private void comentariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyReleased
         tbProcesos.setValueAt(""+comentarios.getText(), fila, 3);
     }//GEN-LAST:event_comentariosKeyReleased
+
+    private void listMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseReleased
+        int ord = autos.get(list.getSelectedIndex()).getIdauto();
+        txtOrden.setText(Integer.toString(ord));
+
+    }//GEN-LAST:event_listMouseReleased
 
 public boolean estacerrado(Object obj) {
         JInternalFrame[] activos = escritorio.getAllFrames();
@@ -515,10 +556,12 @@ public boolean estacerrado(Object obj) {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbAuto;
     private javax.swing.JLabel lbCliente;
     private javax.swing.JLabel lbOrden;
     private javax.swing.JLabel lbPlaca;
+    private javax.swing.JList<String> list;
     private rojerusan.RSTableMetro tbProcesos;
     private rojerusan.RSMetroTextFullPlaceHolder txtOrden;
     // End of variables declaration//GEN-END:variables
