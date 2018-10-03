@@ -5,13 +5,21 @@ public class ordenVo {
         private int idcliente;
         private int idorden;
         private int idauto;
-        private int numorden;
         private String nomcliente;
         private String modelo;
         private String placa;
+        private String numorden;
 
     public String getNomcliente() {
         return nomcliente;
+    }
+
+    public String getNumorden() {
+        return numorden;
+    }
+
+    public void setNumorden(String numorden) {
+        this.numorden = numorden;
     }
 
     public void setNomcliente(String nomcliente) {
@@ -56,15 +64,6 @@ public class ordenVo {
 
     public void setIdauto(int idauto) {
         this.idauto = idauto;
-    }
-
-    public int getNumorden() {
-        return numorden;
-    }
-
-    public void setNumorden(int numorden) {
-        this.numorden = numorden;
-    }
-        
+    }      
         
 }

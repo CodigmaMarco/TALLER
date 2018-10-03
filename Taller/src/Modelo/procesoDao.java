@@ -110,17 +110,16 @@ public class procesoDao {
         Conectarse conex = new Conectarse();
 
         try {
-            String query = "insert into proceso (status, observaciones, fecha_inicio, "
-                    + "id_auto, id_servicio, id_orden)"
-                    + " values (?, ?, ?, ?, ?, ?)";
+            String query = "insert into proceso (status, observaciones, fechainicio, "
+                    + "id_servicio, id_orden)"
+                    + " values (?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
             preparedStatement.setString(1, "procesando");
             preparedStatement.setString(2, proceso.getObservaciones());
             preparedStatement.setString(3, proceso.getFecha_inicio());
-            preparedStatement.setInt(4, proceso.getIdauto());
-            preparedStatement.setInt(5, proceso.getId_servicio());
-            preparedStatement.setInt(6, proceso.getId_orden());
+            preparedStatement.setInt(4, proceso.getId_servicio());
+            preparedStatement.setInt(5, proceso.getId_orden());
 
             preparedStatement.execute();
 

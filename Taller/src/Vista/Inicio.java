@@ -339,8 +339,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnregistrar;
     public static javax.swing.JButton btnusuarios;
     public static javax.swing.JDesktopPane escritorio;
-    private javax.swing.JLabel fecha;
-    private javax.swing.JLabel hora;
+    public static javax.swing.JLabel fecha;
+    public static javax.swing.JLabel hora;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel lblid;
     private static javax.swing.JLabel lblusuario;

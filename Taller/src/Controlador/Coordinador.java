@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.LoginDao;
 import Modelo.LoginVo;
+import Modelo.adminDao;
 import Modelo.adminVo;
 import Modelo.areaDao;
 import Modelo.areaVo;
@@ -188,5 +189,15 @@ public class Coordinador {
     public static void agregarOrden(ordenVo orden) {
         ordenDao orde = new ordenDao();
         orde.registrarOrden(orden);
+    }
+
+    public static adminVo getAdmin(String idtrabajador) {
+        adminDao adm = new adminDao();
+        return adm.getAdmin(idtrabajador);
+    }
+
+    public static ordenVo getIdOrden(String orden) {
+        ordenDao ord = new ordenDao();
+        return ord.getIdOrden(orden);
     }
 }
