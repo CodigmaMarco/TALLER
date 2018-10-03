@@ -31,7 +31,15 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 public class ActRegistro extends javax.swing.JInternalFrame {
+
     private Coordinador miCoordinador;
+<<<<<<< HEAD
+    private File src1File;
+    public int idusuario;
+    ActRegistro act;
+
+    TablaProcesos t = new TablaProcesos();
+=======
   private File src1File;    
   private String src1Name;
   public int idusuario;
@@ -40,8 +48,10 @@ public class ActRegistro extends javax.swing.JInternalFrame {
   ArrayList<autoVo> autos;
   
   TablaProcesos t = new TablaProcesos();
+>>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
     int rown = -1;
     int fila;
+
     public ActRegistro() {
         initComponents();
         TableColumn agregarColumn;
@@ -50,8 +60,8 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         agregarColumn.setCellRenderer(new myrenderer(true));
         this.llenarLista();
     }
-    
-        public void setCoordinador(Coordinador miCoordinador) {
+
+    public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
         
         //this.getUsuario(1);
@@ -372,41 +382,49 @@ list.setModel(listModel);
         
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ordenVo ord = Coordinador.getOrden(Integer.parseInt(txtOrden.getText().trim()));
-        if(ord.getNumorden() != 0){
-        lbOrden.setText(Integer.toString(ord.getNumorden()));
-        lbCliente.setText(ord.getNomcliente());
-        lbAuto.setText(ord.getModelo());
-        lbPlaca.setText(ord.getPlaca());
-        
-        t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
-        btnChat.setEnabled(true);
-}
-        else{
-        JOptionPane.showMessageDialog(null, "Codigo no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
+        if (ord.getNumorden() != null) {
+           // lbOrden.setText(Integer.toString(ord.getNumorden()));
+            lbCliente.setText(ord.getNomcliente());
+            lbAuto.setText(ord.getModelo());
+            lbPlaca.setText(ord.getPlaca());
+
+            t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+            btnChat.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Codigo no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tbProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseClicked
-         fila = tbProcesos.getSelectedRow();
-        
-        if(fila>=0){
-        String obser = (String)tbProcesos.getValueAt(fila, 3);             
-                        this.comentarios.setText("");
-                        this.comentarios.append(obser);
+        fila = tbProcesos.getSelectedRow();
+
+        if (fila >= 0) {
+            String obser = (String) tbProcesos.getValueAt(fila, 3);
+            this.comentarios.setText("");
+            this.comentarios.append(obser);
         }
-        
+
         rown = tbProcesos.rowAtPoint(evt.getPoint());
 
         int column = tbProcesos.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY()/tbProcesos.getRowHeight();
-        
-        if(row < tbProcesos.getRowCount() && row >= 0 && column < tbProcesos.getColumnCount() && column >= 0){
+        int row = evt.getY() / tbProcesos.getRowHeight();
+
+        if (row < tbProcesos.getRowCount() && row >= 0 && column < tbProcesos.getColumnCount() && column >= 0) {
             Object value = tbProcesos.getValueAt(row, column);
-            if(value instanceof JButton){
-                ((JButton)value).doClick();
+            if (value instanceof JButton) {
+                ((JButton) value).doClick();
                 JButton boton = (JButton) value;
+<<<<<<< HEAD
+
+                int valor = (int) tbProcesos.getValueAt(rown, 0);
+
+                if (boton.getName().equals("v")) {
+                    try {
+
+                    } catch (Exception ex) {
+=======
                 procesoVo pro = new procesoVo();
                 int valor = (int)tbProcesos.getValueAt(rown, 0);
                 String proceso = (String) tbProcesos.getValueAt(rown, 2);
@@ -437,60 +455,58 @@ list.setModel(listModel);
         }
         
                      }catch(Exception ex){
+>>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
                         System.out.println(ex.getMessage());
-                     }
-                    
-                }}
-            
-        if(value instanceof JCheckBox){
-            ((JCheckBox)value).doClick();
-                            JCheckBox checkbox = (JCheckBox) value;
-    
-                
-                int valor = (int)tbProcesos.getValueAt(rown, 0);
-                
-                
-                
-                if( checkbox.getName().equals("seleccion")){
-                     try{
-                System.out.println("prueba");
-                        
-                     }catch(Exception ex){
-                        System.out.println(ex.getMessage());
-                     }
-                    
-                }}
-        }
- 
+                    }
 
-      
+                }
+            }
+
+            if (value instanceof JCheckBox) {
+                ((JCheckBox) value).doClick();
+                JCheckBox checkbox = (JCheckBox) value;
+
+                int valor = (int) tbProcesos.getValueAt(rown, 0);
+
+                if (checkbox.getName().equals("seleccion")) {
+                    try {
+                        System.out.println("prueba");
+
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
+
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_tbProcesosMouseClicked
 
     private void comentariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyTyped
-        
+
     }//GEN-LAST:event_comentariosKeyTyped
-Chat ch;
+    Chat ch;
     private void btnChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatActionPerformed
-if (estacerrado(ch)) {
-    ch = new Chat(); // TODO add your handling code here:
-    
-    escritorio.add(ch);//.setLocation(100, 0);
-    ch.orden = Integer.parseInt(lbOrden.getText());
-    ch.id = idusuario;
-    ch.setCoordinador(miCoordinador);
-    
-    ch.show();
-    
+        if (estacerrado(ch)) {
+            ch = new Chat(); // TODO add your handling code here:
+
+            escritorio.add(ch);//.setLocation(100, 0);
+            ch.orden = Integer.parseInt(lbOrden.getText());
+            ch.id = idusuario;
+            ch.setCoordinador(miCoordinador);
+
+            ch.show();
+
         } else {
             ch.toFront();
         }
-        
-     
-    
-    
+
+
     }//GEN-LAST:event_btnChatActionPerformed
 
     private void tbProcesosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseReleased
+<<<<<<< HEAD
          int columna = tbProcesos.columnAtPoint(evt.getPoint());
          int fila = tbProcesos.getSelectedRow();
          
@@ -511,14 +527,37 @@ if (estacerrado(ch)) {
  
  
  t.visualizar(tbProcesos, Integer.parseInt(lbOrden.getText().trim()));
+=======
+        int columna = tbProcesos.columnAtPoint(evt.getPoint());
+        int fila = tbProcesos.getSelectedRow();
+
+        if (columna == 4) {
+
+            procesoVo pro = new procesoVo();
+            String status;
+            pro.setIdproceso((int) tbProcesos.getValueAt(fila, 0));
+
+            if ((boolean) tbProcesos.getValueAt(fila, 4) == true) {
+                status = "terminado";
+            } else {
+                status = "procesando";
+            }
+            pro.setStatus(status);
+            pro.setObservaciones((String) tbProcesos.getValueAt(fila, 3));
+
+            Coordinador.updateProceso(pro);
+
+            t.visualizar(tbProcesos, Integer.parseInt(txtOrden.getText().trim()));
+>>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
         }
 
     }//GEN-LAST:event_tbProcesosMouseReleased
 
     private void comentariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comentariosKeyReleased
-        tbProcesos.setValueAt(""+comentarios.getText(), fila, 3);
+        tbProcesos.setValueAt("" + comentarios.getText(), fila, 3);
     }//GEN-LAST:event_comentariosKeyReleased
 
+<<<<<<< HEAD
     private void listMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseReleased
         int ord = autos.get(list.getSelectedIndex()).getIdauto();
         txtOrden.setText(Integer.toString(ord));
@@ -526,6 +565,9 @@ if (estacerrado(ch)) {
     }//GEN-LAST:event_listMouseReleased
 
 public boolean estacerrado(Object obj) {
+=======
+    public boolean estacerrado(Object obj) {
+>>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
         JInternalFrame[] activos = escritorio.getAllFrames();
         boolean cerrado = true;
         int i = 0;
@@ -577,7 +619,7 @@ class myrenderer extends JLabel implements TableCellRenderer {
     }
 
     public Component getTableCellRendererComponent(JTable table, Object color, boolean isSelected, boolean hasFocus, int row, int column) {
-         // if (row == table.getModel().getRowCount() - 1) {
+        // if (row == table.getModel().getRowCount() - 1) {
         return new JButton("Subir Imagen");
         // } else {
         //    setBackground(new Color(0xffffff));
@@ -587,6 +629,7 @@ class myrenderer extends JLabel implements TableCellRenderer {
 }
 
 class myeditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
+
     private File src1File;
     private String src1Name;
 
@@ -604,27 +647,26 @@ class myeditor extends AbstractCellEditor implements TableCellEditor, ActionList
     }
 
     public void actionPerformed(ActionEvent e) {
-        
-                JFileChooser dir = new JFileChooser();
+
+        JFileChooser dir = new JFileChooser();
         int option = dir.showOpenDialog(ActRegistro.jPanel2);
         if (option == JFileChooser.APPROVE_OPTION) {
             src1File = dir.getSelectedFile();
             String fileName = dir.getName(dir.getSelectedFile());
 
             src1Name = fileName;
-                    System.out.println(src1Name+"  "+src1File);
-           // checkSrc1.setSelected(true);
-           // cargarImagenes(1);
+            System.out.println(src1Name + "  " + src1File);
+            // checkSrc1.setSelected(true);
+            // cargarImagenes(1);
         } else {
-           // checkSrc1.setSelected(false);
+            // checkSrc1.setSelected(false);
         }
-        
-/*
+
+        /*
         JFileChooser selectorArchivos = new JFileChooser();
         selectorArchivos.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
         int resultado = selectorArchivos.showOpenDialog(ActRegistro.jPanel2);*/
-
     }
 
     public Object getCellEditorValue() {
@@ -632,10 +674,10 @@ class myeditor extends AbstractCellEditor implements TableCellEditor, ActionList
     }
 
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-       // if (row == table.getModel().getRowCount() - 1) {
-            currentValue = (Boolean) value;
-            return button;
-     //   }
-      //  return new JLabel();
+        // if (row == table.getModel().getRowCount() - 1) {
+        currentValue = (Boolean) value;
+        return button;
+        //   }
+        //  return new JLabel();
     }
 }

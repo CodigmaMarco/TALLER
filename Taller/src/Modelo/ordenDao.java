@@ -9,7 +9,6 @@ public class ordenDao {
 
     public ordenVo getOrden(int orden) {
         Conectarse conn = new Conectarse();
-
         ordenVo or = new ordenVo();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
@@ -21,11 +20,8 @@ public class ordenDao {
 
             preparedStatement.setInt(1, orden);
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            //Muestra resultados de la consulta SQL
             while (resultSet.next()) {
-
-                or.setNumorden(resultSet.getInt(1));
+                or.setNumorden(resultSet.getString(1));
                 or.setIdcliente(resultSet.getInt(2));
                 or.setIdauto(resultSet.getInt(3));
                 or.setNomcliente(resultSet.getString(4));
@@ -34,7 +30,6 @@ public class ordenDao {
                 or.setIdorden(resultSet.getInt(7));
 
             }
-            //Cierra todo
             conn.getConn().close();
             resultSet.close();
             preparedStatement.close();
@@ -42,7 +37,6 @@ public class ordenDao {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        //Retorna el usuario
         return or;
     }
 
@@ -56,7 +50,7 @@ public class ordenDao {
             PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
             preparedStatement.setInt(1, orden.getIdcliente());
             preparedStatement.setInt(2, orden.getIdauto());
-            preparedStatement.setInt(3, orden.getNumorden());
+            preparedStatement.setString(3, orden.getNumorden());
             preparedStatement.execute();
             conex.getConn().close();
         } catch (SQLException e) {
@@ -64,4 +58,29 @@ public class ordenDao {
             JOptionPane.showMessageDialog(null, "No se Registro");
         }
     }
+
+    public ordenVo getIdOrden(String orden) {
+        Conectarse conn = new Conectarse();
+        ordenVo or = new ordenVo();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "SELECT idorden "
+                    + "FROM orden "
+                    + "WHERE numorden = ? ");
+
+            preparedStatement.setString(1, orden);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                or.setIdorden(resultSet.getInt(1));
+            }
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return or;
+    }
+
 }

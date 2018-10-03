@@ -8,18 +8,39 @@ import javax.swing.JOptionPane;
 public class Conectarse {
 
     private Connection conn = null;
+<<<<<<< HEAD
     /*
+=======
+    
+    private final String host = "localhost";
+    private final String db = "bd_taller";
+    private final String user = "root";
+<<<<<<< HEAD
+    private final String pass = "";
+    
+    /*private final String host = "192.185.131.114";
+    private final String db = "codigmac_tm";
+    private final String user = "codigmac_luis";
+    private final String pass = "departamento03";*/
+    
+=======
+    private final String pass = "";    
+>>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
     
     private final String host = "codigma.com.mx";
     private final String db = "codigmac_tm";
     private final String user = "codigmac_luis";
     private final String pass = "departamento03";
+<<<<<<< HEAD
     */
 private final String host = "localhost";
     private final String db = "bd_taller";
     private final String user = "root";
     private final String pass = "";    
     
+=======
+>>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
+>>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
      
     public Conectarse() {
         MySQLAccess();

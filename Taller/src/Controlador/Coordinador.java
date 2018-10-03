@@ -2,6 +2,7 @@
 
 import Modelo.LoginDao;
 import Modelo.LoginVo;
+import Modelo.adminDao;
 import Modelo.adminVo;
 import Modelo.areaDao;
 import Modelo.areaVo;
@@ -189,10 +190,22 @@ public class Coordinador {
         ordenDao orde = new ordenDao();
         orde.registrarOrden(orden);
     }
+<<<<<<< HEAD
+
+    public static adminVo getAdmin(String idtrabajador) {
+        adminDao adm = new adminDao();
+        return adm.getAdmin(idtrabajador);
+    }
+
+    public static ordenVo getIdOrden(String orden) {
+        ordenDao ord = new ordenDao();
+        return ord.getIdOrden(orden);
+=======
     
     public static void updateImagenProceso(procesoVo pro){
     procesoDao pr = new procesoDao();
     pr.updateImagenProceso(pro);
+>>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
     }
     
     public static ArrayList<autoVo> getPendientes(){
