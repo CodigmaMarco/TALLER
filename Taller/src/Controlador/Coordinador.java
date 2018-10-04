@@ -136,7 +136,7 @@ public class Coordinador {
         trabajador.borrarTrabajador(t);
     }
 
-    public static ordenVo getOrden(int orden) {
+    public static ordenVo getOrden(String orden) {
         ordenDao ord = new ordenDao();
         return ord.getOrden(orden);
     }
@@ -151,7 +151,7 @@ public class Coordinador {
         return servicio.getServicios(id);
     }
 
-    public static ArrayList<procesoVo> getProcesos(int orden) {
+    public static ArrayList<procesoVo> getProcesos(String orden) {
         procesoDao pr = new procesoDao();
         return pr.getProcesos(orden);
     }
@@ -166,7 +166,7 @@ public class Coordinador {
         p.updateProceso(pro);
     }
 
-    public static ArrayList<chatVo> getConversacion(int orden) {
+    public static ArrayList<chatVo> getConversacion(String orden) {
         chatDao ch = new chatDao();
         return ch.getMensajes(orden);
     }
@@ -190,6 +190,10 @@ public class Coordinador {
         ordenDao orde = new ordenDao();
         orde.registrarOrden(orden);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dbab2baa1549f19b49b8d5b41fbd60091cb2e7c6
 
     public static adminVo getAdmin(String idtrabajador) {
         adminDao adm = new adminDao();
@@ -200,9 +204,32 @@ public class Coordinador {
         ordenDao ord = new ordenDao();
         return ord.getIdOrden(orden);
     }
+<<<<<<< HEAD
 
     public static void updateImagenProceso(procesoVo pro) {
         procesoDao pr = new procesoDao();
         pr.updateImagenProceso(pro);
+=======
+    
+    public static void updateImagenProceso(procesoVo pro){
+    procesoDao pr = new procesoDao();
+    pr.updateImagenProceso(pro);
+
+    }
+    
+    public static ArrayList<autoVo> getPendientes(){
+    autoDao au = new autoDao();
+    return au.getPendientes();
+    }
+    
+    public static int mensajesLeidos(chatVo chat){
+    chatDao ct = new chatDao();
+    return ct.mensajesLeidos(chat);
+    }
+    
+    public static void updateLeido(int ch){
+    chatDao cha = new chatDao();
+    cha.updateLectura(ch);
+>>>>>>> dbab2baa1549f19b49b8d5b41fbd60091cb2e7c6
     }
 }

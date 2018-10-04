@@ -156,7 +156,7 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         registrocliente.setName("registrocliente"); // NOI18N
@@ -923,6 +923,7 @@ public class Registro extends javax.swing.JInternalFrame {
 
                 for (int i = 0; i < idservselec.size(); i++) {
                     procesoVo proc = new procesoVo();
+                    proc.setImagen_proceso("");
                     proc.setObservaciones(String.valueOf(descrip.elementAt(i)));
                     proc.setFecha_inicio(formato.format(sistemaFech));
                     proc.setId_servicio(Integer.parseInt(String.valueOf(idservselec.elementAt(i))));

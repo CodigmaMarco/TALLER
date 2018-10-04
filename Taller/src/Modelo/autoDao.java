@@ -70,4 +70,40 @@ public class autoDao {
             JOptionPane.showMessageDialog(null, "No se Registro");
         }
     }
+    
+    public ArrayList<autoVo> getPendientes() {
+
+        Conectarse conn = new Conectarse();
+        //Objeto de tipo cliente 
+        ArrayList<autoVo> autos = new ArrayList();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+            "SELECT DISTINCT o.numorden,au.modelo,au.placa from orden o " +
+            "JOIN auto as au on au.idauto = o.id_auto " +
+            "JOIN proceso as pro on pro.id_orden = o.idorden " +
+            "where pro.status = 'procesando' ");
+
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                autoVo auto = new autoVo();
+
+                auto.setMarca(resultSet.getString(1));
+                auto.setModelo(resultSet.getString(2));
+                auto.setPlaca(resultSet.getString(3));               
+                
+
+                autos.add(auto);
+            }
+            //Cierra todo
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        //Retorna el usuario
+        return autos;
+    }
 }
