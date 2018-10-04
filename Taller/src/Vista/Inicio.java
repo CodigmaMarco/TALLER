@@ -1,6 +1,8 @@
 package Vista;
 
 import Controlador.Coordinador;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
@@ -9,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -24,6 +27,8 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
+        
+        this.repaint();
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
@@ -51,7 +56,8 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane()
+        ;
         lblusuario = new javax.swing.JLabel();
         lblid = new javax.swing.JLabel();
         hora = new javax.swing.JLabel();

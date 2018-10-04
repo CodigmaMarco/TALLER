@@ -378,7 +378,7 @@ list.setModel(listModel);
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ordenVo ord = Coordinador.getOrden((txtOrden.getText().trim()));
         if (ord.getNumorden() != null) {
-           // lbOrden.setText(Integer.toString(ord.getNumorden()));
+            lbOrden.setText((ord.getNumorden()));
             lbCliente.setText(ord.getNomcliente());
             lbAuto.setText(ord.getModelo());
             lbPlaca.setText(ord.getPlaca());

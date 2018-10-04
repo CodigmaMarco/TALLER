@@ -923,6 +923,7 @@ public class Registro extends javax.swing.JInternalFrame {
 
                 for (int i = 0; i < idservselec.size(); i++) {
                     procesoVo proc = new procesoVo();
+                    proc.setImagen_proceso("");
                     proc.setObservaciones(String.valueOf(descrip.elementAt(i)));
                     proc.setFecha_inicio(formato.format(sistemaFech));
                     proc.setId_servicio(Integer.parseInt(String.valueOf(idservselec.elementAt(i))));
