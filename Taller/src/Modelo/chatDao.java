@@ -53,13 +53,15 @@ public ArrayList<chatVo> getMensajes(String orden){
         Conectarse conex = new Conectarse();
 
         try {
-            String query = " insert into chat (cometario, id_trabajador, id_orden)"
-                    + " values (?, ?, ?)";
+            String query = " insert into chat (cometario, id_trabajador, id_orden, lectura, fechacomentario)"
+                    + " values (?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
             preparedStatement.setString(1, mensaje.getComentario());
             preparedStatement.setInt(2, mensaje.getId_trabajador());
             preparedStatement.setInt(3, mensaje.getId_orden());
+            preparedStatement.setString(4, "leido");
+            preparedStatement.setString(5, mensaje.getFechacomentario());
             
             preparedStatement.execute();
 
@@ -70,4 +72,55 @@ public ArrayList<chatVo> getMensajes(String orden){
         }
     }
 
+    public int mensajesLeidos(chatVo ch) {
+        Conectarse conn = new Conectarse();
+
+        chatVo chat = new chatVo();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "select COUNT(*)"
+                            + " FROM chat"
+                            + " WHERE lectura <> 'leido'"
+                            + " OR lectura IS NULL"
+                            + " AND id_orden = ?");
+
+            preparedStatement.setInt(1, ch.getId_orden());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+
+            while (resultSet.next()) {
+                chat.setCategoria(resultSet.getInt(1));
+                
+            }
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return chat.getCategoria();
+    }
+    
+    public void updateLectura(int idChat) {
+        Conectarse conn = new Conectarse();
+
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "UPDATE chat set lectura='leido' "
+                    + "WHERE idchat = ? ");
+                        
+            preparedStatement.setInt(1, idChat);
+
+            preparedStatement.executeUpdate();
+
+            //Cierra todo
+            conn.getConn().close();
+            //resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
 }

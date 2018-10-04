@@ -212,4 +212,14 @@ public class Coordinador {
     autoDao au = new autoDao();
     return au.getPendientes();
     }
+    
+    public static int mensajesLeidos(chatVo chat){
+    chatDao ct = new chatDao();
+    return ct.mensajesLeidos(chat);
+    }
+    
+    public static void updateLeido(int ch){
+    chatDao cha = new chatDao();
+    cha.updateLectura(ch);
+    }
 }

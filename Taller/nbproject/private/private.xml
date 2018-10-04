@@ -3,28 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/trabajadorDao.java</file>
-            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Vista/Chat.java</file>
-            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/chatDao.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/procesoDao.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/adminDao.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/ordenVo.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Controlador/Coordinador.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/ordenDao.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Vista/Registro.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Vista/Inicio.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/Conectarse.java</file>
-=======
-            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/FTPUploader.java</file>
->>>>>>> f5fd5657dca472e0524a829ac2c742e3f6abaf63
+            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/ordenDao.java</file>
             <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Vista/ActRegistro.java</file>
+            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/autoVo.java</file>
+            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/autoDao.java</file>
+            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Vista/Inicio.java</file>
             <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Controlador/Coordinador.java</file>
-            <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Controlador/Principal.java</file>
             <file>file:/C:/Users/luism/Documents/GitHub/Talleres/TALLER/Taller/src/Modelo/Conectarse.java</file>
->>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
         </group>
     </open-files>
 </project-private>

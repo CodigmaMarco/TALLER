@@ -9,12 +9,19 @@ package Vista;
 import Controlador.Coordinador;
 import Modelo.chatVo;
 import com.sun.awt.AWTUtilities;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -29,6 +36,9 @@ private Coordinador miCoordinador;
     public String orden;
     public int id;
     JScrollPane scroll;
+    Date date = new Date();
+    public ActRegistro act;
+    
        public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
         cargarConversacion(orden);            
@@ -38,6 +48,7 @@ private Coordinador miCoordinador;
     public Chat() {           
         initComponents();
         this.setClosable(true);
+        //cerrar();
        // setLocationRelativeTo(null);
        
     }
@@ -141,6 +152,8 @@ if(mensaje.equals("")){
 System.out.println("Ingresa un mensaje");
 }
 else{
+    DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    chat.setFechacomentario(hourdateFormat.format(date));
     chat.setComentario(mensaje);
     Coordinador.insertMensaje(chat);
     panel2.removeAll();
@@ -165,7 +178,7 @@ comentario.setText("");
          else if(mensajes.get(i).getId_trabajador() > 0){
          usuario = Coordinador.getTrabajadorID(mensajes.get(i).getId_trabajador()).getNombre();
          }
-         
+         Coordinador.updateLeido(mensajes.get(i).getIdchat());
          cargarMensaje(usuario,mensajes.get(i).getComentario(),mensajes.get(i).getFechacomentario());
      }
      
@@ -174,18 +187,18 @@ comentario.setText("");
     public void cargarMensaje(String usuario, String texto, String fecha){
         
 
-        JTextArea label = new JTextArea(fecha+" "+usuario+":"+" "+texto);
+        JTextArea label = new JTextArea(usuario+"\n"+fecha+" "+texto);
         
         label.setLineWrap(true);        
         label.setEditable(false);
-        
+        label.setWrapStyleWord(true);
          LineBorder line = new LineBorder(Color.WHITE, 4, true); // color, thickness, rounded
     label.setBorder(line);
     //add(label, BorderLayout.CENTER);
         
     scroll = new JScrollPane();        
     
-    scroll.getVerticalScrollBar().setValue(scroll.getVerticalScrollBar().getMaximum());
+    scroll.getVerticalScrollBar().setValue(scroll.getVerticalScrollBar().getMaximum()+1);
         
         panel2.add(label);
         fondo.add(scroll);
@@ -203,6 +216,20 @@ comentario.setText("");
             new GridLayout(5, 1,0,10));
         }
         
+    }
+    
+    public void cerrar(){
+    try{
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addWindowListener(new WindowAdapter(){
+            
+            public void windowClosing(WindowEvent evt){
+            
+            }
+    });
+    }catch(Exception e){
+    
+    }
     }
 
   

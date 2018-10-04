@@ -4,27 +4,36 @@ import Controlador.Coordinador;
 import Modelo.FTPUploader;
 import Modelo.TablaProcesos;
 import Modelo.autoVo;
+import Modelo.chatVo;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
 import static Vista.Inicio.escritorio;
 import static Vista.Inicio.lblid;
+import com.sun.awt.AWTUtilities;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 import java.beans.PropertyVetoException;
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.CheckBox;
 import javax.swing.AbstractCellEditor;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -36,17 +45,16 @@ public class ActRegistro extends javax.swing.JInternalFrame {
 
     private File src1File;
     public int idusuario;
-    ActRegistro act;
+    public ActRegistro act;
     TablaProcesos t = new TablaProcesos();
     private String src1Name;
-  
-  
-  DefaultListModel listModel = new DefaultListModel();
-  ArrayList<autoVo> autos;
-    
+
+    DefaultListModel listModel = new DefaultListModel();
+    ArrayList<autoVo> autos;
+
     int rown = -1;
     int fila;
-
+    Icon icono;
     public ActRegistro() {
         initComponents();
         TableColumn agregarColumn;
@@ -54,11 +62,15 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         agregarColumn.setCellEditor(new myeditor(tbProcesos));
         agregarColumn.setCellRenderer(new myrenderer(true));
         this.llenarLista();
+        lbLeido.setVisible(false);
+            
+        
+        
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
-        
+
         //this.getUsuario(1);
     }
 
@@ -89,6 +101,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         comentarios = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         btnChat = new javax.swing.JButton();
+        notificacion = new javax.swing.JPanel();
+        lbLeido = new javax.swing.JLabel();
+        lbIcono = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -122,19 +137,15 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         txtOrden.setPlaceholder("Ingrese numero de orden");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Orden No.");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Cliente:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Auto:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Placa:");
 
         btnBuscar.setBackground(new java.awt.Color(204, 0, 51));
@@ -149,19 +160,15 @@ public class ActRegistro extends javax.swing.JInternalFrame {
 
         lbOrden.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbOrden.setForeground(new java.awt.Color(102, 102, 102));
-        lbOrden.setText("1001");
 
         lbCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbCliente.setForeground(new java.awt.Color(102, 102, 102));
-        lbCliente.setText("Jonathan Oswaldo Bautista Valencia");
 
         lbAuto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbAuto.setForeground(new java.awt.Color(102, 102, 102));
-        lbAuto.setText("Camaro");
 
         lbPlaca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbPlaca.setForeground(new java.awt.Color(102, 102, 102));
-        lbPlaca.setText("XLR8");
 
         list.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Activos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         list.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -190,12 +197,12 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                    .addComponent(lbPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -204,24 +211,24 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(lbOrden))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
-                            .addComponent(lbCliente)))
+                            .addComponent(lbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBuscar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(lbAuto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(lbPlaca))
+                    .addComponent(lbPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,6 +306,32 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             }
         });
 
+        lbLeido.setBackground(new java.awt.Color(0, 0, 0));
+        lbLeido.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        lbLeido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLeido.setText("0");
+        lbLeido.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        lbIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/notofi_off.png"))); // NOI18N
+
+        javax.swing.GroupLayout notificacionLayout = new javax.swing.GroupLayout(notificacion);
+        notificacion.setLayout(notificacionLayout);
+        notificacionLayout.setHorizontalGroup(
+            notificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(notificacionLayout.createSequentialGroup()
+                .addComponent(lbIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(lbLeido)
+                .addContainerGap())
+        );
+        notificacionLayout.setVerticalGroup(
+            notificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(notificacionLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbLeido))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -307,10 +340,12 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnChat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(notificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -327,7 +362,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(btnChat)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(notificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -364,33 +401,40 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void llenarLista(){
-    autos = Coordinador.getPendientes();
-        
-    for(int i=0; i<autos.size(); i++) {
-    //Añadir cada elemento del ArrayList en el modelo de la lista
-    listModel.addElement(autos.get(i).getMarca()+" "+ autos.get(i).getPlaca()+" "+autos.get(i).getModelo());
-}
+    public void llenarLista() {
+        autos = Coordinador.getPendientes();
+
+        for (int i = 0; i < autos.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.addElement(autos.get(i).getMarca() + " " + autos.get(i).getPlaca() + " " + autos.get(i).getModelo());
+        }
 //Asociar el modelo de lista al JList
-list.setModel(listModel);
+        list.setModel(listModel);
     }
-        
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ordenVo ord = Coordinador.getOrden((txtOrden.getText().trim()));
+        chatVo chat = new chatVo();
         if (ord.getNumorden() != null) {
             lbOrden.setText((ord.getNumorden()));
             lbCliente.setText(ord.getNomcliente());
             lbAuto.setText(ord.getModelo());
             lbPlaca.setText(ord.getPlaca());
 
-            t.visualizar(tbProcesos,(txtOrden.getText().trim()));
+            chat.setId_orden(ord.getIdorden());
+            int noleido = Coordinador.mensajesLeidos(chat);
+            lbLeido.setText(Integer.toString(noleido));
+
+            t.visualizar(tbProcesos, (txtOrden.getText().trim()));
             btnChat.setEnabled(true);
+            notificacion(lbLeido.getText());
         } else {
             JOptionPane.showMessageDialog(null, "Codigo no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
         }
 
 
     }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     private void tbProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseClicked
         fila = tbProcesos.getSelectedRow();
@@ -412,39 +456,37 @@ list.setModel(listModel);
                 ((JButton) value).doClick();
                 JButton boton = (JButton) value;
 
-
                 int valor = (int) tbProcesos.getValueAt(rown, 0);
-              
+
                 procesoVo pro = new procesoVo();
-                
+
                 String proceso = (String) tbProcesos.getValueAt(rown, 2);
                 System.out.println(proceso);
                 String orden = lbOrden.getText();
-                
-                
-                if(boton.getName().equals("v")){
-                  JButton bot = boton;
-                    try{
-                JFileChooser dir = new JFileChooser();
-        int option = dir.showOpenDialog(this);
-        if (option == JFileChooser.APPROVE_OPTION) {
-        src1File = dir.getSelectedFile();
-            String fileName = dir.getName(dir.getSelectedFile());
-            src1Name = fileName;
-            
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-            
-            FTPUploader ftpUploader = new FTPUploader("www.verifycar.com.mx", "talleres@verifycar.com.mx", "pruebataller",src1File.getPath(),proceso+orden+".jpg","/img/procesos/");
-            pro.setIdproceso(valor);
-            pro.setImagen_proceso(proceso+orden+".jpg");
-            Coordinador.updateImagenProceso(pro);
-            
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            
-            t.visualizar(tbProcesos,(lbOrden.getText().trim()));
-        }
-        
-                     }catch(Exception ex){
+
+                if (boton.getName().equals("v")) {
+                    JButton bot = boton;
+                    try {
+                        JFileChooser dir = new JFileChooser();
+                        int option = dir.showOpenDialog(this);
+                        if (option == JFileChooser.APPROVE_OPTION) {
+                            src1File = dir.getSelectedFile();
+                            String fileName = dir.getName(dir.getSelectedFile());
+                            src1Name = fileName;
+
+                            this.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+
+                            FTPUploader ftpUploader = new FTPUploader("www.verifycar.com.mx", "talleres@verifycar.com.mx", "pruebataller", src1File.getPath(), proceso + orden + ".jpg", "/img/procesos/");
+                            pro.setIdproceso(valor);
+                            pro.setImagen_proceso(proceso + orden + ".jpg");
+                            Coordinador.updateImagenProceso(pro);
+
+                            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+                            t.visualizar(tbProcesos, (lbOrden.getText().trim()));
+                        }
+
+                    } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                     }
 
@@ -483,10 +525,12 @@ list.setModel(listModel);
             escritorio.add(ch);//.setLocation(100, 0);
             ch.orden = (lbOrden.getText());
             ch.id = idusuario;
+            ch.act = act;
             ch.setCoordinador(miCoordinador);
 
             ch.show();
-
+            lbLeido.setText("0");
+            notificacion(lbLeido.getText());
         } else {
             ch.toFront();
         }
@@ -494,30 +538,46 @@ list.setModel(listModel);
 
     }//GEN-LAST:event_btnChatActionPerformed
 
+    public void notificacion(String label) {
+        //String num = lbLeido.getText();
+        int valor = Integer.parseInt(label);
+        
+        
+        if (valor > 0) {
+            icono = new ImageIcon(getClass().getResource("/Imagenes/notifi_on.png"));
+            lbIcono.setIcon(icono);
+            lbLeido.setVisible(true);            
+                        
+        } else if(valor == 0) {            
+            icono = new ImageIcon(getClass().getResource("/Imagenes/notofi_off.png"));
+            lbIcono.setIcon(icono);                      
+            lbLeido.setVisible(false);            
+                        
+        }
+    }
+
     private void tbProcesosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseReleased
 
-         int columna = tbProcesos.columnAtPoint(evt.getPoint());
-         int fila = tbProcesos.getSelectedRow();
-         
-        if(columna == 4){
- 
- procesoVo pro = new procesoVo();
- String status ;
- pro.setIdproceso((int)tbProcesos.getValueAt(fila, 0));
+        int columna = tbProcesos.columnAtPoint(evt.getPoint());
+        int fila = tbProcesos.getSelectedRow();
 
- if((boolean)tbProcesos.getValueAt(fila, 4) == true){
- status = "terminado";}
- else{ status= "procesando";}
- pro.setStatus(status);
- pro.setObservaciones((String)tbProcesos.getValueAt(fila, 3));
- 
- 
- Coordinador.updateProceso(pro);
- 
- 
- t.visualizar(tbProcesos, (lbOrden.getText().trim()));
+        if (columna == 4) {
 
-      
+            procesoVo pro = new procesoVo();
+            String status;
+            pro.setIdproceso((int) tbProcesos.getValueAt(fila, 0));
+
+            if ((boolean) tbProcesos.getValueAt(fila, 4) == true) {
+                status = "terminado";
+            } else {
+                status = "procesando";
+            }
+            pro.setStatus(status);
+            pro.setObservaciones((String) tbProcesos.getValueAt(fila, 3));
+
+            Coordinador.updateProceso(pro);
+
+            t.visualizar(tbProcesos, (lbOrden.getText().trim()));
 
         }
 
@@ -534,9 +594,7 @@ list.setModel(listModel);
 
     }//GEN-LAST:event_listMouseReleased
 
-public boolean estacerrado(Object obj) {
-
-
+    public boolean estacerrado(Object obj) {
 
         JInternalFrame[] activos = escritorio.getAllFrames();
         boolean cerrado = true;
@@ -571,9 +629,12 @@ public boolean estacerrado(Object obj) {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbAuto;
     private javax.swing.JLabel lbCliente;
+    private javax.swing.JLabel lbIcono;
+    private javax.swing.JLabel lbLeido;
     private javax.swing.JLabel lbOrden;
     private javax.swing.JLabel lbPlaca;
     private javax.swing.JList<String> list;
+    private javax.swing.JPanel notificacion;
     private rojerusan.RSTableMetro tbProcesos;
     private rojerusan.RSMetroTextFullPlaceHolder txtOrden;
     // End of variables declaration//GEN-END:variables
