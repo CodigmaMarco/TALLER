@@ -8,52 +8,45 @@ import javax.swing.JOptionPane;
 public class Conectarse {
 
     private Connection conn = null;
-    
+
     private final String host = "localhost";
     private final String db = "bd_taller";
     private final String user = "root";
-<<<<<<< HEAD
     private final String pass = "";
-    
+
     /*private final String host = "192.185.131.114";
     private final String db = "codigmac_tm";
     private final String user = "codigmac_luis";
     private final String pass = "departamento03";*/
-    
-=======
-    private final String pass = "";    
-    
-    */
-private final String host = "codigma.com.mx";
+  /*  private final String pass = "";
+    private final String host = "codigma.com.mx";
     private final String db = "codigmac_tm";
     private final String user = "codigmac_luis";
-    private final String pass = "departamento03";
->>>>>>> 7354949a17586ef2649de97280cbfc5ffb667619
-     
+    private final String pass = "departamento03";*/
+
     public Conectarse() {
         MySQLAccess();
     }
 
     private void MySQLAccess() {
 
-        
-          try {
+        try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
             // Setup the connection with the DB
-            conn = DriverManager.getConnection("jdbc:mysql://"+host+"/"+db,user,pass);
+            conn = DriverManager.getConnection("jdbc:mysql://" + host + "/" + db, user, pass);
             // Check the state of connection
-            if (conn!=null){
-            System.out.println("Conexión exitosa");
+            if (conn != null) {
+                System.out.println("Conexión exitosa");
             }
-          
+
         } catch (ClassNotFoundException | SQLException e) {
-            
+
             //JOptionPane.showMessageDialog(null,"Error en al conexiÃ³n"+" "+ e.getMessage(),"ERROR",JOptionPane.INFORMATION_MESSAGE);
             //System.out.println(e);  
         }
     }
-    
+
     public Connection getConn() {
         return conn;
     }
