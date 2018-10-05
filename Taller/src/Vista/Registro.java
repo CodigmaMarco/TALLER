@@ -14,8 +14,16 @@ import java.awt.Container;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
@@ -109,7 +117,7 @@ public class Registro extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        EnviarCorreo = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         lblGuia = new javax.swing.JLabel();
 
@@ -783,9 +791,14 @@ public class Registro extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Enviar por Telefono");
 
-        jButton6.setBackground(new java.awt.Color(237, 31, 36));
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Enviar");
+        EnviarCorreo.setBackground(new java.awt.Color(237, 31, 36));
+        EnviarCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        EnviarCorreo.setText("Enviar");
+        EnviarCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnviarCorreoActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(237, 31, 36));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -806,7 +819,7 @@ public class Registro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(EnviarCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblGuia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -823,7 +836,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton6))
+                    .addComponent(EnviarCorreo))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -1063,6 +1076,43 @@ public class Registro extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void EnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarCorreoActionPerformed
+        sendEmail();
+
+    }//GEN-LAST:event_EnviarCorreoActionPerformed
+
+    public void sendEmail() {
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("magm9533@gmail.com", "contraseña");
+            }
+        });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("magm9533@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("gomezrios.luismartin@gmail.com"));
+            message.setSubject("Holis");
+            message.setText("Que onda pinche putito :v");
+
+            Transport.send(message);
+            JOptionPane.showMessageDialog(this, "Su mensaje ha sido enviado");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void listarCliente() {
         DefaultListModel modelo = new DefaultListModel();
         ArrayList<clienteVo> cliente = miCoordinador.buscarUsuario();
@@ -1147,6 +1197,7 @@ public class Registro extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton EnviarCorreo;
     private rojerusan.RSComboMetro boxArea;
     private javax.swing.JButton btnActivadorAuto;
     private javax.swing.JButton btnActivadorRegistro;
@@ -1163,7 +1214,6 @@ public class Registro extends javax.swing.JInternalFrame {
     private rojerusan.RSMetroTextFullPlaceHolder correo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

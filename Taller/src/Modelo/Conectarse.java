@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class Conectarse {
 
     private Connection conn = null;
-<<<<<<< HEAD
+
 
     private final String host = "localhost";
     private final String db = "bd_taller";
@@ -24,7 +24,7 @@ public class Conectarse {
     private final String db = "codigmac_tm";
     private final String user = "codigmac_luis";
     private final String pass = "departamento03";*/
-=======
+
     /*   
     private final String host = "codigma.com.mx";
     private final String db = "codigmac_tm";
@@ -35,12 +35,6 @@ public class Conectarse {
     private final String db = "codigmac_tm";
     private final String user = "codigmac_luis";
     private final String pass = "departamento03";*/
-    private final String host = "localhost";
-    private final String db = "bd_taller";
-    private final String user = "root";
-    private final String pass = "";     
-
->>>>>>> dbab2baa1549f19b49b8d5b41fbd60091cb2e7c6
 
     public Conectarse() {
         MySQLAccess();
