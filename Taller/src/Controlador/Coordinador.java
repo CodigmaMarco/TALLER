@@ -234,4 +234,9 @@ public class Coordinador {
         chatDao cha = new chatDao();
         cha.updateLectura(ch);
     }
+    
+    public static ArrayList<ordenVo> getHistorial(String date1, String date2){
+    ordenDao ord = new ordenDao();
+    return ord.getHistorial(date1, date2);
+    }
 }

@@ -1,45 +1,19 @@
 package Vista;
 
 import Controlador.Coordinador;
-import Modelo.FTPUploader;
 import Modelo.TablaProcesos;
 import Modelo.autoVo;
-import Modelo.chatVo;
 import Modelo.ordenVo;
-import Modelo.procesoVo;
 import static Vista.Inicio.escritorio;
-import static Vista.Inicio.lblid;
-import com.sun.awt.AWTUtilities;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Shape;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
-import java.beans.PropertyVetoException;
 import java.io.File;
-import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.control.CheckBox;
-import javax.swing.AbstractCellEditor;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.swing.table.DefaultTableModel;
 
 public class Historial extends javax.swing.JInternalFrame {
 
@@ -50,31 +24,43 @@ public class Historial extends javax.swing.JInternalFrame {
     public Historial act;
     TablaProcesos t = new TablaProcesos();
     private String src1Name;
-    Timer timer  = new Timer();
-    
-    DefaultListModel listModel = new DefaultListModel();
-    ArrayList<autoVo> autos;
 
-    int rown = -1;
-    int fila;
-    Icon icono;
+    String formato = "yyyy-MM-dd";
+    SimpleDateFormat sdf = new SimpleDateFormat(formato);
+    
+DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return false;       }   };
+    
+    String[] columnas = {"Orden", "Cliente", "Auto", "Placa", "Marca", "Color"};
+
     public Historial() {
         initComponents();
-        TableColumn agregarColumn;
-        agregarColumn = tbProcesos.getColumnModel().getColumn(3);
         
-        
-           
-        
-        
+                                           
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
-        this.miCoordinador = miCoordinador;
-        
-        //this.getUsuario(1);
+        this.miCoordinador = miCoordinador;               
     }
 
+    public void tablaHistorial(String fecha1, String fecha2){
+        modelo.setColumnIdentifiers(columnas);
+        ArrayList<ordenVo> h = Coordinador.getHistorial(fecha1, fecha2);
+        
+        if(h.size()>0){
+        for (int i = 0; i < h.size(); i++) {
+            modelo.addRow(new Object[]{h.get(i).getNumorden(),h.get(i).getNomcliente(),h.get(i).getModelo(),h.get(i).getPlaca(),
+            h.get(i).getMarca(),h.get(i).getColor()});
+        }
+        //Asignamos los datos del Modelo a la tabla
+        tbHistorial.setModel(modelo);
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Historial no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,7 +76,7 @@ public class Historial extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbProcesos = new rojerusan.RSTableMetro();
+        tbHistorial = new rojerusan.RSTableMetro();
         notificacion = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -181,8 +167,8 @@ public class Historial extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        tbProcesos.setForeground(new java.awt.Color(44, 44, 45));
-        tbProcesos.setModel(new javax.swing.table.DefaultTableModel(
+        tbHistorial.setForeground(new java.awt.Color(44, 44, 45));
+        tbHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -202,27 +188,27 @@ public class Historial extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbProcesos.setColorBackgoundHead(new java.awt.Color(44, 44, 45));
-        tbProcesos.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        tbProcesos.setColorBordeHead(new java.awt.Color(153, 153, 153));
-        tbProcesos.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
-        tbProcesos.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
-        tbProcesos.setColorSelBackgound(new java.awt.Color(237, 31, 36));
-        tbProcesos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbHistorial.setColorBackgoundHead(new java.awt.Color(44, 44, 45));
+        tbHistorial.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tbHistorial.setColorBordeHead(new java.awt.Color(153, 153, 153));
+        tbHistorial.setColorFilasForeground1(new java.awt.Color(237, 31, 36));
+        tbHistorial.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
+        tbHistorial.setColorSelBackgound(new java.awt.Color(237, 31, 36));
+        tbHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbProcesosMouseClicked(evt);
+                tbHistorialMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tbProcesosMouseReleased(evt);
+                tbHistorialMouseReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(tbProcesos);
-        if (tbProcesos.getColumnModel().getColumnCount() > 0) {
-            tbProcesos.getColumnModel().getColumn(0).setResizable(false);
-            tbProcesos.getColumnModel().getColumn(2).setResizable(false);
-            tbProcesos.getColumnModel().getColumn(3).setResizable(false);
-            tbProcesos.getColumnModel().getColumn(4).setResizable(false);
-            tbProcesos.getColumnModel().getColumn(5).setResizable(false);
+        jScrollPane1.setViewportView(tbHistorial);
+        if (tbHistorial.getColumnModel().getColumnCount() > 0) {
+            tbHistorial.getColumnModel().getColumn(0).setResizable(false);
+            tbHistorial.getColumnModel().getColumn(2).setResizable(false);
+            tbHistorial.getColumnModel().getColumn(3).setResizable(false);
+            tbHistorial.getColumnModel().getColumn(4).setResizable(false);
+            tbHistorial.getColumnModel().getColumn(5).setResizable(false);
         }
 
         javax.swing.GroupLayout notificacionLayout = new javax.swing.GroupLayout(notificacion);
@@ -309,25 +295,25 @@ public class Historial extends javax.swing.JInternalFrame {
     
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-                
+        Date date = date1.getDate();        
+        String   fecha = sdf.format(date);
         
-
+        Date d = date2.getDate();
+        String fecha2 = sdf.format(d);
+if(fecha.isEmpty() || fecha2.isEmpty()){
+ JOptionPane.showMessageDialog(null, "Ingrese una fecha valida", "Alerta!", JOptionPane.WARNING_MESSAGE);
+}
+else{        tablaHistorial(fecha,fecha2);}
     }//GEN-LAST:event_btnBuscarActionPerformed
-
    
-    
-   
-    private void tbProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseClicked
+    private void tbHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHistorialMouseClicked
       
-
-    }//GEN-LAST:event_tbProcesosMouseClicked
+    }//GEN-LAST:event_tbHistorialMouseClicked
     
 
-    private void tbProcesosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseReleased
-
+    private void tbHistorialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHistorialMouseReleased
        
-
-    }//GEN-LAST:event_tbProcesosMouseReleased
+    }//GEN-LAST:event_tbHistorialMouseReleased
 
 
     public boolean estacerrado(Object obj) {
@@ -363,7 +349,7 @@ public class Historial extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel notificacion;
-    private rojerusan.RSTableMetro tbProcesos;
+    private rojerusan.RSTableMetro tbHistorial;
     // End of variables declaration//GEN-END:variables
 }
 

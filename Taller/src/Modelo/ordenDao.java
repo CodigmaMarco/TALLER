@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ordenDao {
@@ -83,4 +84,41 @@ public class ordenDao {
         return or;
     }
 
+    public ArrayList<ordenVo> getHistorial(String fecha1, String fecha2) {
+        Conectarse conn = new Conectarse();
+        ArrayList<ordenVo> historial = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+            "SELECT  DISTINCT ord.numorden, cl.nombre_cliente, au.modelo, au.placa, au.marca, au.color "
+                    + " FROM proceso as pr "
+                    + " JOIN orden as ord on ord.idorden = pr.id_orden "
+                    + " JOIN cliente as cl on cl.idcliente = ord.id_cliente "
+                    + " JOIN auto as au on au.idauto = ord.id_auto "
+                    + " WHERE pr.fechainicio BETWEEN ? AND ?");
+
+            preparedStatement.setString(1, fecha1);
+            preparedStatement.setString(2, fecha2);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                ordenVo or = new ordenVo();
+                or.setNumorden(resultSet.getString(1));
+                or.setNomcliente(resultSet.getString(2));
+                or.setModelo(resultSet.getString(3));
+                or.setPlaca(resultSet.getString(4));
+                or.setMarca(resultSet.getString(5));
+                or.setColor(resultSet.getString(6));
+                
+                historial.add(or);
+
+            }
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return historial;
+    }
+    
 }
