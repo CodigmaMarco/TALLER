@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Coordinador;
+import Controlador.Principal;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -21,7 +22,7 @@ import javax.swing.Timer;
 public class Inicio extends javax.swing.JFrame {
 
     private Coordinador miCoordinador;
-
+    Principal p;
     public Inicio() {
         this.setResizable(false);
         initComponents();
@@ -73,7 +74,7 @@ public class Inicio extends javax.swing.JFrame {
             btnusuarios = new javax.swing.JButton();
             btnhistorial = new javax.swing.JButton();
 
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             addWindowListener(new java.awt.event.WindowAdapter() {
                 public void windowClosing(java.awt.event.WindowEvent evt) {
                     formWindowClosing(evt);
@@ -220,9 +221,11 @@ public class Inicio extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        if (JOptionPane.showConfirmDialog(this, "Esta a punto de salir\nde la aplicación.\n¿Desea continuar?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
+        if (JOptionPane.showConfirmDialog(this, "Esta a punto de cerrar sesión\nen la aplicación.\n¿Desea continuar?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
                 new ImageIcon(getClass().getResource("/Imagenes/adver1.png"))) == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            p = new Principal();
+            p.Iniciar();
+                        
         } else {
             this.setDefaultCloseOperation(0);
         }

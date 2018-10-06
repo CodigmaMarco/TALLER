@@ -7,7 +7,7 @@ import rojerusan.RSPanelsSlider;
 public class Principal {
     Coordinador miCoordinador;
     
-    private void Iniciar(){
+    public void Iniciar(){
         /**
          * Se instancian las clases
          */
