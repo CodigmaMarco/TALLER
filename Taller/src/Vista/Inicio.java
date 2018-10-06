@@ -245,6 +245,7 @@ public class Inicio extends javax.swing.JFrame {
             this.btnactivos.setSelected(true);
             this.btnregistrar.setSelected(false);
             this.btnusuarios.setSelected(false);
+            this.btnhistorial.setSelected(false);
         }
 
         if (estacerrado(are)) {
@@ -271,6 +272,7 @@ public class Inicio extends javax.swing.JFrame {
             this.btnactivos.setSelected(false);
             this.btnregistrar.setSelected(true);
             this.btnusuarios.setSelected(false);
+            this.btnhistorial.setSelected(false);
 
         }
 
@@ -296,7 +298,7 @@ public class Inicio extends javax.swing.JFrame {
             this.btnactivos.setSelected(false);
             this.btnregistrar.setSelected(false);
             this.btnusuarios.setSelected(true);
-
+            this.btnhistorial.setSelected(false);
         }
         if (estacerrado(us)) {
             try {
@@ -329,9 +331,29 @@ public class Inicio extends javax.swing.JFrame {
     
     
     
-
+Historial h;
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
-        // TODO add your handling code here:
+if (!this.btnhistorial.isSelected()) {
+            this.btnactivos.setSelected(false);
+            this.btnregistrar.setSelected(false);
+            this.btnusuarios.setSelected(false);
+            this.btnhistorial.setSelected(true);
+        }
+        if (estacerrado(h)) {
+            try {
+                h = new Historial();
+
+                // us.setCoordinador(miCoordinador);
+                escritorio.add(h);//.setLocation(100, 0);
+                h.setMaximum(true);
+                h.show();
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            // TODO add your handling code here:
+        } else {
+            h.toFront();
+        }
     }//GEN-LAST:event_btnhistorialActionPerformed
     class horas implements ActionListener {
 

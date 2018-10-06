@@ -32,7 +32,16 @@ public class Coordinador {
     private Usuarios usuario;
     private ActRegistro actRegistro;
     private Chat chat;
+    private Historial historial;
 
+    public Historial getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(Historial historial) {
+        this.historial = historial;
+    }
+    
     public Chat getChat() {
         return chat;
     }
