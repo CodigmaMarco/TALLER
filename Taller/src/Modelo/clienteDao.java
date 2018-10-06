@@ -9,18 +9,14 @@ import javax.swing.JOptionPane;
 public class clienteDao {
 
     public ArrayList<clienteVo> getCliente() {
-
         Conectarse conn = new Conectarse();
-
         ArrayList<clienteVo> clientes = new ArrayList();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT idcliente, nombre_cliente, colonia_cliente, calle_cliente, "
                     + "numcasa_cliente, telefono_cliente, correo_cliente, id_trabajador "
                     + "FROM cliente ");
-
             ResultSet resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next()) {
                 clienteVo cliente = new clienteVo();
                 cliente.setIdcliente(resultSet.getInt(1));
@@ -33,14 +29,45 @@ public class clienteDao {
 
                 clientes.add(cliente);
             }
-            //Cierra todo
             conn.getConn().close();
             resultSet.close();
             preparedStatement.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        //Retorna el usuario
+        return clientes;
+    }
+
+    public ArrayList<clienteVo> getClienteForName(String name) {
+        Conectarse conn = new Conectarse();
+        ArrayList<clienteVo> clientes = new ArrayList();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "SELECT idcliente, nombre_cliente, colonia_cliente, calle_cliente, "
+                    + "numcasa_cliente, telefono_cliente, correo_cliente, id_trabajador "
+                    + "FROM cliente "
+                    + "WHERE nombre_cliente like '"+name+"%'");
+           // preparedStatement.setString(1, name);
+            System.out.println(preparedStatement);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                clienteVo cliente = new clienteVo();
+                cliente.setIdcliente(resultSet.getInt(1));
+                cliente.setNombre(resultSet.getString(2));
+                cliente.setColonia(resultSet.getString(3));
+                cliente.setCalle(resultSet.getString(4));
+                cliente.setNum_casa(resultSet.getString(5));
+                cliente.setTelefono(resultSet.getString(6));
+                cliente.setId_trabajador(resultSet.getInt(8));
+
+                clientes.add(cliente);
+            }
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         return clientes;
     }
 
@@ -80,15 +107,14 @@ public class clienteDao {
                     "SELECT nombre_cliente "
                     + "FROM cliente "
                     + "WHERE idcliente = ? ");
-            
+
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                
-                
+
                 cliente.setNombre(resultSet.getString(1));
-                 }
+            }
             //Cierra todo
             conn.getConn().close();
             resultSet.close();

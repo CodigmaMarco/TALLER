@@ -8,7 +8,6 @@ import Modelo.clienteVo;
 import Modelo.ordenVo;
 import Modelo.procesoVo;
 import Modelo.servicioVo;
-import static Vista.Inicio.fecha;
 import java.awt.Component;
 import java.awt.Container;
 import java.text.SimpleDateFormat;
@@ -43,6 +42,7 @@ public class Registro extends javax.swing.JInternalFrame {
     public Registro() {
         initComponents();
         enableComponents(panelCliente, false);
+        lblIdCliente.setVisible(false);
         // enableComponents(panelAuto,false);
     }
 
@@ -64,10 +64,10 @@ public class Registro extends javax.swing.JInternalFrame {
         btnsiguiente = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnBuscarCliente = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         listCliente = new javax.swing.JList<>();
-        rSMetroTextFullPlaceHolder1 = new rojerusan.RSMetroTextFullPlaceHolder();
+        txtNombreCliente = new rojerusan.RSMetroTextFullPlaceHolder();
         btnActivadorRegistro = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -182,12 +182,12 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jButton2.setBackground(new java.awt.Color(237, 31, 36));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarCliente.setBackground(new java.awt.Color(237, 31, 36));
+        btnBuscarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBuscarClienteActionPerformed(evt);
             }
         });
 
@@ -203,12 +203,12 @@ public class Registro extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(listCliente);
 
-        rSMetroTextFullPlaceHolder1.setForeground(new java.awt.Color(0, 0, 0));
-        rSMetroTextFullPlaceHolder1.setBorderColor(new java.awt.Color(0, 0, 0));
-        rSMetroTextFullPlaceHolder1.setBotonColor(new java.awt.Color(0, 0, 0));
-        rSMetroTextFullPlaceHolder1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rSMetroTextFullPlaceHolder1.setPhColor(new java.awt.Color(102, 102, 102));
-        rSMetroTextFullPlaceHolder1.setPlaceholder("Nombre");
+        txtNombreCliente.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreCliente.setBorderColor(new java.awt.Color(0, 0, 0));
+        txtNombreCliente.setBotonColor(new java.awt.Color(0, 0, 0));
+        txtNombreCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtNombreCliente.setPhColor(new java.awt.Color(102, 102, 102));
+        txtNombreCliente.setPlaceholder("Nombre");
 
         btnActivadorRegistro.setBackground(new java.awt.Color(237, 31, 36));
         btnActivadorRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,9 +228,9 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(rSMetroTextFullPlaceHolder1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(btnBuscarCliente)))
                 .addGap(19, 19, 19))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -242,8 +242,8 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rSMetroTextFullPlaceHolder1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -956,12 +956,20 @@ public class Registro extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_formInternalFrameOpened
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        listarCliente();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+        if (txtNombreCliente.getText().equals("")) {
+            System.out.println("sin nombre");
+            listarCliente();
+        } else {
+            System.out.println("con nombre");
+            listarClienteConNombre();
+
+        }
+
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void listClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listClienteMouseClicked
-        DefaultListModel modelo = new DefaultListModel();
+        DefaultListModel modeloss = new DefaultListModel();
         idauto.removeAllElements();
         int con = 0;
         char[] arreglo = listCliente.getSelectedValue().toCharArray();
@@ -976,10 +984,10 @@ public class Registro extends javax.swing.JInternalFrame {
         lblIdCliente.setText(id);
         for (int i = 0; i < auto.size(); i++) {
             // modelo.addElement(i);
-            modelo.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
+            modeloss.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
             idauto.addElement(auto.get(i).getIdauto());
         }
-        listAuto.setModel(modelo);
+        listAuto.setModel(modeloss);
         btnActivadorAuto.setEnabled(true);
     }//GEN-LAST:event_listClienteMouseClicked
 
@@ -1062,8 +1070,7 @@ public class Registro extends javax.swing.JInternalFrame {
 
     private void listServiciosaRealizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listServiciosaRealizarMouseClicked
         txtverdescripcion.setText("");
-        txtverdescripcion.setText(String.valueOf(descrip.elementAt(listServiciosaRealizar.getSelectedIndex()))
-                + "\n" + String.valueOf(idservselec.elementAt(listServiciosaRealizar.getSelectedIndex())));
+        txtverdescripcion.setText(String.valueOf(descrip.elementAt(listServiciosaRealizar.getSelectedIndex())));
 
     }//GEN-LAST:event_listServiciosaRealizarMouseClicked
 
@@ -1114,12 +1121,21 @@ public class Registro extends javax.swing.JInternalFrame {
     }
 
     public void listarCliente() {
-        DefaultListModel modelo = new DefaultListModel();
+        DefaultListModel modeloss = new DefaultListModel();
         ArrayList<clienteVo> cliente = miCoordinador.buscarUsuario();
         for (int i = 0; i < cliente.size(); i++) {
-            modelo.addElement(cliente.get(i).getIdcliente() + "  " + cliente.get(i).getNombre());
+            modeloss.addElement(cliente.get(i).getIdcliente() + "  " + cliente.get(i).getNombre());
         }
-        listCliente.setModel(modelo);
+        listCliente.setModel(modeloss);
+    }
+
+    public void listarClienteConNombre() {
+        DefaultListModel modeloss = new DefaultListModel();
+        ArrayList<clienteVo> cliente = miCoordinador.buscarUsuarioConNombre(txtNombreCliente.getText());
+        for (int i = 0; i < cliente.size(); i++) {
+            modeloss.addElement(cliente.get(i).getIdcliente() + "  " + cliente.get(i).getNombre());
+        }
+        listCliente.setModel(modeloss);
     }
 
     public Integer IdOrden() {
@@ -1173,16 +1189,16 @@ public class Registro extends javax.swing.JInternalFrame {
 
     public void listarServicio() {
         idserv.removeAllElements();
-        DefaultListModel modelo = new DefaultListModel();
+        DefaultListModel modeloss = new DefaultListModel();
         int id = 1 + boxArea.getSelectedIndex();
         ArrayList<servicioVo> servicio = miCoordinador.buscarServicio(id);
 
         for (int i = 0; i < servicio.size(); i++) {
             // modelo.addElement(i);
-            modelo.addElement(servicio.get(i).getNombre());
+            modeloss.addElement(servicio.get(i).getNombre());
             idserv.addElement(servicio.get(i).getIdservicio());
         }
-        listServicios.setModel(modelo);
+        listServicios.setModel(modeloss);
         //btnActivadorAuto.setEnabled(true);
     }
 
@@ -1202,6 +1218,7 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActivadorAuto;
     private javax.swing.JButton btnActivadorRegistro;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardarAuto;
     private javax.swing.JButton btnGuardarCliente;
@@ -1213,7 +1230,6 @@ public class Registro extends javax.swing.JInternalFrame {
     private rojerusan.RSMetroTextFullPlaceHolder color;
     private rojerusan.RSMetroTextFullPlaceHolder correo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1253,12 +1269,12 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelAuto;
     private javax.swing.JPanel panelCliente;
     private rojerusan.RSMetroTextFullPlaceHolder placa;
-    private rojerusan.RSMetroTextFullPlaceHolder rSMetroTextFullPlaceHolder1;
     private rojerusan.RSPanelsSlider rSPanelsSlider2;
     private javax.swing.JPanel registrocliente;
     private javax.swing.JPanel registrofinalizado;
     private javax.swing.JPanel registroservicio;
     private rojerusan.RSMetroTextFullPlaceHolder telefono;
+    private rojerusan.RSMetroTextFullPlaceHolder txtNombreCliente;
     private javax.swing.JTextArea txtdescripcion;
     private javax.swing.JTextArea txtverdescripcion;
     private rojerusan.RSYearDate year;

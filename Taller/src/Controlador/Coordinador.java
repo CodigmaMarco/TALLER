@@ -96,6 +96,11 @@ public class Coordinador {
         return cliente.getCliente();
     }
 
+    public static ArrayList<clienteVo> buscarUsuarioConNombre(String name) {
+        clienteDao cliente = new clienteDao();
+        return cliente.getClienteForName(name);
+    }
+
     public static ArrayList<autoVo> buscarAuto(int id) {
         autoDao auto = new autoDao();
         return auto.getAuto(id);
