@@ -38,6 +38,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ActRegistro extends javax.swing.JInternalFrame {
 
@@ -48,7 +50,8 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     public ActRegistro act;
     TablaProcesos t = new TablaProcesos();
     private String src1Name;
-
+    Timer timer  = new Timer();
+    
     DefaultListModel listModel = new DefaultListModel();
     ArrayList<autoVo> autos;
 
@@ -59,18 +62,16 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         initComponents();
         TableColumn agregarColumn;
         agregarColumn = tbProcesos.getColumnModel().getColumn(3);
-        agregarColumn.setCellEditor(new myeditor(tbProcesos));
-        agregarColumn.setCellRenderer(new myrenderer(true));
         this.llenarLista();
         lbLeido.setVisible(false);
-            
+           
         
         
     }
 
     public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
-
+        timer.scheduleAtFixedRate(task, 0, 600000);  
         //this.getUsuario(1);
     }
 
@@ -413,6 +414,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     }
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+                
         ordenVo ord = Coordinador.getOrden((txtOrden.getText().trim()));
         chatVo chat = new chatVo();
         if (ord.getNumorden() != null) {
@@ -428,6 +430,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             t.visualizar(tbProcesos, (txtOrden.getText().trim()));
             btnChat.setEnabled(true);
             notificacion(lbLeido.getText());
+             
         } else {
             JOptionPane.showMessageDialog(null, "Codigo no encontrado", "Alerta!", JOptionPane.WARNING_MESSAGE);
         }
@@ -435,7 +438,27 @@ public class ActRegistro extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-
+    public void comprobarNotificacion(){
+        
+        if(!lbOrden.getText().isEmpty()){
+    ordenVo ord = Coordinador.getOrden((lbOrden.getText().trim()));
+    if(ord.getIdorden()>0) 
+    {
+    chatVo chat = new chatVo();
+     chat.setId_orden(ord.getIdorden());
+            int noleido = Coordinador.mensajesLeidos(chat);
+            lbLeido.setText(Integer.toString(noleido));
+            notificacion(lbLeido.getText());
+    }}
+    
+    }
+    
+    TimerTask task = new TimerTask(){
+       
+       public void run(){
+       comprobarNotificacion();    
+      }
+    };
     private void tbProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProcesosMouseClicked
         fila = tbProcesos.getSelectedRow();
 
@@ -610,6 +633,9 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         }
         return cerrado;
     }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnChat;
@@ -640,75 +666,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-class myrenderer extends JLabel implements TableCellRenderer {
 
-    boolean isBordered = true;
 
-    public myrenderer(boolean isBordered) {
-        this.isBordered = isBordered;
-        setOpaque(true);
-    }
 
-    public Component getTableCellRendererComponent(JTable table, Object color, boolean isSelected, boolean hasFocus, int row, int column) {
-        // if (row == table.getModel().getRowCount() - 1) {
-        return new JButton("Subir Imagen");
-        // } else {
-        //    setBackground(new Color(0xffffff));
-        //  return this;
-        //  }
-    }
-}
 
-class myeditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
-
-    private File src1File;
-    private String src1Name;
-
-    Boolean currentValue;
-    JButton button;
-    protected static final String EDIT = "edit";
-    private JTable jTable1;
-
-    public myeditor(JTable jTable1) {
-        button = new JButton("SUBIR IMAGEN");
-        button.setActionCommand(EDIT);
-        button.addActionListener(this);
-        button.setBorderPainted(false);
-        this.jTable1 = jTable1;
-    }
-
-    public void actionPerformed(ActionEvent e) {
-
-        JFileChooser dir = new JFileChooser();
-        int option = dir.showOpenDialog(ActRegistro.jPanel2);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            src1File = dir.getSelectedFile();
-            String fileName = dir.getName(dir.getSelectedFile());
-
-            src1Name = fileName;
-            System.out.println(src1Name + "  " + src1File);
-            // checkSrc1.setSelected(true);
-            // cargarImagenes(1);
-        } else {
-            // checkSrc1.setSelected(false);
-        }
-
-        /*
-        JFileChooser selectorArchivos = new JFileChooser();
-        selectorArchivos.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-        int resultado = selectorArchivos.showOpenDialog(ActRegistro.jPanel2);*/
-    }
-
-    public Object getCellEditorValue() {
-        return currentValue;
-    }
-
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        // if (row == table.getModel().getRowCount() - 1) {
-        currentValue = (Boolean) value;
-        return button;
-        //   }
-        //  return new JLabel();
-    }
-}
