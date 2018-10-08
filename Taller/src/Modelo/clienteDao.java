@@ -46,7 +46,7 @@ public class clienteDao {
                     "SELECT idcliente, nombre_cliente, colonia_cliente, calle_cliente, "
                     + "numcasa_cliente, telefono_cliente, correo_cliente, id_trabajador "
                     + "FROM cliente "
-                    + "WHERE nombre_cliente like '"+name+"%'");
+                    + "WHERE nombre_cliente like '%"+name+"%'");
            // preparedStatement.setString(1, name);
             System.out.println(preparedStatement);
             ResultSet resultSet = preparedStatement.executeQuery();
