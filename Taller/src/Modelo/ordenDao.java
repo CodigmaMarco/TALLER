@@ -94,8 +94,7 @@ public class ordenDao {
                     + " JOIN orden as ord on ord.idorden = pr.id_orden "
                     + " JOIN cliente as cl on cl.idcliente = ord.id_cliente "
                     + " JOIN auto as au on au.idauto = ord.id_auto "
-                    + " WHERE pr.fechainicio BETWEEN ? AND ? "
-                    + "ORDER BY pr.fechainicio ");
+                    + " WHERE pr.fechainicio BETWEEN ? AND ?");
 
             preparedStatement.setString(1, fecha1);
             preparedStatement.setString(2, fecha2);

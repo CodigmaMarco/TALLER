@@ -235,7 +235,7 @@ public class Coordinador {
         cha.updateLectura(ch);
     }
     
-    public static ArrayList<ordenVo> getHistoriales(String date1, String date2){
+    public static ArrayList<ordenVo> getHistorial(String date1, String date2){
     ordenDao ord = new ordenDao();
     return ord.getHistorial(date1, date2);
     }

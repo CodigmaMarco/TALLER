@@ -1,31 +1,19 @@
 package Vista;
 
 import Controlador.Coordinador;
-import Modelo.Conectarse;
 import Modelo.TablaProcesos;
 import Modelo.autoVo;
 import Modelo.ordenVo;
 import static Vista.Inicio.escritorio;
-import com.mysql.jdbc.Connection;
 import java.io.File;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
 
 public class Historial extends javax.swing.JInternalFrame {
 
@@ -58,7 +46,7 @@ DefaultTableModel modelo = new DefaultTableModel() {
 
     public void tablaHistorial(String fecha1, String fecha2){
         modelo.setColumnIdentifiers(columnas);
-        ArrayList<ordenVo> h = Coordinador.getHistoriales(fecha1, fecha2);
+        ArrayList<ordenVo> h = Coordinador.getHistorial(fecha1, fecha2);
         
         if(h.size()>0){
         for (int i = 0; i < h.size(); i++) {
@@ -91,12 +79,16 @@ DefaultTableModel modelo = new DefaultTableModel() {
         tbHistorial = new rojerusan.RSTableMetro();
         notificacion = new javax.swing.JPanel();
 <<<<<<< HEAD
+<<<<<<< HEAD
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         calendarinicio = new rojerusan.RSDateChooser();
 =======
         btnReporte = new javax.swing.JButton();
 >>>>>>> 508eae0036d535f8e6b241e6773e404f262a9213
+=======
+        jButton1 = new javax.swing.JButton();
+>>>>>>> parent of 508eae0... LM
 
         setClosable(true);
 
@@ -241,14 +233,9 @@ DefaultTableModel modelo = new DefaultTableModel() {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        btnReporte.setBackground(new java.awt.Color(255, 255, 255));
-        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon_reporte.png"))); // NOI18N
-        btnReporte.setToolTipText("Generar Reporte");
-        btnReporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReporteActionPerformed(evt);
-            }
-        });
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon_reporte.png"))); // NOI18N
+        jButton1.setToolTipText("Generar Reporte");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -262,7 +249,7 @@ DefaultTableModel modelo = new DefaultTableModel() {
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addGap(28, 28, 28)
-                .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
         jPanel4Layout.setVerticalGroup(
@@ -274,7 +261,7 @@ DefaultTableModel modelo = new DefaultTableModel() {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(btnReporte)))
+                        .addComponent(jButton1)))
                 .addGap(45, 45, 45)
                 .addComponent(notificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -362,39 +349,6 @@ else{        tablaHistorial(fecha,fecha2);}
        
     }//GEN-LAST:event_tbHistorialMouseReleased
 
-    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
-Conectarse con = new Conectarse();
-        Connection conn = (Connection) con.getConn();
-        int fila = tbHistorial.getSelectedRow();
-        String orden = (String)tbHistorial.getValueAt(fila, 0);
-        
-        if(!orden.isEmpty()){
-            
-             try {           
-            JasperReport reporte = null;
-            
-//Filtro de parametros
-            Map parametro = new HashMap();
-            //nombre del parametro
-            parametro.put("orden",orden);
-            
-            String reportUrl = "/Reportes/ReporteRepair.jasper"; //path of your report source.
-             InputStream reportFile = null;
-             
-            //reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
-            reportFile = getClass().getResourceAsStream(reportUrl);
-
-            
-           JasperPrint print = JasperFillManager.fillReport(reportFile, parametro, conn);
-JasperViewer Jviewer = new JasperViewer(print, false);
-Jviewer.setVisible(true);
-            
-       
-        } catch (JRException ex) {
-            Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
-        }}
-    }//GEN-LAST:event_btnReporteActionPerformed
-
 
     public boolean estacerrado(Object obj) {
 
@@ -418,12 +372,16 @@ Jviewer.setVisible(true);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static rojerusan.RSDateChooser calendarinicio;
 =======
     private javax.swing.JButton btnReporte;
 >>>>>>> 508eae0036d535f8e6b241e6773e404f262a9213
+=======
+>>>>>>> parent of 508eae0... LM
     private com.toedter.calendar.JDateChooser date1;
     private com.toedter.calendar.JDateChooser date2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
