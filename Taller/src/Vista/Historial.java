@@ -78,17 +78,14 @@ DefaultTableModel modelo = new DefaultTableModel() {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHistorial = new rojerusan.RSTableMetro();
         notificacion = new javax.swing.JPanel();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         calendarinicio = new rojerusan.RSDateChooser();
-=======
+
         btnReporte = new javax.swing.JButton();
->>>>>>> 508eae0036d535f8e6b241e6773e404f262a9213
-=======
         jButton1 = new javax.swing.JButton();
->>>>>>> parent of 508eae0... LM
+
 
         setClosable(true);
 
@@ -371,14 +368,9 @@ else{        tablaHistorial(fecha,fecha2);}
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-<<<<<<< HEAD
-<<<<<<< HEAD
     public static rojerusan.RSDateChooser calendarinicio;
-=======
+
     private javax.swing.JButton btnReporte;
->>>>>>> 508eae0036d535f8e6b241e6773e404f262a9213
-=======
->>>>>>> parent of 508eae0... LM
     private com.toedter.calendar.JDateChooser date1;
     private com.toedter.calendar.JDateChooser date2;
     private javax.swing.JButton jButton1;
