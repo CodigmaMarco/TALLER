@@ -65,6 +65,7 @@ DefaultTableModel modelo = new DefaultTableModel() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rSProgressCircleBeanInfo1 = new rojerusan.RSProgressCircleBeanInfo();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -78,14 +79,10 @@ DefaultTableModel modelo = new DefaultTableModel() {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHistorial = new rojerusan.RSTableMetro();
         notificacion = new javax.swing.JPanel();
-
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         calendarinicio = new rojerusan.RSDateChooser();
-
-        btnReporte = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-
+        rSDateChooser2 = new rojerusan.RSDateChooser();
 
         setClosable(true);
 
@@ -111,6 +108,8 @@ DefaultTableModel modelo = new DefaultTableModel() {
                 .addComponent(jLabel1)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
+
+        jPanel2.setName(""); // NOI18N
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fechas:", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -264,22 +263,31 @@ DefaultTableModel modelo = new DefaultTableModel() {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        calendarinicio.setName("inicio"); // NOI18N
+        calendarinicio.setPlaceholder("Seleccionar fecha inicio");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(calendarinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(calendarinicio, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(rSDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(calendarinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rSDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calendarinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        calendarinicio.getAccessibleContext().setAccessibleName("calendarinicio");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -369,8 +377,6 @@ else{        tablaHistorial(fecha,fecha2);}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     public static rojerusan.RSDateChooser calendarinicio;
-
-    private javax.swing.JButton btnReporte;
     private com.toedter.calendar.JDateChooser date1;
     private com.toedter.calendar.JDateChooser date2;
     private javax.swing.JButton jButton1;
@@ -384,6 +390,8 @@ else{        tablaHistorial(fecha,fecha2);}
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel notificacion;
+    private rojerusan.RSDateChooser rSDateChooser2;
+    private rojerusan.RSProgressCircleBeanInfo rSProgressCircleBeanInfo1;
     private rojerusan.RSTableMetro tbHistorial;
     // End of variables declaration//GEN-END:variables
 }
