@@ -355,7 +355,7 @@ else{        tablaHistorial(fecha,fecha2);}
             Map parametro = new HashMap();
             //nombre del parametro
             parametro.put("orden",orden);
-            parametro.put("fondo", this.getClass().getResourceAsStream("/Imagenes/Reporte.jpg"));
+            parametro.put("fondo", this.getClass().getResourceAsStream("/Imagenes/Fondo3.jpg"));
             
             String reportUrl = "/Reportes/ReporteRepair.jasper"; //path of your report source.
             InputStream reportFile = null;
