@@ -28,7 +28,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        
+        lbAdmin.setVisible(false);
         this.repaint();
     }
 
@@ -68,6 +68,7 @@ public class Inicio extends javax.swing.JFrame {
             lblid = new javax.swing.JLabel();
             hora = new javax.swing.JLabel();
             fecha = new javax.swing.JLabel();
+            lbAdmin = new javax.swing.JLabel();
             jPanel1 = new javax.swing.JPanel();
             btnregistrar = new javax.swing.JButton();
             btnactivos = new javax.swing.JButton();
@@ -105,6 +106,7 @@ public class Inicio extends javax.swing.JFrame {
             escritorio.setLayer(lblid, javax.swing.JLayeredPane.DEFAULT_LAYER);
             escritorio.setLayer(hora, javax.swing.JLayeredPane.DEFAULT_LAYER);
             escritorio.setLayer(fecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
+            escritorio.setLayer(lbAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
             javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
             escritorio.setLayout(escritorioLayout);
@@ -113,13 +115,16 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(lblusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createSequentialGroup()
                     .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbAdmin))
                 .addComponent(hora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             escritorioLayout.setVerticalGroup(
                 escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(escritorioLayout.createSequentialGroup()
+                    .addComponent(lbAdmin)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(lblid)
                     .addGap(18, 18, 18)
                     .addComponent(lblusuario)
@@ -279,7 +284,7 @@ public class Inicio extends javax.swing.JFrame {
         if (estacerrado(re)) {
             try {
                 re = new Registro();
-
+                re.idadmin = Integer.parseInt(lbAdmin.getText());
                 // us.setCoordinador(miCoordinador);
                 escritorio.add(re);//.setLocation(100, 0);
                 re.setMaximum(true);
@@ -317,16 +322,18 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnusuariosActionPerformed
 
-    public static void boton(String nombre, int id) {
+    public static void boton(String nombre, int id, int admin) {
         btnusuarios.setEnabled(false);
         lblusuario.setText(nombre);
         lblid.setText("" + id);
+        lbAdmin.setText("" + admin);
     }
     
     public static void botonadmin(String nombre,int id){
     btnusuarios.setEnabled(true);
     lblusuario.setText(nombre);
     lblid.setText(""+id);
+    lbAdmin.setText("" + id);
     }
     
     
@@ -377,6 +384,7 @@ if (!this.btnhistorial.isSelected()) {
     public static javax.swing.JLabel fecha;
     public static javax.swing.JLabel hora;
     private javax.swing.JPanel jPanel1;
+    private static javax.swing.JLabel lbAdmin;
     public static javax.swing.JLabel lblid;
     private static javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
