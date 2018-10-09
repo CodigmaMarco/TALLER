@@ -29,6 +29,7 @@ import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
 
 public class Registro extends javax.swing.JInternalFrame {
+
     public int idadmin;
     private Coordinador miCoordinador;
     DefaultListModel modelos = new DefaultListModel();
@@ -226,6 +227,7 @@ public class Registro extends javax.swing.JInternalFrame {
         btnActivadorActualizar.setBackground(new java.awt.Color(237, 31, 36));
         btnActivadorActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActivadorActualizar.setText("Actualizar Cliente");
+        btnActivadorActualizar.setEnabled(false);
         btnActivadorActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActivadorActualizarActionPerformed(evt);
@@ -301,7 +303,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnActivadorAuto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -982,6 +984,11 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+        btnActivadorActualizar.setEnabled(false);
+        btnActivadorAuto.setEnabled(false);
+        DefaultListModel modeloss = new DefaultListModel();
+        modeloss.removeAllElements();
+        listAuto.setModel(modeloss);
         if (txtNombreCliente.getText().equals("")) {
             listarCliente();
         } else {
@@ -993,36 +1000,67 @@ public class Registro extends javax.swing.JInternalFrame {
 
     private void listClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listClienteMouseClicked
         DefaultListModel modeloss = new DefaultListModel();
+        enableComponents(panelCliente, false);
+        LimpiarPanelCliente();
         idauto.removeAllElements();
         ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
-        lblIdCliente.setText(""+idcliente.elementAt(listCliente.getSelectedIndex()));
+        lblIdCliente.setText("" + idcliente.elementAt(listCliente.getSelectedIndex()));
         for (int i = 0; i < auto.size(); i++) {
             modeloss.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
             idauto.addElement(auto.get(i).getIdauto());
         }
         listAuto.setModel(modeloss);
         btnActivadorAuto.setEnabled(true);
+        btnActivadorActualizar.setEnabled(true);
     }//GEN-LAST:event_listClienteMouseClicked
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
-        clienteVo cliente = new clienteVo();
-        cliente.setNombre(nombre.getText());
-        cliente.setColonia(colonia.getText());
-        cliente.setCalle(calle.getText());
-        cliente.setNum_casa(num_casa.getText());
-        cliente.setTelefono(telefono.getText());
-        cliente.setCorreo(correo.getText());
-        cliente.setId_trabajador(Integer.parseInt(Inicio.lblid.getText()));
 
-        if (nombre.getText().equals("") || colonia.getText().equals("") || calle.getText().equals("")
-                || num_casa.getText().equals("") || telefono.getText().equals("") || correo.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
-        } else {
-            miCoordinador.agregarCliente(cliente);
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            LimpiarPanelCliente();
-            enableComponents(panelCliente, false);
-            listarCliente();
+        if (btnGuardarCliente.getText().equals("Guardar")) {
+            clienteVo cliente = new clienteVo();
+            cliente.setNombre(nombre.getText());
+            cliente.setColonia(colonia.getText());
+            cliente.setCalle(calle.getText());
+            cliente.setNum_casa(num_casa.getText());
+            cliente.setTelefono(telefono.getText());
+            cliente.setCorreo(correo.getText());
+            cliente.setId_trabajador(Integer.parseInt(Inicio.lblid.getText()));
+
+            if (nombre.getText().equals("") || colonia.getText().equals("") || calle.getText().equals("")
+                    || num_casa.getText().equals("") || telefono.getText().equals("") || correo.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            } else {
+                miCoordinador.agregarCliente(cliente);
+                JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                LimpiarPanelCliente();
+                enableComponents(panelCliente, false);
+                listarCliente();
+            }
+        } else if (btnGuardarCliente.getText().equals("Actualizar")) {
+            clienteVo actualizado = new clienteVo();
+            if (nombre.getText().equals("") || colonia.getText().equals("") || calle.getText().equals("")
+                    || num_casa.getText().equals("") || telefono.getText().equals("") || correo.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            } else {
+
+                actualizado.setNombre(nombre.getText());
+                actualizado.setColonia(colonia.getText());
+                actualizado.setCalle(calle.getText());
+                actualizado.setNum_casa(num_casa.getText());
+                actualizado.setTelefono(telefono.getText());
+                actualizado.setCorreo(correo.getText());
+
+                int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de actualizar el registro?", "Actualización!", JOptionPane.YES_NO_OPTION);
+                if (resp == 0) {
+                    Coordinador.updateCliente(actualizado);
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    LimpiarPanelCliente();
+                    enableComponents(panelCliente, false);
+                    listarCliente();
+                }
+
+            }
+
         }
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
@@ -1039,6 +1077,7 @@ public class Registro extends javax.swing.JInternalFrame {
 
     private void btnActivadorRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorRegistroActionPerformed
         enableComponents(panelCliente, true);
+        LimpiarPanelCliente();
         btnGuardarCliente.setText("Guardar");
     }//GEN-LAST:event_btnActivadorRegistroActionPerformed
 
@@ -1123,7 +1162,21 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarServicioActionPerformed
 
     private void btnActivadorActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorActualizarActionPerformed
-        btnGuardarCliente.setText("Actualizar");
+        if (listCliente.getSelectedIndex() != -1) {
+            btnGuardarCliente.setText("Actualizar");
+            ArrayList<clienteVo> cliente = miCoordinador.buscarCliente(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+            for (int i = 0; i < cliente.size(); i++) {
+                nombre.setText(cliente.get(i).getNombre());
+                colonia.setText(cliente.get(i).getColonia());
+                calle.setText(cliente.get(i).getCalle());
+                num_casa.setText(cliente.get(i).getNum_casa());
+                telefono.setText(cliente.get(i).getTelefono());
+                correo.setText(cliente.get(i).getCorreo());
+            }
+            enableComponents(panelCliente, true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente");
+        }
     }//GEN-LAST:event_btnActivadorActualizarActionPerformed
 
     public void sendEmail() {
@@ -1161,7 +1214,7 @@ public class Registro extends javax.swing.JInternalFrame {
     public void listarCliente() {
         idcliente.removeAllElements();
         DefaultListModel modeloss = new DefaultListModel();
-        ArrayList<clienteVo> cliente = miCoordinador.buscarUsuario();
+        ArrayList<clienteVo> cliente = miCoordinador.buscarClientes(idadmin);
         for (int i = 0; i < cliente.size(); i++) {
             modeloss.addElement(cliente.get(i).getNombre());
             idcliente.addElement(cliente.get(i).getIdcliente());
@@ -1172,7 +1225,7 @@ public class Registro extends javax.swing.JInternalFrame {
     public void listarClienteConNombre() {
         idcliente.removeAllElements();
         DefaultListModel modeloss = new DefaultListModel();
-        ArrayList<clienteVo> cliente = miCoordinador.buscarUsuarioConNombre(txtNombreCliente.getText());
+        ArrayList<clienteVo> cliente = miCoordinador.buscarUsuarioConNombre(idadmin, txtNombreCliente.getText());
         for (int i = 0; i < cliente.size(); i++) {
             modeloss.addElement(cliente.get(i).getNombre());
             idcliente.addElement(cliente.get(i).getIdcliente());

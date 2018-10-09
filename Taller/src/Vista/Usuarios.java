@@ -15,20 +15,23 @@ import rojerusan.RSPanelsSlider;
  *
  * @author MAGM
  */
-public  class Usuarios extends javax.swing.JInternalFrame {
-    
+public class Usuarios extends javax.swing.JInternalFrame {
+
     int id_empleado;
     private Coordinador miCoordinador;
-DefaultTableModel modelo = new DefaultTableModel() {
+    DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int rowIndex, int columnIndex) {
             return false;
         }
     };
-DefaultTableModel modelo2 = new DefaultTableModel() {
+    DefaultTableModel modelo2 = new DefaultTableModel() {
         public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return false;       }   };
-    
+            return false;
+        }
+    };
+
     String[] columnas = {"ID", "Nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Tipo de trabajo"};
+
     public Usuarios() {
         initComponents();
         this.llenarTablaTrabajadores();
@@ -37,69 +40,70 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
 
     public void setCoordinador(Coordinador miCoordinador) {
         this.miCoordinador = miCoordinador;
-        
+
         //this.getUsuario(1);
     }
 
-    public void limpiarCampos(){
-    txtNombre3.setText("");
-    txtPaterno.setText("");
-    txtMaterno.setText("");
-    txtEdad.setText("");
-    txtTrabajo.setText("");
-    txtPass.setText("");
+    public void limpiarCampos() {
+        txtNombre3.setText("");
+        txtPaterno.setText("");
+        txtMaterno.setText("");
+        txtEdad.setText("");
+        txtTrabajo.setText("");
+        txtPass.setText("");
     }
-    
-    public void llenarTablaTrabajadores(){
-    modelo.setColumnIdentifiers(columnas);
+
+    public void llenarTablaTrabajadores() {
+        modelo.setColumnIdentifiers(columnas);
         ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
         //Ciclo para llenar tabla de productos
         for (int i = 0; i < p.size(); i++) {
 
-            modelo.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(),p.get(i).getAmaterno(),
+            modelo.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(), p.get(i).getAmaterno(),
                 p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
         }
         //Asignamos los datos del Modelo a la tabla
         tbTraba.setModel(modelo);
     }
-    
-    public void llenarTablaTrabajo(){
-    modelo2.setColumnIdentifiers(columnas);
+
+    public void llenarTablaTrabajo() {
+        modelo2.setColumnIdentifiers(columnas);
         ArrayList<trabajadorVo> p = Coordinador.getTrabajadores();
         //Ciclo para llenar tabla de productos
         for (int i = 0; i < p.size(); i++) {
 
-            modelo2.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(),p.get(i).getAmaterno(),
+            modelo2.addRow(new Object[]{p.get(i).getIdtrabajador(), p.get(i).getNombre(), p.get(i).getApaterno(), p.get(i).getAmaterno(),
                 p.get(i).getEdad(), p.get(i).getTipo_trabajo()});
         }
         //Asignamos los datos del Modelo a la tabla
         tbTrabajo.setModel(modelo2);
     }
-    
-    public void llenarCamposTrabajador(int id){
-    
+
+    public void llenarCamposTrabajador(int id) {
+
         trabajadorVo t = Coordinador.getTrabajadorID(id);
-        
+
         txtNombre2.setText(t.getNombre());
         txtPaterno2.setText(t.getApaterno());
         txtMaterno2.setText(t.getAmaterno());
         txtEdad2.setText(Integer.toString(t.getEdad()));
         txtTrabajo2.setText(t.getTipo_trabajo());
         txtPass2.setText(t.getPassword());
-        
+
     }
-    
+
     private void limpiarTabla() {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
     }
-    
+
     private void limpiarTabla2() {
         while (modelo2.getRowCount() > 0) {
             modelo2.removeRow(0);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -708,7 +712,7 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
             this.btnborrar.setSelected(false);
             this.btneditar.setSelected(true);
             rSPanelsSlider1.slidPanel(editar, RSPanelsSlider.direct.Right);
-            limpiarTabla(); 
+            limpiarTabla();
             llenarTablaTrabajadores();
         }
     }//GEN-LAST:event_btneditarActionPerformed
@@ -724,7 +728,7 @@ DefaultTableModel modelo2 = new DefaultTableModel() {
     }//GEN-LAST:event_txtNombre3KeyTyped
 
     private void txtPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaternoKeyTyped
-int longitud = txtPaterno.getText().length();
+        int longitud = txtPaterno.getText().length();
         if (longitud > 20) {
             getToolkit().beep();
 
@@ -734,7 +738,7 @@ int longitud = txtPaterno.getText().length();
     }//GEN-LAST:event_txtPaternoKeyTyped
 
     private void txtMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaternoKeyTyped
-int longitud = txtMaterno.getText().length();
+        int longitud = txtMaterno.getText().length();
         if (longitud > 20) {
             getToolkit().beep();
 
@@ -744,7 +748,7 @@ int longitud = txtMaterno.getText().length();
     }//GEN-LAST:event_txtMaternoKeyTyped
 
     private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
-int longitud = txtEdad.getText().length();
+        int longitud = txtEdad.getText().length();
         if (longitud > 2) {
             getToolkit().beep();
 
@@ -754,7 +758,7 @@ int longitud = txtEdad.getText().length();
     }//GEN-LAST:event_txtEdadKeyTyped
 
     private void txtTrabajoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTrabajoKeyTyped
-int longitud = txtTrabajo.getText().length();
+        int longitud = txtTrabajo.getText().length();
         if (longitud > 30) {
             getToolkit().beep();
 
@@ -764,7 +768,7 @@ int longitud = txtTrabajo.getText().length();
     }//GEN-LAST:event_txtTrabajoKeyTyped
 
     private void txtPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyTyped
-int longitud = txtPass.getText().length();
+        int longitud = txtPass.getText().length();
         if (longitud > 20) {
             getToolkit().beep();
 
@@ -775,26 +779,25 @@ int longitud = txtPass.getText().length();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-if(txtNombre3.getText().isEmpty() || txtPaterno.getText().isEmpty() || txtMaterno.getText().isEmpty() || txtEdad.getText().isEmpty()
-        || txtTrabajo.getText().isEmpty() || txtPass.getText().isEmpty()){
-JOptionPane.showMessageDialog(null, "Llenar todos los campos disponibles", "Información incompleta", JOptionPane.WARNING_MESSAGE);
-}
-else{
+        if (txtNombre3.getText().isEmpty() || txtPaterno.getText().isEmpty() || txtMaterno.getText().isEmpty() || txtEdad.getText().isEmpty()
+                || txtTrabajo.getText().isEmpty() || txtPass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llenar todos los campos disponibles", "Información incompleta", JOptionPane.WARNING_MESSAGE);
+        } else {
 
-trabajadorVo vo = new trabajadorVo();
+            trabajadorVo vo = new trabajadorVo();
 
-vo.setNombre(txtNombre3.getText());
-vo.setApaterno(txtPaterno.getText());
-vo.setAmaterno(txtMaterno.getText());
-vo.setEdad(Integer.parseInt(txtEdad.getText()));
-vo.setTipo_trabajo(txtTrabajo.getText());
-vo.setId_admin(1);
-vo.setPassword(txtPass.getText());
+            vo.setNombre(txtNombre3.getText());
+            vo.setApaterno(txtPaterno.getText());
+            vo.setAmaterno(txtMaterno.getText());
+            vo.setEdad(Integer.parseInt(txtEdad.getText()));
+            vo.setTipo_trabajo(txtTrabajo.getText());
+            vo.setId_admin(1);
+            vo.setPassword(txtPass.getText());
 
-miCoordinador.addTrabajador(vo);
-JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
-limpiarCampos();
-}
+            miCoordinador.addTrabajador(vo);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+            limpiarCampos();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtTrabajo2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTrabajo2KeyTyped
@@ -818,40 +821,39 @@ limpiarCampos();
     }//GEN-LAST:event_txtEdad2KeyTyped
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-trabajadorVo actualizado = new trabajadorVo();
-        if(txtNombre2.getText().isEmpty() && txtPaterno2.getText().isEmpty() && txtMaterno.getText().isEmpty() && txtEdad2.getText().isEmpty()
-        && txtTrabajo2.getText().isEmpty() && txtPass2.getText().isEmpty()){
-   JOptionPane.showMessageDialog(null, "Llenar todos los campos disponibles", "Información incompleta", JOptionPane.WARNING_MESSAGE);
-}
-else{
-        String myPass = new String(txtPass2.getPassword());
-actualizado.setIdtrabajador(id_empleado);
-actualizado.setNombre(txtNombre2.getText());
-actualizado.setApaterno(txtPaterno2.getText());
-actualizado.setAmaterno(txtMaterno2.getText());
-actualizado.setEdad(Integer.parseInt(txtEdad2.getText()));
-actualizado.setTipo_trabajo(txtTrabajo2.getText());
-actualizado.setPassword(myPass);
+        trabajadorVo actualizado = new trabajadorVo();
+        if (txtNombre2.getText().isEmpty() && txtPaterno2.getText().isEmpty() && txtMaterno.getText().isEmpty() && txtEdad2.getText().isEmpty()
+                && txtTrabajo2.getText().isEmpty() && txtPass2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llenar todos los campos disponibles", "Información incompleta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String myPass = new String(txtPass2.getPassword());
+            actualizado.setIdtrabajador(id_empleado);
+            actualizado.setNombre(txtNombre2.getText());
+            actualizado.setApaterno(txtPaterno2.getText());
+            actualizado.setAmaterno(txtMaterno2.getText());
+            actualizado.setEdad(Integer.parseInt(txtEdad2.getText()));
+            actualizado.setTipo_trabajo(txtTrabajo2.getText());
+            actualizado.setPassword(myPass);
 
-int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de actualizar el registro?", "Actualización!", JOptionPane.YES_NO_OPTION);
-if(resp == 0){
-Coordinador.updateTrabajador(actualizado);
-JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
-limpiarTabla();
-llenarTablaTrabajadores();
+            int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de actualizar el registro?", "Actualización!", JOptionPane.YES_NO_OPTION);
+            if (resp == 0) {
+                Coordinador.updateTrabajador(actualizado);
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                limpiarTabla();
+                llenarTablaTrabajadores();
 
-}
+            }
 
-}
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void tbTrabaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTrabaMouseClicked
-int seleccion = tbTraba.getSelectedRow();
+        int seleccion = tbTraba.getSelectedRow();
 
-int ide = (int) tbTraba.getValueAt(seleccion, 0);
-id_empleado = ide;
+        int ide = (int) tbTraba.getValueAt(seleccion, 0);
+        id_empleado = ide;
 
-llenarCamposTrabajador(ide);
+        llenarCamposTrabajador(ide);
     }//GEN-LAST:event_tbTrabaMouseClicked
 
     private void tbTrabajoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTrabajoMouseClicked
@@ -861,25 +863,25 @@ llenarCamposTrabajador(ide);
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         trabajadorVo v = new trabajadorVo();
         int fila = tbTrabajo.getSelectedRow();
-        int id_trabajador = (int)tbTrabajo.getValueAt(fila, 0);
-        String nombre = (String)tbTrabajo.getValueAt(fila, 1);
-        String paterno = (String)tbTrabajo.getValueAt(fila, 2);
-        String materno = (String)tbTrabajo.getValueAt(fila, 3);
-        String completo = nombre + " " +paterno + " "+ materno;
-        
-        int resp = JOptionPane.showConfirmDialog(null, "¿Está seguro de Eliminar el registro de: "+completo+"?");
-        
-        if(resp == 0 ){
-        v.setIdtrabajador(id_trabajador);
-        Coordinador.BorrarTrabajador(v);
-        JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
-        limpiarTabla2();
-        llenarTablaTrabajo();
+        int id_trabajador = (int) tbTrabajo.getValueAt(fila, 0);
+        String nombre = (String) tbTrabajo.getValueAt(fila, 1);
+        String paterno = (String) tbTrabajo.getValueAt(fila, 2);
+        String materno = (String) tbTrabajo.getValueAt(fila, 3);
+        String completo = nombre + " " + paterno + " " + materno;
+
+        int resp = JOptionPane.showConfirmDialog(null, "¿Está seguro de Eliminar el registro de: " + completo + "?");
+
+        if (resp == 0) {
+            v.setIdtrabajador(id_trabajador);
+            Coordinador.BorrarTrabajador(v);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+            limpiarTabla2();
+            llenarTablaTrabajo();
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnActuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActuaActionPerformed
-llenarTablaTrabajo();
+        llenarTablaTrabajo();
     }//GEN-LAST:event_btnActuaActionPerformed
 
 

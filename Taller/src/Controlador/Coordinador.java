@@ -100,14 +100,19 @@ public class Coordinador {
         return system.getAdministrador(nombre, password);
     }
 
-    public static ArrayList<clienteVo> buscarUsuario(int adm) {
+    public static ArrayList<clienteVo> buscarClientes(int adm) {
         clienteDao cliente = new clienteDao();
-        return cliente.getCliente(adm);
+        return cliente.getClientes(adm);
     }
 
-    public static ArrayList<clienteVo> buscarUsuarioConNombre(String name) {
+    public static ArrayList<clienteVo> buscarCliente(int id) {
         clienteDao cliente = new clienteDao();
-        return cliente.getClienteForName(name);
+        return cliente.getCliente(id);
+    }
+
+    public static ArrayList<clienteVo> buscarUsuarioConNombre(int adm, String name) {
+        clienteDao cliente = new clienteDao();
+        return cliente.getClienteForName(adm, name);
     }
 
     public static ArrayList<autoVo> buscarAuto(int id) {
@@ -144,6 +149,11 @@ public class Coordinador {
         trabajadorDao trabajador = new trabajadorDao();
         trabajador.updateTrabajador(t);
     }
+    
+       public static void updateCliente(clienteVo c) {
+        clienteDao cliente = new clienteDao();
+        cliente.updateCliente(c);
+    }
 
     public static void BorrarTrabajador(trabajadorVo t) {
         trabajadorDao trabajador = new trabajadorDao();
@@ -167,7 +177,7 @@ public class Coordinador {
 
     public static ArrayList<servicioVo> buscarServicioNombre(int id, String nombre) {
         servicioDao servicio = new servicioDao();
-        return servicio.getServicioNombre(id,nombre);
+        return servicio.getServicioNombre(id, nombre);
     }
 
     public static ArrayList<procesoVo> getProcesos(String orden) {
