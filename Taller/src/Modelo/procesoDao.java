@@ -111,8 +111,8 @@ public class procesoDao {
 
         try {
             String query = "insert into proceso (status, observaciones, fechainicio, "
-                    + "id_servicio, id_orden)"
-                    + " values (?, ?, ?, ?, ?)";
+                    + "id_servicio, id_orden, imagen_proceso)"
+                    + " values (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conex.getConn().prepareStatement(query);
             preparedStatement.setString(1, "procesando");
@@ -120,16 +120,18 @@ public class procesoDao {
             preparedStatement.setString(3, proceso.getFecha_inicio());
             preparedStatement.setInt(4, proceso.getId_servicio());
             preparedStatement.setInt(5, proceso.getId_orden());
-
+            preparedStatement.setString(6, proceso.getImagen_proceso());
             preparedStatement.execute();
 
             conex.getConn().close();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Registro");
+        
         }
     }
-    
+
     public void updateImagenProceso(procesoVo pro) {
         Conectarse conn = new Conectarse();
 
@@ -138,7 +140,7 @@ public class procesoDao {
                     "UPDATE proceso set imagen_proceso=? "
                     + "WHERE idproceso = ?");
 
-            preparedStatement.setString(1, pro.getImagen_proceso());            
+            preparedStatement.setString(1, pro.getImagen_proceso());
             preparedStatement.setInt(2, pro.getIdproceso());
 
             preparedStatement.executeUpdate();

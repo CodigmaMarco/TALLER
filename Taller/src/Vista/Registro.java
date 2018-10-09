@@ -1049,7 +1049,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 actualizado.setNum_casa(num_casa.getText());
                 actualizado.setTelefono(telefono.getText());
                 actualizado.setCorreo(correo.getText());
-
+                actualizado.setId_trabajador(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
                 int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de actualizar el registro?", "Actualización!", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     Coordinador.updateCliente(actualizado);
