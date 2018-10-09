@@ -7,14 +7,14 @@ import java.sql.SQLException;
 public class LoginDao {
 
     public LoginVo getTrabajador(String nombre, String password) {
-        System.out.println("hace consulta");
+        //System.out.println("hace consulta");
         Conectarse conn = new Conectarse();
 
         LoginVo usuario = new LoginVo();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
                     "SELECT idtrabajador, nombres_tra, apellidop_tra,"
-                    + "apellidom_tra, password  "
+                    + "apellidom_tra, password, id_admin  "
                     + "FROM trabajador "
                     + "WHERE nombres_tra =? and password =? ");
 
@@ -31,6 +31,7 @@ public class LoginDao {
                 usuario.setApellidop(resultSet.getString(3));
                 usuario.setApellidom(resultSet.getString(4));
                 usuario.setPassword(resultSet.getString(5));
+                usuario.setId_admin(resultSet.getInt(6));
                 // usuario.setApellidos(resultSet.getString(5));
 
             }

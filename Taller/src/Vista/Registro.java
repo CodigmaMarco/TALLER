@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
 
 public class Registro extends javax.swing.JInternalFrame {
-
+    public int idadmin;
     private Coordinador miCoordinador;
     DefaultListModel modelos = new DefaultListModel();
 
