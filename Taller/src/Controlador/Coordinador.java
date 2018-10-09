@@ -41,7 +41,7 @@ public class Coordinador {
     public void setHistorial(Historial historial) {
         this.historial = historial;
     }
-    
+
     public Chat getChat() {
         return chat;
     }
@@ -100,9 +100,9 @@ public class Coordinador {
         return system.getAdministrador(nombre, password);
     }
 
-    public static ArrayList<clienteVo> buscarUsuario() {
+    public static ArrayList<clienteVo> buscarUsuario(int adm) {
         clienteDao cliente = new clienteDao();
-        return cliente.getCliente();
+        return cliente.getCliente(adm);
     }
 
     public static ArrayList<clienteVo> buscarUsuarioConNombre(String name) {
@@ -163,6 +163,11 @@ public class Coordinador {
     public static ArrayList<servicioVo> buscarServicio(int id) {
         servicioDao servicio = new servicioDao();
         return servicio.getServicios(id);
+    }
+
+    public static ArrayList<servicioVo> buscarServicioNombre(int id, String nombre) {
+        servicioDao servicio = new servicioDao();
+        return servicio.getServicioNombre(id,nombre);
     }
 
     public static ArrayList<procesoVo> getProcesos(String orden) {
@@ -234,9 +239,9 @@ public class Coordinador {
         chatDao cha = new chatDao();
         cha.updateLectura(ch);
     }
-    
-    public static ArrayList<ordenVo> getHistorial(String date1, String date2){
-    ordenDao ord = new ordenDao();
-    return ord.getHistorial(date1, date2);
+
+    public static ArrayList<ordenVo> getHistorial(String date1, String date2) {
+        ordenDao ord = new ordenDao();
+        return ord.getHistorial(date1, date2);
     }
 }

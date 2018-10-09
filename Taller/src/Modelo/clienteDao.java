@@ -8,14 +8,19 @@ import javax.swing.JOptionPane;
 
 public class clienteDao {
 
-    public ArrayList<clienteVo> getCliente() {
+    public ArrayList<clienteVo> getCliente(int idadm) {
         Conectarse conn = new Conectarse();
         ArrayList<clienteVo> clientes = new ArrayList();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-                    "SELECT idcliente, nombre_cliente, colonia_cliente, calle_cliente, "
-                    + "numcasa_cliente, telefono_cliente, correo_cliente, id_trabajador "
-                    + "FROM cliente ");
+                    "SELECT cl.idcliente, cl.nombre_cliente, cl.telefono_cliente, "
+                    + "cl.colonia_cliente, cl.calle_cliente, "
+                    + "cl.numcasa_cliente, cl.correo_cliente "
+                    + "FROM cliente as cl\n"
+                    + "JOIN trabajador as tr on tr.idtrabajador = cl.id_trabajador\n"
+                    + "JOIN admin as adm on adm.idadmin = tr.id_admin\n"
+                    + "WHERE adm.idadmin = ?");
+            preparedStatement.setInt(1, idadm);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clienteVo cliente = new clienteVo();
@@ -46,8 +51,8 @@ public class clienteDao {
                     "SELECT idcliente, nombre_cliente, colonia_cliente, calle_cliente, "
                     + "numcasa_cliente, telefono_cliente, correo_cliente, id_trabajador "
                     + "FROM cliente "
-                    + "WHERE nombre_cliente like '%"+name+"%'");
-           // preparedStatement.setString(1, name);
+                    + "WHERE nombre_cliente like '%" + name + "%'");
+            // preparedStatement.setString(1, name);
             System.out.println(preparedStatement);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

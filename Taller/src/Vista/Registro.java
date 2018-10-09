@@ -24,6 +24,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
 
@@ -36,12 +37,14 @@ public class Registro extends javax.swing.JInternalFrame {
     Vector idserv = new Vector(20);
     Vector idservselec = new Vector(20);
     Vector idauto = new Vector(20);
+    Vector idcliente = new Vector(20);
 
     int contadordescripcion = 1;
 
     public Registro() {
         initComponents();
         enableComponents(panelCliente, false);
+        enableComponents(panelAuto, false);
         lblIdCliente.setVisible(false);
         // enableComponents(panelAuto,false);
     }
@@ -69,6 +72,7 @@ public class Registro extends javax.swing.JInternalFrame {
         listCliente = new javax.swing.JList<>();
         txtNombreCliente = new rojerusan.RSMetroTextFullPlaceHolder();
         btnActivadorRegistro = new javax.swing.JButton();
+        btnActivadorActualizar = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         listAuto = new javax.swing.JList<>();
@@ -94,8 +98,8 @@ public class Registro extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         boxArea = new rojerusan.RSComboMetro();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtNombreServicio = new javax.swing.JTextField();
+        btnBuscarServicio = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listServicios = new javax.swing.JList<>();
         jPanel7 = new javax.swing.JPanel();
@@ -219,23 +223,36 @@ public class Registro extends javax.swing.JInternalFrame {
             }
         });
 
+        btnActivadorActualizar.setBackground(new java.awt.Color(237, 31, 36));
+        btnActivadorActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActivadorActualizar.setText("Actualizar Cliente");
+        btnActivadorActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActivadorActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBuscarCliente)))
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnActivadorRegistro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscarCliente)))
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnActivadorRegistro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnActivadorActualizar)
+                        .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +264,9 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnActivadorRegistro))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActivadorRegistro)
+                    .addComponent(btnActivadorActualizar)))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AUTOMOVIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -280,10 +299,12 @@ public class Registro extends javax.swing.JInternalFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActivadorAuto))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActivadorAuto)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,8 +312,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnActivadorAuto)
-                .addContainerGap())
+                .addComponent(btnActivadorAuto))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -583,9 +603,14 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SERVICIOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(237, 31, 36));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("BUSCAR");
+        btnBuscarServicio.setBackground(new java.awt.Color(237, 31, 36));
+        btnBuscarServicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarServicio.setText("BUSCAR");
+        btnBuscarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarServicioActionPerformed(evt);
+            }
+        });
 
         listServicios.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane2.setViewportView(listServicios);
@@ -599,9 +624,9 @@ public class Registro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnBuscarServicio)))
                 .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
@@ -609,8 +634,8 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtNombreServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarServicio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -915,12 +940,14 @@ public class Registro extends javax.swing.JInternalFrame {
     private void btnatrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnatrasActionPerformed
         if (!this.btnatras.isSelected()) {
             rSPanelsSlider2.slidPanel(registrocliente, RSPanelsSlider.direct.Right);
+            descrip.removeAllElements();
+            idserv.removeAllElements();
+            idservselec.removeAllElements();
+            modelos.removeAllElements();
+            listServicios.setModel(modelos);
+            listServiciosaRealizar.setModel(modelos);
+            txtdescripcion.setText("");
         }
-        descrip.removeAllElements();
-        idserv.removeAllElements();
-        idservselec.removeAllElements();
-        modelos.removeAllElements();
-        listServiciosaRealizar.setModel(modelos);
     }//GEN-LAST:event_btnatrasActionPerformed
 
     private void btnfinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinalizarActionPerformed
@@ -943,12 +970,10 @@ public class Registro extends javax.swing.JInternalFrame {
                     proc.setId_orden(IdOrden());
                     miCoordinador.agregarProceso(proc);
                 }
-
+                rSPanelsSlider2.slidPanel(registrofinalizado, RSPanelsSlider.direct.Right);
             } else {
                 JOptionPane.showMessageDialog(null, "Ningun servicio seleccionado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             }
-
-            rSPanelsSlider2.slidPanel(registrofinalizado, RSPanelsSlider.direct.Right);
         }
     }//GEN-LAST:event_btnfinalizarActionPerformed
 
@@ -958,10 +983,8 @@ public class Registro extends javax.swing.JInternalFrame {
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         if (txtNombreCliente.getText().equals("")) {
-            System.out.println("sin nombre");
             listarCliente();
         } else {
-            System.out.println("con nombre");
             listarClienteConNombre();
 
         }
@@ -971,19 +994,9 @@ public class Registro extends javax.swing.JInternalFrame {
     private void listClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listClienteMouseClicked
         DefaultListModel modeloss = new DefaultListModel();
         idauto.removeAllElements();
-        int con = 0;
-        char[] arreglo = listCliente.getSelectedValue().toCharArray();
-        for (char caracter : arreglo) {
-            if (Character.isDigit(caracter)) {
-                con++;
-            }
-        }
-        String id = listCliente.getSelectedValue().substring(0, con);
-
-        ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(id));
-        lblIdCliente.setText(id);
+        ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+        lblIdCliente.setText(""+idcliente.elementAt(listCliente.getSelectedIndex()));
         for (int i = 0; i < auto.size(); i++) {
-            // modelo.addElement(i);
             modeloss.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
             idauto.addElement(auto.get(i).getIdauto());
         }
@@ -1002,18 +1015,31 @@ public class Registro extends javax.swing.JInternalFrame {
         cliente.setId_trabajador(Integer.parseInt(Inicio.lblid.getText()));
 
         if (nombre.getText().equals("") || colonia.getText().equals("") || calle.getText().equals("")
-                || num_casa.getText().equals("") || telefono.getText().equals("")) {
+                || num_casa.getText().equals("") || telefono.getText().equals("") || correo.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
             miCoordinador.agregarCliente(cliente);
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            //limpiarCampos();
+            LimpiarPanelCliente();
+            enableComponents(panelCliente, false);
             listarCliente();
         }
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
+    public void LimpiarPanelCliente() {
+        nombre.setText(null);
+        colonia.setText(null);
+        calle.setText(null);
+        num_casa.setText(null);
+        telefono.setText(null);
+        correo.setText(null);
+
+    }
+
+
     private void btnActivadorRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorRegistroActionPerformed
         enableComponents(panelCliente, true);
+        btnGuardarCliente.setText("Guardar");
     }//GEN-LAST:event_btnActivadorRegistroActionPerformed
 
     private void listAutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listAutoMouseClicked
@@ -1027,18 +1053,18 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActivadorAutoActionPerformed
 
     private void btnGuardarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAutoActionPerformed
-        autoVo auto = new autoVo();
-        auto.setPlaca(placa.getText());
-        auto.setModelo(modelo.getText());
-        auto.setMarca(marca.getText());
-        auto.setAño(String.valueOf(year.getYear()));
-        auto.setColor(color.getText());
-        auto.setIdcliente(Integer.parseInt(lblIdCliente.getText()));
 
         if (placa.getText().equals("") || modelo.getText().equals("") || marca.getText().equals("")
                 || color.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
+            autoVo auto = new autoVo();
+            auto.setPlaca(placa.getText());
+            auto.setModelo(modelo.getText());
+            auto.setMarca(marca.getText());
+            auto.setAño(String.valueOf(year.getYear()));
+            auto.setColor(color.getText());
+            auto.setIdcliente(Integer.parseInt(lblIdCliente.getText()));
             miCoordinador.agregarAuto(auto);
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             //limpiarCampos();
@@ -1088,8 +1114,20 @@ public class Registro extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_EnviarCorreoActionPerformed
 
-    public void sendEmail() {
+    private void btnBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarServicioActionPerformed
+        if (txtNombreServicio.getText().length() > 0) {
+            listarServicioNombre();
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese servicio a buscar");
+        }
+    }//GEN-LAST:event_btnBuscarServicioActionPerformed
 
+    private void btnActivadorActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorActualizarActionPerformed
+        btnGuardarCliente.setText("Actualizar");
+    }//GEN-LAST:event_btnActivadorActualizarActionPerformed
+
+    public void sendEmail() {
+        // ImageIcon unoL = new ImageIcon(getClass().getResource("/imagenes/imagen1.png"));
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -1099,7 +1137,7 @@ public class Registro extends javax.swing.JInternalFrame {
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("magm9533@gmail.com", "contraseña");
+                return new PasswordAuthentication("magm9533@gmail.com", "haystemas1");
             }
         });
 
@@ -1111,7 +1149,7 @@ public class Registro extends javax.swing.JInternalFrame {
                     InternetAddress.parse("gomezrios.luismartin@gmail.com"));
             message.setSubject("Holis");
             message.setText("Que onda pinche putito :v");
-
+            message.setHeader("Cosa uno", "Cosa dos");
             Transport.send(message);
             JOptionPane.showMessageDialog(this, "Su mensaje ha sido enviado");
 
@@ -1121,19 +1159,23 @@ public class Registro extends javax.swing.JInternalFrame {
     }
 
     public void listarCliente() {
+        idcliente.removeAllElements();
         DefaultListModel modeloss = new DefaultListModel();
         ArrayList<clienteVo> cliente = miCoordinador.buscarUsuario();
         for (int i = 0; i < cliente.size(); i++) {
-            modeloss.addElement(cliente.get(i).getIdcliente() + "  " + cliente.get(i).getNombre());
+            modeloss.addElement(cliente.get(i).getNombre());
+            idcliente.addElement(cliente.get(i).getIdcliente());
         }
         listCliente.setModel(modeloss);
     }
 
     public void listarClienteConNombre() {
+        idcliente.removeAllElements();
         DefaultListModel modeloss = new DefaultListModel();
         ArrayList<clienteVo> cliente = miCoordinador.buscarUsuarioConNombre(txtNombreCliente.getText());
         for (int i = 0; i < cliente.size(); i++) {
-            modeloss.addElement(cliente.get(i).getIdcliente() + "  " + cliente.get(i).getNombre());
+            modeloss.addElement(cliente.get(i).getNombre());
+            idcliente.addElement(cliente.get(i).getIdcliente());
         }
         listCliente.setModel(modeloss);
     }
@@ -1202,6 +1244,21 @@ public class Registro extends javax.swing.JInternalFrame {
         //btnActivadorAuto.setEnabled(true);
     }
 
+    public void listarServicioNombre() {
+        idserv.removeAllElements();
+        DefaultListModel modeloss = new DefaultListModel();
+        int id = 1 + boxArea.getSelectedIndex();
+        ArrayList<servicioVo> servicio = miCoordinador.buscarServicioNombre(id, txtNombreServicio.getText());
+
+        for (int i = 0; i < servicio.size(); i++) {
+            // modelo.addElement(i);
+            modeloss.addElement(servicio.get(i).getNombre());
+            idserv.addElement(servicio.get(i).getIdservicio());
+        }
+        listServicios.setModel(modeloss);
+        //btnActivadorAuto.setEnabled(true);
+    }
+
     public void enableComponents(Container container, boolean enable) {
         Component[] components = container.getComponents();
         for (Component component : components) {
@@ -1215,10 +1272,12 @@ public class Registro extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EnviarCorreo;
     private rojerusan.RSComboMetro boxArea;
+    private javax.swing.JButton btnActivadorActualizar;
     private javax.swing.JButton btnActivadorAuto;
     private javax.swing.JButton btnActivadorRegistro;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnBuscarServicio;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardarAuto;
     private javax.swing.JButton btnGuardarCliente;
@@ -1229,7 +1288,6 @@ public class Registro extends javax.swing.JInternalFrame {
     private rojerusan.RSMetroTextFullPlaceHolder colonia;
     private rojerusan.RSMetroTextFullPlaceHolder color;
     private rojerusan.RSMetroTextFullPlaceHolder correo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1255,7 +1313,6 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField jTextField1;
     public static javax.swing.JLabel lblGuia;
     private javax.swing.JLabel lblIdCliente;
     private javax.swing.JList<String> listAuto;
@@ -1275,6 +1332,7 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel registroservicio;
     private rojerusan.RSMetroTextFullPlaceHolder telefono;
     private rojerusan.RSMetroTextFullPlaceHolder txtNombreCliente;
+    private javax.swing.JTextField txtNombreServicio;
     private javax.swing.JTextArea txtdescripcion;
     private javax.swing.JTextArea txtverdescripcion;
     private rojerusan.RSYearDate year;
