@@ -6,7 +6,6 @@
 	<parameter name="orden" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="fondo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[SELECT ar.nombrearea,ser.nombre,CAST(pr.fechainicio as Date), cl.nombre_cliente, au.modelo, au.modelo, au.placa, au.marca, au.color
  FROM proceso as pr 
@@ -42,8 +41,8 @@ JOIN orden as ord on ord.idorden = pr.id_orden
 	<background>
 		<band height="760">
 			<image scaleImage="FillFrame">
-				<reportElement x="0" y="0" width="572" height="760" uuid="a4410054-b489-4cdb-8fbd-e65d82908c2b"/>
-				<imageExpression><![CDATA[$P{fondo}]]></imageExpression>
+				<reportElement x="0" y="0" width="572" height="760" uuid="213481f9-4dba-47b9-a233-c2f8b4bbb618"/>
+				<imageExpression><![CDATA["C:\\Users\\luism\\Documents\\GitHub\\Talleres\\TALLER\\Taller\\src\\Imagenes\\Fondo3.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
