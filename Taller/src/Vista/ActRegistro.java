@@ -422,7 +422,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             lbCliente.setText(ord.getNomcliente());
             lbAuto.setText(ord.getModelo());
             lbPlaca.setText(ord.getPlaca());
-            System.out.println(ord.getIdorden());
+            
             chat.setId_orden(ord.getIdorden());
             int noleido = Coordinador.mensajesLeidos(chat);
             lbLeido.setText(Integer.toString(noleido));
