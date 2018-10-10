@@ -284,20 +284,21 @@ public class Registro extends javax.swing.JInternalFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnActivadorAuto)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnActivadorAuto)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane7)
+                .addGap(18, 18, 18)
                 .addComponent(btnActivadorAuto))
         );
 
@@ -368,6 +369,11 @@ public class Registro extends javax.swing.JInternalFrame {
         correo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         correo.setPhColor(new java.awt.Color(44, 44, 45));
         correo.setPlaceholder("CORREO");
+        correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                correoKeyTyped(evt);
+            }
+        });
 
         calle.setForeground(new java.awt.Color(44, 44, 45));
         calle.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -375,6 +381,11 @@ public class Registro extends javax.swing.JInternalFrame {
         calle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         calle.setPhColor(new java.awt.Color(44, 44, 45));
         calle.setPlaceholder("CALLE");
+        calle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                calleKeyTyped(evt);
+            }
+        });
 
         num_casa.setForeground(new java.awt.Color(44, 44, 45));
         num_casa.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -450,6 +461,11 @@ public class Registro extends javax.swing.JInternalFrame {
         modelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         modelo.setPhColor(new java.awt.Color(44, 44, 45));
         modelo.setPlaceholder("MODELO");
+        modelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                modeloKeyTyped(evt);
+            }
+        });
 
         marca.setForeground(new java.awt.Color(0, 0, 0));
         marca.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -457,6 +473,11 @@ public class Registro extends javax.swing.JInternalFrame {
         marca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         marca.setPhColor(new java.awt.Color(44, 44, 45));
         marca.setPlaceholder("MARCA");
+        marca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                marcaKeyTyped(evt);
+            }
+        });
 
         placa.setForeground(new java.awt.Color(0, 0, 0));
         placa.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -464,6 +485,11 @@ public class Registro extends javax.swing.JInternalFrame {
         placa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         placa.setPhColor(new java.awt.Color(44, 44, 45));
         placa.setPlaceholder("PLACA");
+        placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                placaKeyTyped(evt);
+            }
+        });
 
         color.setForeground(new java.awt.Color(0, 0, 0));
         color.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -471,6 +497,11 @@ public class Registro extends javax.swing.JInternalFrame {
         color.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         color.setPhColor(new java.awt.Color(44, 44, 45));
         color.setPlaceholder("COLOR");
+        color.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                colorKeyTyped(evt);
+            }
+        });
 
         btnGuardarAuto.setBackground(new java.awt.Color(237, 31, 36));
         btnGuardarAuto.setForeground(new java.awt.Color(255, 255, 255));
@@ -1003,20 +1034,14 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void listClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listClienteMouseClicked
-        DefaultListModel modeloss = new DefaultListModel();
         enableComponents(panelCliente, false);
         LimpiarPanelCliente();
-        idauto.removeAllElements();
-        ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+        listarAuto();
         lblIdCliente.setText("" + idcliente.elementAt(listCliente.getSelectedIndex()));
-        for (int i = 0; i < auto.size(); i++) {
-            modeloss.addElement("Modelo: " + auto.get(i).getModelo() + "  Placas: " + auto.get(i).getPlaca());
-            idauto.addElement(auto.get(i).getIdauto());
-        }
-        listAuto.setModel(modeloss);
         btnActivadorAuto.setEnabled(true);
         btnActivadorActualizar.setEnabled(true);
     }//GEN-LAST:event_listClienteMouseClicked
+
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
 
@@ -1076,7 +1101,13 @@ public class Registro extends javax.swing.JInternalFrame {
         num_casa.setText(null);
         telefono.setText(null);
         correo.setText(null);
+    }
 
+    public void LimpiarPanelAuto() {
+        placa.setText(null);
+        color.setText(null);
+        modelo.setText(null);
+        marca.setText(null);
     }
 
 
@@ -1111,8 +1142,10 @@ public class Registro extends javax.swing.JInternalFrame {
             auto.setIdcliente(Integer.parseInt(lblIdCliente.getText()));
             miCoordinador.agregarAuto(auto);
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            //limpiarCampos();
-            listarCliente();
+            LimpiarPanelAuto();
+            listarAuto();
+            enableComponents(panelAuto, false);
+
         }
     }//GEN-LAST:event_btnGuardarAutoActionPerformed
 
@@ -1145,12 +1178,15 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listServiciosaRealizarMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        descrip.remove(listServiciosaRealizar.getSelectedIndex());
-        idservselec.remove(listServiciosaRealizar.getSelectedIndex());
-        modelos.remove(listServiciosaRealizar.getSelectedIndex());
-        listServiciosaRealizar.setModel(modelos);
-
-
+        if (listServiciosaRealizar.getSelectedIndex() != -1) {
+            descrip.remove(listServiciosaRealizar.getSelectedIndex());
+            idservselec.remove(listServiciosaRealizar.getSelectedIndex());
+            modelos.remove(listServiciosaRealizar.getSelectedIndex());
+            listServiciosaRealizar.setModel(modelos);
+            txtverdescripcion.setText(null);
+        }else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado un servicio a realizar");
+            }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void EnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarCorreoActionPerformed
@@ -1190,7 +1226,7 @@ public class Registro extends javax.swing.JInternalFrame {
         }
         int k = (int) evt.getKeyChar();
         if (k > 33 && k < 65 || k > 90 && k < 96 || k > 122) {
-            if (k != 241) {
+            if (k != 241 && k != 209 && k != 225 && k != 237 && k != 243 && k != 250 && k != 241) {
                 evt.setKeyChar((char) evt.VK_CLEAR);
                 getToolkit().beep();
             }
@@ -1198,19 +1234,21 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nombreKeyTyped
 
     private void coloniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_coloniaKeyTyped
-        if (nombre.getText().length() == 30) {
+        if (colonia.getText().length() == 30) {
             evt.setKeyChar((char) evt.VK_CLEAR);
             getToolkit().beep();
         }
         int k = (int) evt.getKeyChar();
         if (k > 32 && k < 48 || k > 57 && k < 65 || k > 90 && k < 97 || k > 122) {
-            evt.setKeyChar((char) evt.VK_CLEAR);
-            getToolkit().beep();
+            if (k != 241 && k != 209 && k != 225 && k != 237 && k != 243 && k != 250 && k != 241) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
         }
     }//GEN-LAST:event_coloniaKeyTyped
 
     private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
-        if (nombre.getText().length() == 10) {
+        if (telefono.getText().length() == 10) {
             evt.setKeyChar((char) evt.VK_CLEAR);
             getToolkit().beep();
         }
@@ -1224,17 +1262,121 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_telefonoKeyTyped
 
     private void num_casaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_casaKeyTyped
-        if (nombre.getText().length() == 5) {
+        if (num_casa.getText().length() == 5) {
             evt.setKeyChar((char) evt.VK_CLEAR);
             getToolkit().beep();
         }
 
         int k = (int) evt.getKeyChar();
         if (k < 48 || k > 57) {
+            if (k != 8) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
+        }
+    }//GEN-LAST:event_num_casaKeyTyped
+
+    private void calleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_calleKeyTyped
+        if (calle.getText().length() == 30) {
             evt.setKeyChar((char) evt.VK_CLEAR);
             getToolkit().beep();
         }
-    }//GEN-LAST:event_num_casaKeyTyped
+        int k = (int) evt.getKeyChar();
+        if (k > 32 && k < 48 || k > 57 && k < 65 || k > 90 && k < 97 || k > 122) {
+            if (k != 241 && k != 209 && k != 225 && k != 237 && k != 243 && k != 250 && k != 241) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
+        }
+    }//GEN-LAST:event_calleKeyTyped
+
+    private void correoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correoKeyTyped
+        if (correo.getText().length() == 50) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 31 && k < 48 || k > 57 && k < 64 || k > 90 && k < 97 || k > 122) {
+            if (k != 46 && k != 45 && k != 95) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
+        }
+    }//GEN-LAST:event_correoKeyTyped
+
+    private void placaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placaKeyTyped
+        if (placa.getText().length() == 10) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 31 && k < 48 || k > 57 && k < 65 || k > 90 && k < 97 || k > 122) {
+            if (k != 45) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
+        }
+        char l = evt.getKeyChar();
+        if (Character.isLowerCase(l)) {
+            String cad = ("" + l).toUpperCase();
+            l = cad.charAt(0);
+            evt.setKeyChar(l);
+        }
+    }//GEN-LAST:event_placaKeyTyped
+
+    private void marcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_marcaKeyTyped
+        if (marca.getText().length() == 20) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 33 && k < 65 || k > 90 && k < 97 || k > 122) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        char l = evt.getKeyChar();
+        if (Character.isLowerCase(l)) {
+            String cad = ("" + l).toUpperCase();
+            l = cad.charAt(0);
+            evt.setKeyChar(l);
+        }
+    }//GEN-LAST:event_marcaKeyTyped
+
+    private void modeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_modeloKeyTyped
+        if (modelo.getText().length() == 20) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 32 && k < 48 || k > 57 && k < 65 || k > 90 && k < 97 || k > 122) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        char l = evt.getKeyChar();
+        if (Character.isLowerCase(l)) {
+            String cad = ("" + l).toUpperCase();
+            l = cad.charAt(0);
+            evt.setKeyChar(l);
+        }
+    }//GEN-LAST:event_modeloKeyTyped
+
+    private void colorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_colorKeyTyped
+        if (color.getText().length() == 25) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 33 && k < 65 || k > 90 && k < 97 || k > 122) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        char l = evt.getKeyChar();
+        if (Character.isLowerCase(l)) {
+            String cad = ("" + l).toUpperCase();
+            l = cad.charAt(0);
+            evt.setKeyChar(l);
+        }
+    }//GEN-LAST:event_colorKeyTyped
 
     public void sendEmail() {
 
@@ -1266,6 +1408,18 @@ public class Registro extends javax.swing.JInternalFrame {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void listarAuto() {
+        DefaultListModel modeloss = new DefaultListModel();
+        idauto.removeAllElements();
+        ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+        for (int i = 0; i < auto.size(); i++) {
+            modeloss.addElement(auto.get(i).getModelo() + "  " + auto.get(i).getPlaca());
+            idauto.addElement(auto.get(i).getIdauto());
+        }
+        listAuto.setModel(modeloss);
+        btnActivadorAuto.setEnabled(true);
     }
 
     public void listarCliente() {

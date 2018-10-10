@@ -375,14 +375,16 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="18" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane7" min="-2" pref="262" max="-2" attributes="0"/>
-                                  <EmptySpace pref="19" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnActivadorAuto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="btnActivadorAuto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jScrollPane7" alignment="1" pref="279" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -390,8 +392,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane7" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jScrollPane7" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnActivadorAuto" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -647,6 +649,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="CORREO"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="correoKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="calle">
                           <Properties>
@@ -667,6 +672,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="CALLE"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="calleKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="num_casa">
                           <Properties>
@@ -799,6 +807,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="MODELO"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="modeloKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="marca">
                           <Properties>
@@ -819,6 +830,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="MARCA"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="marcaKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="placa">
                           <Properties>
@@ -839,6 +853,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="PLACA"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="placaKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="color">
                           <Properties>
@@ -859,6 +876,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="COLOR"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="colorKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnGuardarAuto">
                           <Properties>
