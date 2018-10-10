@@ -78,11 +78,11 @@ public ArrayList<chatVo> getMensajes(String orden){
         chatVo chat = new chatVo();
         try {
             PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-                    "select COUNT(*)"
-                            + " FROM chat"
-                            + " WHERE lectura <> 'leido'"
-                            + " OR lectura IS NULL"
-                            + " AND id_orden = ?");
+                    "select COUNT(cometario) "
+                            + " FROM chat "
+                            + " WHERE id_orden = ? "
+                            + " AND lectura <> 'leido' "
+                            + " OR lectura IS NULL" );
 
             preparedStatement.setInt(1, ch.getId_orden());
             ResultSet resultSet = preparedStatement.executeQuery();

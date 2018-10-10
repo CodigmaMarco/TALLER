@@ -422,7 +422,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
             lbCliente.setText(ord.getNomcliente());
             lbAuto.setText(ord.getModelo());
             lbPlaca.setText(ord.getPlaca());
-
+            
             chat.setId_orden(ord.getIdorden());
             int noleido = Coordinador.mensajesLeidos(chat);
             lbLeido.setText(Integer.toString(noleido));
@@ -613,6 +613,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
 
     private void listMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseReleased
         String ord = autos.get(list.getSelectedIndex()).getMarca();
+        txtOrden.setText((""));
         txtOrden.setText((ord));
 
     }//GEN-LAST:event_listMouseReleased
