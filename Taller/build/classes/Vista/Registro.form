@@ -17,9 +17,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="internalFrameOpened" listener="javax.swing.event.InternalFrameListener" parameters="javax.swing.event.InternalFrameEvent" handler="formInternalFrameOpened"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -327,6 +324,9 @@
                               <Color blue="66" green="66" red="66" type="rgb"/>
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="Nombre"/>
+                            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="32" green="35" red="f6" type="rgb"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnActivadorRegistro">
@@ -419,7 +419,7 @@
                                   <StringArray count="0"/>
                                 </Property>
                                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                                  <Color id="Cursor Por defecto"/>
+                                  <Color id="Cursor de Mano"/>
                                 </Property>
                                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -578,6 +578,9 @@
                               <Color blue="24" green="1f" red="ed" type="rgb"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombreKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="colonia">
                           <Properties>
@@ -598,6 +601,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="COLONIA"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="coloniaKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="telefono">
                           <Properties>
@@ -618,6 +624,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="TELEFONO"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="telefonoKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="correo">
                           <Properties>
@@ -678,6 +687,9 @@
                             </Property>
                             <Property name="placeholder" type="java.lang.String" value="NUMERO CASA"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="num_casaKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnGuardarCliente">
                           <Properties>
@@ -770,6 +782,9 @@
                       <SubComponents>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="modelo">
                           <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
                             </Property>
@@ -787,6 +802,9 @@
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="marca">
                           <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
                             </Property>
@@ -804,6 +822,9 @@
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="placa">
                           <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
                             </Property>
@@ -821,6 +842,9 @@
                         </Component>
                         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="color">
                           <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="2d" green="2c" red="2c" type="rgb"/>
                             </Property>

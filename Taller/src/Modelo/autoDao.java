@@ -60,9 +60,7 @@ public class autoDao {
             preparedStatement.setString(4, auto.getAño());
             preparedStatement.setInt(5, auto.getIdcliente());
             preparedStatement.setString(6, auto.getColor());
-
-
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
 
             conex.getConn().close();
         } catch (SQLException e) {

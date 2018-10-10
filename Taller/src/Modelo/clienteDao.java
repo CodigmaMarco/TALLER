@@ -181,6 +181,7 @@ public class clienteDao {
             preparedStatement.setString(5, cliente.getNum_casa());
             preparedStatement.setString(6, cliente.getCorreo());
             preparedStatement.setInt(7, cliente.getIdcliente());
+            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
 
             //Cierra todo

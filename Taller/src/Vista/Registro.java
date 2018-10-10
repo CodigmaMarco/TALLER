@@ -130,23 +130,6 @@ public class Registro extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(721, 535));
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(44, 44, 45));
 
@@ -214,6 +197,7 @@ public class Registro extends javax.swing.JInternalFrame {
         txtNombreCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtNombreCliente.setPhColor(new java.awt.Color(102, 102, 102));
         txtNombreCliente.setPlaceholder("Nombre");
+        txtNombreCliente.setSelectionColor(new java.awt.Color(246, 53, 50));
 
         btnActivadorRegistro.setBackground(new java.awt.Color(237, 31, 36));
         btnActivadorRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -276,7 +260,7 @@ public class Registro extends javax.swing.JInternalFrame {
         jScrollPane7.setBorder(null);
 
         listAuto.setBackground(new java.awt.Color(240, 240, 240));
-        listAuto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        listAuto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listAuto.setSelectionBackground(new java.awt.Color(204, 204, 204));
         listAuto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -348,6 +332,11 @@ public class Registro extends javax.swing.JInternalFrame {
         nombre.setPhColor(new java.awt.Color(44, 44, 45));
         nombre.setPlaceholder("NOMBRE");
         nombre.setSelectionColor(new java.awt.Color(237, 31, 36));
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
+            }
+        });
 
         colonia.setForeground(new java.awt.Color(44, 44, 45));
         colonia.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -355,6 +344,11 @@ public class Registro extends javax.swing.JInternalFrame {
         colonia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         colonia.setPhColor(new java.awt.Color(44, 44, 45));
         colonia.setPlaceholder("COLONIA");
+        colonia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                coloniaKeyTyped(evt);
+            }
+        });
 
         telefono.setForeground(new java.awt.Color(44, 44, 45));
         telefono.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -362,6 +356,11 @@ public class Registro extends javax.swing.JInternalFrame {
         telefono.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         telefono.setPhColor(new java.awt.Color(44, 44, 45));
         telefono.setPlaceholder("TELEFONO");
+        telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                telefonoKeyTyped(evt);
+            }
+        });
 
         correo.setForeground(new java.awt.Color(44, 44, 45));
         correo.setBorderColor(new java.awt.Color(44, 44, 45));
@@ -383,6 +382,11 @@ public class Registro extends javax.swing.JInternalFrame {
         num_casa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         num_casa.setPhColor(new java.awt.Color(44, 44, 45));
         num_casa.setPlaceholder("NUMERO CASA");
+        num_casa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                num_casaKeyTyped(evt);
+            }
+        });
 
         btnGuardarCliente.setBackground(new java.awt.Color(237, 31, 36));
         btnGuardarCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -440,24 +444,28 @@ public class Registro extends javax.swing.JInternalFrame {
 
         panelAuto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRAR AUTOMOVIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
+        modelo.setForeground(new java.awt.Color(0, 0, 0));
         modelo.setBorderColor(new java.awt.Color(44, 44, 45));
         modelo.setBotonColor(new java.awt.Color(44, 44, 45));
         modelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         modelo.setPhColor(new java.awt.Color(44, 44, 45));
         modelo.setPlaceholder("MODELO");
 
+        marca.setForeground(new java.awt.Color(0, 0, 0));
         marca.setBorderColor(new java.awt.Color(44, 44, 45));
         marca.setBotonColor(new java.awt.Color(44, 44, 45));
         marca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         marca.setPhColor(new java.awt.Color(44, 44, 45));
         marca.setPlaceholder("MARCA");
 
+        placa.setForeground(new java.awt.Color(0, 0, 0));
         placa.setBorderColor(new java.awt.Color(44, 44, 45));
         placa.setBotonColor(new java.awt.Color(44, 44, 45));
         placa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         placa.setPhColor(new java.awt.Color(44, 44, 45));
         placa.setPlaceholder("PLACA");
 
+        color.setForeground(new java.awt.Color(0, 0, 0));
         color.setBorderColor(new java.awt.Color(44, 44, 45));
         color.setBotonColor(new java.awt.Color(44, 44, 45));
         color.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -979,10 +987,6 @@ public class Registro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnfinalizarActionPerformed
 
-    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-
-    }//GEN-LAST:event_formInternalFrameOpened
-
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         btnActivadorActualizar.setEnabled(false);
         btnActivadorAuto.setEnabled(false);
@@ -1006,7 +1010,7 @@ public class Registro extends javax.swing.JInternalFrame {
         ArrayList<autoVo> auto = miCoordinador.buscarAuto(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
         lblIdCliente.setText("" + idcliente.elementAt(listCliente.getSelectedIndex()));
         for (int i = 0; i < auto.size(); i++) {
-            modeloss.addElement(auto.get(i).getPlaca() + "  " + auto.get(i).getModelo());
+            modeloss.addElement("Modelo: " + auto.get(i).getModelo() + "  Placas: " + auto.get(i).getPlaca());
             idauto.addElement(auto.get(i).getIdauto());
         }
         listAuto.setModel(modeloss);
@@ -1049,7 +1053,8 @@ public class Registro extends javax.swing.JInternalFrame {
                 actualizado.setNum_casa(num_casa.getText());
                 actualizado.setTelefono(telefono.getText());
                 actualizado.setCorreo(correo.getText());
-                actualizado.setId_trabajador(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+                System.out.println(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+                actualizado.setIdcliente(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
                 int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de actualizar el registro?", "Actualización!", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     Coordinador.updateCliente(actualizado);
@@ -1150,7 +1155,6 @@ public class Registro extends javax.swing.JInternalFrame {
 
     private void EnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarCorreoActionPerformed
         sendEmail();
-
     }//GEN-LAST:event_EnviarCorreoActionPerformed
 
     private void btnBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarServicioActionPerformed
@@ -1179,8 +1183,61 @@ public class Registro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnActivadorActualizarActionPerformed
 
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+        if (nombre.getText().length() == 30) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 33 && k < 65 || k > 90 && k < 96 || k > 122) {
+            if (k != 241) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
+        }
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void coloniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_coloniaKeyTyped
+        if (nombre.getText().length() == 30) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k > 32 && k < 48 || k > 57 && k < 65 || k > 90 && k < 97 || k > 122) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+    }//GEN-LAST:event_coloniaKeyTyped
+
+    private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
+        if (nombre.getText().length() == 10) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+        int k = (int) evt.getKeyChar();
+        if (k < 48 || k > 57) {
+            if (k != 8) {
+                evt.setKeyChar((char) evt.VK_CLEAR);
+                getToolkit().beep();
+            }
+        }
+    }//GEN-LAST:event_telefonoKeyTyped
+
+    private void num_casaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_casaKeyTyped
+        if (nombre.getText().length() == 5) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+
+        int k = (int) evt.getKeyChar();
+        if (k < 48 || k > 57) {
+            evt.setKeyChar((char) evt.VK_CLEAR);
+            getToolkit().beep();
+        }
+    }//GEN-LAST:event_num_casaKeyTyped
+
     public void sendEmail() {
-        // ImageIcon unoL = new ImageIcon(getClass().getResource("/imagenes/imagen1.png"));
+
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -1262,9 +1319,7 @@ public class Registro extends javax.swing.JInternalFrame {
     }
 
     public String numerodeOrden() {
-
         String cadena;
-
         cadena = InicialesTaller()
                 + Inicio.fecha.getText().substring(0, 2)
                 + Inicio.fecha.getText().substring(3, 5)
