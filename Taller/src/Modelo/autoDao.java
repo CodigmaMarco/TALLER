@@ -104,4 +104,36 @@ public class autoDao {
         //Retorna el usuario
         return autos;
     }
+    
+     public ArrayList<autoVo> getAutoID(int id) {
+        Conectarse conn = new Conectarse();
+        ArrayList<autoVo> autos = new ArrayList();
+        try {
+            PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                    "SELECT  A.placa, A.modelo, A.marca, A.color\n"
+                    + "FROM auto A\n"
+                    + "WHERE A.idauto = ? ");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                autoVo auto = new autoVo();
+
+                
+                auto.setPlaca(resultSet.getString(1));
+                auto.setModelo(resultSet.getString(2));
+                auto.setMarca(resultSet.getString(3));
+                auto.setColor(resultSet.getString(4));
+
+
+                autos.add(auto);
+            }
+            conn.getConn().close();
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return autos;
+    }
 }

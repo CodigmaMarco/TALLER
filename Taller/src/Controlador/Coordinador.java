@@ -120,6 +120,11 @@ public class Coordinador {
         return auto.getAuto(id);
     }
 
+    public static ArrayList<autoVo> buscarAutoID(int id) {
+        autoDao auto = new autoDao();
+        return auto.getAutoID(id);
+    }
+
     public static void agregarCliente(clienteVo cliente) {
         clienteDao client = new clienteDao();
         client.registrarCliente(cliente);
@@ -149,8 +154,8 @@ public class Coordinador {
         trabajadorDao trabajador = new trabajadorDao();
         trabajador.updateTrabajador(t);
     }
-    
-       public static void updateCliente(clienteVo c) {
+
+    public static void updateCliente(clienteVo c) {
         clienteDao cliente = new clienteDao();
         cliente.updateCliente(c);
     }

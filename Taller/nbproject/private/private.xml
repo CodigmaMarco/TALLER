@@ -5,12 +5,11 @@
         <group>
             <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/clienteDao.java</file>
             <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/procesoDao.java</file>
+            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/autoDao.java</file>
             <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/servicioDao.java</file>
             <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/trabajadorDao.java</file>
             <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Controlador/Coordinador.java</file>
             <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Vista/Registro.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Modelo/Conectarse.java</file>
-            <file>file:/F:/Codigma/TALLER/TALLER/Taller/src/Vista/Usuarios.java</file>
         </group>
     </open-files>
 </project-private>

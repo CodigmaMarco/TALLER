@@ -10,19 +10,28 @@ import Modelo.procesoVo;
 import Modelo.servicioVo;
 import java.awt.Component;
 import java.awt.Container;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -39,7 +48,9 @@ public class Registro extends javax.swing.JInternalFrame {
     Vector idservselec = new Vector(20);
     Vector idauto = new Vector(20);
     Vector idcliente = new Vector(20);
+    String nombretaller;
 
+    Vector datoscarro = new Vector(20);
     int contadordescripcion = 1;
 
     public Registro() {
@@ -210,7 +221,7 @@ public class Registro extends javax.swing.JInternalFrame {
 
         btnActivadorActualizar.setBackground(new java.awt.Color(237, 31, 36));
         btnActivadorActualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnActivadorActualizar.setText("Actualizar Cliente");
+        btnActivadorActualizar.setText("Actualizar datos");
         btnActivadorActualizar.setEnabled(false);
         btnActivadorActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +249,7 @@ public class Registro extends javax.swing.JInternalFrame {
                         .addComponent(btnActivadorRegistro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnActivadorActualizar)
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1036,6 +1047,7 @@ public class Registro extends javax.swing.JInternalFrame {
     private void listClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listClienteMouseClicked
         enableComponents(panelCliente, false);
         LimpiarPanelCliente();
+        Datoscliente();
         listarAuto();
         lblIdCliente.setText("" + idcliente.elementAt(listCliente.getSelectedIndex()));
         btnActivadorAuto.setEnabled(true);
@@ -1118,7 +1130,7 @@ public class Registro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActivadorRegistroActionPerformed
 
     private void listAutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listAutoMouseClicked
-        // btnAutoNuevo.setEnabled(true);
+        enableComponents(panelCliente, false);
     }//GEN-LAST:event_listAutoMouseClicked
 
     private void btnActivadorAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorAutoActionPerformed
@@ -1184,13 +1196,21 @@ public class Registro extends javax.swing.JInternalFrame {
             modelos.remove(listServiciosaRealizar.getSelectedIndex());
             listServiciosaRealizar.setModel(modelos);
             txtverdescripcion.setText(null);
-        }else {
-                JOptionPane.showMessageDialog(null, "No ha seleccionado un servicio a realizar");
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado un servicio a realizar");
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void EnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarCorreoActionPerformed
-        sendEmail();
+        datosAuto();
+        ArrayList<clienteVo> cliente = miCoordinador.buscarCliente(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+        for (int i = 0; i < cliente.size(); i++) {
+            try {
+                sendEmail(cliente.get(i).getCorreo(), cliente.get(i).getNombre());
+            } catch (IOException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_EnviarCorreoActionPerformed
 
     private void btnBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarServicioActionPerformed
@@ -1204,20 +1224,24 @@ public class Registro extends javax.swing.JInternalFrame {
     private void btnActivadorActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivadorActualizarActionPerformed
         if (listCliente.getSelectedIndex() != -1) {
             btnGuardarCliente.setText("Actualizar");
-            ArrayList<clienteVo> cliente = miCoordinador.buscarCliente(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
-            for (int i = 0; i < cliente.size(); i++) {
-                nombre.setText(cliente.get(i).getNombre());
-                colonia.setText(cliente.get(i).getColonia());
-                calle.setText(cliente.get(i).getCalle());
-                num_casa.setText(cliente.get(i).getNum_casa());
-                telefono.setText(cliente.get(i).getTelefono());
-                correo.setText(cliente.get(i).getCorreo());
-            }
+            Datoscliente();
             enableComponents(panelCliente, true);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un cliente");
         }
     }//GEN-LAST:event_btnActivadorActualizarActionPerformed
+
+    public void Datoscliente() {
+        ArrayList<clienteVo> cliente = miCoordinador.buscarCliente(Integer.parseInt(String.valueOf(idcliente.elementAt(listCliente.getSelectedIndex()))));
+        for (int i = 0; i < cliente.size(); i++) {
+            nombre.setText(cliente.get(i).getNombre());
+            colonia.setText(cliente.get(i).getColonia());
+            calle.setText(cliente.get(i).getCalle());
+            num_casa.setText(cliente.get(i).getNum_casa());
+            telefono.setText(cliente.get(i).getTelefono());
+            correo.setText(cliente.get(i).getCorreo());
+        }
+    }
 
     private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
         if (nombre.getText().length() == 30) {
@@ -1378,7 +1402,7 @@ public class Registro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_colorKeyTyped
 
-    public void sendEmail() {
+    public void sendEmail(String Correo, String cliente) throws IOException {
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -1389,7 +1413,7 @@ public class Registro extends javax.swing.JInternalFrame {
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("magm9533@gmail.com", "haystemas1");
+                return new PasswordAuthentication("", "");
             }
         });
 
@@ -1398,10 +1422,35 @@ public class Registro extends javax.swing.JInternalFrame {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("magm9533@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("gomezrios.luismartin@gmail.com"));
-            message.setSubject("Holis");
-            message.setText("Que onda pinche putito :v");
-            message.setHeader("Cosa uno", "Cosa dos");
+                    InternetAddress.parse(Correo));
+            message.setSubject("¡Hola " + cliente + "!");
+
+            Multipart multipart = new MimeMultipart();
+
+            InputStream inputStream = getClass().getResourceAsStream(
+                    "index.html");
+            BufferedReader bufferedReader = new BufferedReader(
+                    new InputStreamReader(inputStream));
+
+            String strLine;
+            StringBuffer msjHTML = new StringBuffer();
+
+            while ((strLine = bufferedReader.readLine()) != null) {
+                strLine = strLine.replace("$$Modelo", String.valueOf(datoscarro.elementAt(0)));
+                strLine = strLine.replace("$$Marca", String.valueOf(datoscarro.elementAt(2)));
+                strLine = strLine.replace("$$Placa", String.valueOf(datoscarro.elementAt(1)));
+                strLine = strLine.replace("$$Guia", lblGuia.getText());
+                msjHTML.append(strLine);
+            }
+            // String mensajeEnviar = msjHTML.toString();
+            // mensajeEnviar = mensajeEnviar.replace("$$Modelo", String.valueOf(datoscarro.elementAt(0)));
+
+            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+            mimeBodyPart.setContent(msjHTML.toString(), "text/html");
+
+            multipart.addBodyPart(mimeBodyPart);
+            message.setContent(multipart);
+
             Transport.send(message);
             JOptionPane.showMessageDialog(this, "Su mensaje ha sido enviado");
 
@@ -1420,6 +1469,17 @@ public class Registro extends javax.swing.JInternalFrame {
         }
         listAuto.setModel(modeloss);
         btnActivadorAuto.setEnabled(true);
+    }
+
+    public void datosAuto() {
+        datoscarro.removeAllElements();
+        ArrayList<autoVo> auto = miCoordinador.buscarAutoID(Integer.parseInt(String.valueOf(idauto.elementAt(listAuto.getSelectedIndex()))));
+        for (int i = 0; i < auto.size(); i++) {
+            datoscarro.addElement(auto.get(i).getModelo());
+            datoscarro.addElement(auto.get(i).getPlaca());
+            datoscarro.addElement(auto.get(i).getMarca());
+            datoscarro.addElement(auto.get(i).getColor());
+        }
     }
 
     public void listarCliente() {
@@ -1460,6 +1520,7 @@ public class Registro extends javax.swing.JInternalFrame {
         adminVo adm = Coordinador.getAdmin(Inicio.lblid.getText());
         if (adm.getNombre_empresa() != null) {
             String inic = "", palabra;
+            nombretaller = adm.getNombre_empresa();
             StringTokenizer stPalabras = new StringTokenizer(adm.getNombre_empresa());
             while (stPalabras.hasMoreTokens()) {
                 palabra = stPalabras.nextToken();
