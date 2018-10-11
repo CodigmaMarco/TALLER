@@ -135,7 +135,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         txtOrden.setBorderColor(new java.awt.Color(51, 51, 51));
         txtOrden.setBotonColor(new java.awt.Color(102, 102, 102));
         txtOrden.setPhColor(new java.awt.Color(102, 102, 102));
-        txtOrden.setPlaceholder("Ingrese numero de orden");
+        txtOrden.setPlaceholder("Ingrese numero de Guía");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Orden No.");
@@ -236,6 +236,8 @@ public class ActRegistro extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabel2.getAccessibleContext().setAccessibleName("Guía No.");
+
         tbProcesos.setForeground(new java.awt.Color(44, 44, 45));
         tbProcesos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -267,11 +269,11 @@ public class ActRegistro extends javax.swing.JInternalFrame {
         tbProcesos.setColorFilasForeground2(new java.awt.Color(237, 31, 36));
         tbProcesos.setColorSelBackgound(new java.awt.Color(237, 31, 36));
         tbProcesos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbProcesosMouseClicked(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tbProcesosMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProcesosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbProcesos);
@@ -657,7 +659,7 @@ public class ActRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbAuto;
     private javax.swing.JLabel lbCliente;
     private javax.swing.JLabel lbIcono;
-    private javax.swing.JLabel lbLeido;
+    public javax.swing.JLabel lbLeido;
     private javax.swing.JLabel lbOrden;
     private javax.swing.JLabel lbPlaca;
     private javax.swing.JList<String> list;
