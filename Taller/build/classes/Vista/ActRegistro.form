@@ -186,7 +186,7 @@
                 <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
-                <Property name="placeholder" type="java.lang.String" value="Ingrese numero de orden"/>
+                <Property name="placeholder" type="java.lang.String" value="Ingrese numero de Gu&#xed;a"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -196,6 +196,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Orden No."/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Gu&#xed;a No."/>
+              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
