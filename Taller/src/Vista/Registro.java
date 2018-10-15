@@ -1407,20 +1407,20 @@ public class Registro extends javax.swing.JInternalFrame {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.host", "mail.verifycar.com.mx");
         props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("", "");
+                return new PasswordAuthentication("info@verifycar.com.mx", "Verifycar2018MX");
             }
         });
 
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("magm9533@gmail.com"));
+            message.setFrom(new InternetAddress("info@verifycar.com.mx"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(Correo));
             message.setSubject("¡Hola " + cliente + "!");
@@ -1442,6 +1442,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 strLine = strLine.replace("$$Guia", lblGuia.getText());
                 msjHTML.append(strLine);
             }
+            System.out.println(msjHTML.toString());
             // String mensajeEnviar = msjHTML.toString();
             // mensajeEnviar = mensajeEnviar.replace("$$Modelo", String.valueOf(datoscarro.elementAt(0)));
 
